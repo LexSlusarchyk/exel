@@ -4,6 +4,7 @@
 angular.module('exel', [
   'ngRoute',
   'ui.bootstrap',
+  'ngAnimate',
   'exel.main',
   'exel.about',
   'exel.services',
