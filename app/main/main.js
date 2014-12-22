@@ -9,7 +9,7 @@ angular.module('exel.main', ['ngRoute'])
   });
 }])
 
-.controller('MainPageController', [function() {
-
+.controller('MainPageController', ['$scope', function($scope) {
+$scope.named = 'komix';
 
 }]);

@@ -11,4 +11,5 @@ angular.module('exel.contacts', ['ngRoute'])
 
 .controller('ContactsController', [function() {
 
+
 }]);
