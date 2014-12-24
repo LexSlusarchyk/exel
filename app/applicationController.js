@@ -1,7 +1,13 @@
 (function(){
   angular.module('exel')
-  .controller("ApplicationController", ["$scope", function($scope){
-      
+  .controller("ApplicationController", ["$scope", "$location", "CONFIG", function($scope, $location, CONFIG){
+
+  	$scope.main = CONFIG.MAIN;
+  	$scope.about = CONFIG.ABOUT;
+  	$scope.services = CONFIG.SERVICES;
+  	$scope.portfolio = CONFIG.PORTFOLIO;
+  	$scope.contacts = CONFIG.CONTACTS;
+     
 $('header li').click(function(){
           $("header").find("li.active").removeClass("active");
           $(this).addClass("active");

@@ -93,12 +93,12 @@ transform: scale(0.8);
 
 .relative-div img {
 min-height: 110px;
+width: 100%;
 }
 
 .line-caption {
 	position: absolute;
 	top: 10%;
-	width: 100%;
 	z-index: 2;
 	color: white;
 }
