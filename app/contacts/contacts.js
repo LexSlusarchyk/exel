@@ -12,7 +12,7 @@ angular.module('exel.contacts', ['ngRoute'])
 .controller('ContactsController', ['$scope', function($scope) {
  function initialize() {
 
-$scope.$digest();
+
         var mapCanvas = document.getElementById('map-canvas');
         var mapOptions = {
           center: new google.maps.LatLng(49.813706, 24.038067),
@@ -27,6 +27,6 @@ $scope.$digest();
   });
 }
       google.maps.event.addDomListener(window, 'load', initialize);
-$scope.$digest();
+initialize();
 
 }]);
