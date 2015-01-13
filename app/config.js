@@ -1,5 +1,13 @@
 angular.module('exel.CONFIG', [])
 
+.config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyCgWReZ13GtycUlvQBvYNTXqqKL2K6JaKs',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+    });
+})
+
 .constant('CONFIG', {
   'MAIN' : 'Головна',
   'ABOUT' : 'Про нас',

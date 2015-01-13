@@ -9,24 +9,11 @@ angular.module('exel.contacts', ['ngRoute'])
   });
 }])
 
-.controller('ContactsController', ['$scope', function($scope) {
- function initialize() {
+.controller('ContactsController', ['$scope', 'uiGmapGoogleMapApi', function($scope, uiGmapGoogleMapApi) {
 
 
-        var mapCanvas = document.getElementById('map-canvas');
-        var mapOptions = {
-          center: new google.maps.LatLng(49.813706, 24.038067),
-          zoom: 17,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
-         var marker = new google.maps.Marker({
-      position: mapOptions.center,
-      map: map,
-      title: 'Hello World!'
-  });
-}
-      google.maps.event.addDomListener(window, 'load', initialize);
-initialize();
+uiGmapGoogleMapApi.then(function(maps) {
 
+    });
+$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 }]);
