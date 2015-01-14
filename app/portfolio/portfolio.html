@@ -13,13 +13,16 @@
 	</div>
 
 
-	<ol>
-		<li ng-repeat="x in portfolio track by $index">{{x.name}}
-		<img ng-src="{{x.imageUrl}}">
-		</li>
-		
-	</ol>
-
+	<div class="container-fluid portfolio">
+		<div class="row">
+			<div class="col-md-9 col-md-offset-3">
+				<div ng-repeat="x in portfolio track by $index" class="col-md-3">
+					<span>{{x.name}}</span>
+					<img ng-src="{{x.imageUrl}}">
+				</div>
+			</div>
+	</div>
+</div>
 
 
 
