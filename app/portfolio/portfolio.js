@@ -9,6 +9,8 @@ angular.module('exel.portfolio', ['ngRoute'])
   });
 }])
 
-.controller('PortfolioController', [function() {
-
+.controller('PortfolioController', ['$scope', '$http',function($scope, $http) {
+$http.get('portfolio/portfolio.json').success(function(data) {
+    $scope.portfolio = data;
+  });
 }]);
