@@ -12,7 +12,7 @@
 		<img src="images/banners.jpeg" width="100%">
 	</div>
 
-
+<!-- 
 	<div ng-cloak class="container-fluid portfolio">
 		<div class="row">
 
@@ -21,14 +21,83 @@
     </div>
 			<div class="col-md-9">
 				<div ng-repeat="works in portfolio | filter:query track by $index" class="col-sm-6 col-md-4">
-					<span>{{works.name}}</span>
-					<img ng-src="{{works.imageUrl}}">
+					<span>{{work.name}}</span>
+					<img ng-src="{{work.imageUrl}}">
 				</div>
 			</div>
 	</div>
 </div>
 
+ -->
 
+<div style="width: 100%; height: 40px;"></div>
+<!-- section start -->
+		<!-- ================ -->
+		<div class="section">
+			<div class="container">
+				<div class="row object-non-visible" data-animation-effect="fadeIn">
+				<!-- isotope filters start -->
+						<div class="col-md-3 filters text-center">
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href="#" data-filter="*">Всі</a></li>
+								<li><a href="#" data-filter=".wide">Широкоформатний</a></li>
+								<li><a href="#" data-filter=".hanger">App development</a></li>
+								<li><a href="#" data-filter=".web">Site building</a></li>
+							</ul>
+						</div>
+						<!-- isotope filters end -->
+						
+				
+					<div class="col-md-9">
 
+						
+						
 
-
+						<!-- portfolio items start -->
+						<div class="isotope-container row grid-space-20">
+							<div  ng-repeat="work in portfolio track by $index" class="col-sm-6 col-md-4 isotope-item {{work.type}}">
+								<div class="image-box">
+									<div class="overlay-container">
+										<img ng-src="{{work.imageUrl}}" alt="">
+										<a class="overlay" data-toggle="modal" data-target="#project-1">
+											<i class="fa fa-search-plus"></i>
+											<span>{{work.type}}</span>
+										</a>
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1">{{work.name}}</a>
+								</div>
+								
+								<div class="modal fade" id="project-1" tabindex="-1" role="dialog" aria-labelledby="project-1-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
+												<h4 class="modal-title" id="project-1-label">{{work.name}}</h4>
+											</div>
+											<div class="modal-body">
+												<h3>Опис</h3>
+												<div class="row">
+													<div class="col-md-6">
+														<p>{{work.snippet}}</p>
+													</div>
+													<div class="col-md-6">
+														<img ng-src="{{work.imageUrl}}" alt="">
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Закрити</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							</div>
+						</div>
+						<!-- portfolio items end -->
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section end -->
