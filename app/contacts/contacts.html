@@ -12,24 +12,56 @@
 		<img src="images/banners.jpeg" width="100%">
 </div>
 <div class="container-fluid">
-<div class="row">
+	<div class="row">
 
-<div class="col-md-3">
-<h2>Контакти:</h2>
-<p>Україна, 79034 м.Львів вул. Литвиненка, 3<br> 
-бізнес центр "Мальви"<br>
-2-ий поверх, офіс 210</p>
-<p>e-mail: excellence_lviv@ukr.net<br> 
-тел. (032) 232-07-99<br> 
-тел. (067) 756-37-04<br>
-</p>
+		<div class="col-md-3">
+			<h2>Контакти:</h2>
+			<ul>
+			<li><i class="fa fa-phone pr-10"></i> +00 1234567890</li>
+			</ul>
+			<p>Україна, 79034 м.Львів вул. Литвиненка, 3<br> 
+			бізнес центр "Мальви"<br>
+			2-ий поверх, офіс 210</p>
+			<p>e-mail: excellence_lviv@ukr.net<br> 
+			тел. (032) 232-07-99<br> 
+			тел. (067) 756-37-04<br>
+			</p>
+		</div>
+
+		<div ng-cloak id="map_canvas" class="col-md-8 col-md-offset-1">
+		    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+		        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+		        </ui-gmap-marker>
+		    </ui-gmap-google-map>
+		</div>
+	</div>
 </div>
-<div class="col-md-8 col-md-offset-1"><ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map></div>
 
+<section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Наша команда</h2>
+                    <h3 class="section-subheading text-muted">Ми знаємо свою справу!</h3>
+                </div>
+            </div>
+            <div class="row row-centered">
+                <div class="col-md-4 team-member" ng-repeat="member in team">
+                        <img ng-src="{{member.imageUrl}}" class="img-responsive img-circle" alt="">
+                        <h4>{{member.name}}</h4>
+                        <p class="text-muted">{{member.prof}}</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+    </section>
 
-</div>
-
-</div>
 
 <!-- <div class="container-fluid">
 <div class="row">

@@ -84,6 +84,9 @@ transform: scale(0.8);
 		position: absolute;
 	}
 }
+a, a:visited, a:focus, a:active, a:hover{
+    outline:0 none !important;
+}
 
 /*Top-line headings and paragraphs*/
 .relative-div {
@@ -163,4 +166,25 @@ width: 100%;
 .panel-title a i {
 	padding-right: 10px;
 	font-size: 20px;
+}
+
+/* Team! */
+.team-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.team-member img {
+    margin: 0 auto;
+    border: 7px solid #f5faed;
+}
+
+.team-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.team-member p {
+    margin-top: 0;
 }

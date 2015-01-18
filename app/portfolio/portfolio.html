@@ -13,12 +13,16 @@
 	</div>
 
 
-	<div class="container-fluid portfolio">
+	<div ng-cloak class="container-fluid portfolio">
 		<div class="row">
-			<div class="col-md-9 col-md-offset-3">
-				<div ng-repeat="x in portfolio track by $index" class="col-md-3">
-					<span>{{x.name}}</span>
-					<img ng-src="{{x.imageUrl}}">
+
+<div class="col-md-3">
+      Search: <input ng-model="query">
+    </div>
+			<div class="col-md-9">
+				<div ng-repeat="works in portfolio | filter:query track by $index" class="col-sm-6 col-md-4">
+					<span>{{works.name}}</span>
+					<img ng-src="{{works.imageUrl}}">
 				</div>
 			</div>
 	</div>

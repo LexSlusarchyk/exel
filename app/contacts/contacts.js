@@ -9,11 +9,21 @@ angular.module('exel.contacts', ['ngRoute'])
   });
 }])
 
-.controller('ContactsController', ['$scope', 'uiGmapGoogleMapApi', function($scope, uiGmapGoogleMapApi) {
+.controller('ContactsController', ['$scope', '$http', '$log', '$timeout', 'uiGmapGoogleMapApi', function($scope, $http, $log, $timeout, uiGmapGoogleMapApi) {
+	$http.get('contacts/team.json').success(function(data) {
+	    $scope.team = data;
+	});
 
-
-uiGmapGoogleMapApi.then(function(maps) {
-
-    });
-$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    $scope.map = {center: {latitude: 49.813706, longitude: 24.038067 }, zoom: 17 };
+    $scope.options = {scrollwheel: false};
+    $scope.coordsUpdates = 0;
+    $scope.dynamicMoveCtr = 0;
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 49.813706,
+        longitude: 24.038067
+      },
+    };
+   
 }]);
