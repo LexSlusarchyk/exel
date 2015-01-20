@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/maps.css">
   <link rel="stylesheet" href="css/portfolio.css">
-  <link rel="stylesheet" href="css/isotope.css">
+  
 
 
   
@@ -59,11 +59,11 @@
                 </div>
                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">          
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/">{{main}}</a></li>
-                    <li><a href="#/about">{{about}}</a></li>
-                    <li><a href="#/services">{{services}}</a></li>
-                    <li><a href="#/portfolio">{{portfolio}}</a></li>
-                    <li><a href="#/contacts">{{contacts}}</a></li>
+                    <li ng-class="{ active: isActive('/')}"><a href="#/">{{main}}</a></li>
+                    <li ng-class="{ active: isActive('/about')}"><a href="#/about">{{about}}</a></li>
+                    <li ng-class="{ active: isActive('/services')}"><a href="#/services">{{services}}</a></li>
+                    <li ng-class="{ active: isActive('/portfolio')}"><a href="#/portfolio">{{portfolio}}</a></li>
+                    <li ng-class="{ active: isActive('/contacts')}"><a href="#/contacts">{{contacts}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -103,14 +103,14 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="components/isotope.pkgd.min.js"></script>
+
 
 
   <script src="app.js"></script>

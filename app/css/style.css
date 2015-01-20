@@ -188,3 +188,7 @@ width: 100%;
 .team-member p {
     margin-top: 0;
 }
+
+.image-box img {
+width: 100%;
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('exel.portfolio', ['ngRoute'])
+angular.module('exel.portfolio', ['ngRoute', 'ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/portfolio', {
@@ -9,33 +9,43 @@ angular.module('exel.portfolio', ['ngRoute'])
   });
 }])
 
-.controller('PortfolioController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+.controller('PortfolioController', ['$scope', '$http', '$timeout', '$modal', '$log', 'services', function($scope, $http, $timeout, $modal, $log, services) {
 $http.get('portfolio/portfolio.json').success(function(data) {
     $scope.portfolio = data;
+});
 
+$scope.categories = services;
+
+$scope.myFiltering = function(cat) {
+$scope.myFilter = cat;
+}
+
+$timeout(function(){
+	$('.nav-stacked li').click(function(){
+	          $(".nav-stacked").find("li.active").removeClass("active");
+	          $(this).addClass("active");
+	}) 
 });
 
 
+$scope.modal = function (_work) {
 
-			function init() {
-				
-				$('.isotope-container').fadeIn();
-				var $container = $('.isotope-container').isotope({
-					itemSelector: '.isotope-item',
-					layoutMode: 'masonry',
-					transitionDuration: '0.6s',
-					filter: "*"
-				});
-				// filter items on button click
-				$('.filters').on( 'click', 'ul.nav li a', function() {
-					var filterValue = $(this).attr('data-filter');
-					$(".filters").find("li.active").removeClass("active");
-					$(this).parent().addClass("active");
-					$container.isotope({ filter: filterValue });
-					return false;
-				});
-			
-		};
+    var modalInstance = $modal.open({
+      templateUrl: 'portfolio/myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      size: 'lg',
+      resolve: {
+        work: function () {
+          return _work;
+        }
+      }
+    })
+  };
+}])
 
-$timeout(init, 1000);
-}]);
+
+.controller('ModalInstanceCtrl', function ($scope, $modalInstance, work) {
+
+  $scope.work = work;
+
+});

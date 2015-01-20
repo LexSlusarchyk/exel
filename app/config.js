@@ -16,14 +16,16 @@ angular.module('exel.CONFIG', [])
   'CONTACTS': 'Контакти'
 })
 
-.constant('paginationConfig', {
-  items_per_page:[5,10,25,50],
-  boundaryLinks: true,
-  directionLinks: true,
-  maxSize : 10,
-  rotate: false,
-  firstText: '≪',
-  previousText: '<',
-  nextText: '>',
-  lastText: '≫'
+
+.constant('services', {
+  'DESIGN' : {'name': 'Дизайн', 'filter': 'design'},
+  'HANGER' : {'name': 'Вивіски', 'filter': 'hanger'},
+  'INTER': {'name': 'Інтер’єри', 'filter': 'inter'},
+  'STREER':{'name': 'Зовнішня реклама', 'filter': 'street'},
+  'POLIGRAOHY': {'name': 'Поліграфія', 'filter': 'poligraphy'},
+  'WIDE': {'name': 'Широкоформатний друк', 'filter': 'wide'},
+  'DIGITAL': {'name': 'Цифровий друк', 'filter': 'digital'},
+  'FLAG': {'name': 'Флагштоки', 'filter': 'flag'},
+  'SOUVENIR': {'name': 'Сувенірна продукція', 'filter': 'souvenir'},
+  'WEB': {'name': 'Розробка сайтів', 'filter': 'web'}
 })
