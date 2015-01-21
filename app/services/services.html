@@ -11,8 +11,47 @@
 				</div>
 		<img src="images/banners.jpeg" width="100%">
 	</div>
+<div style="width: 100%; height: 40px;"></div>
 
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+
+
+<!-- <div class="row">
+	<div class="col-md-3">
+		<div class="sidebar">
+
+			<div class="list-group panel">
+				<a href="" class="list-group-item" data-toggle="collapse" data-target=".subcat" data-parent=".sidebar">Категорія 1</a>
+				<div class="collapse subcat list-group-submenu">
+					<a href="" class="list-group-item">Підкатегорія 1</a>
+					<a href="" class="list-group-item">Підкатегорія 2</a>
+					<a href="" class="list-group-item">Підкатегорія 3</a>
+				</div>
+				<a href="" class="list-group-item" data-toggle="collapse" data-target=".subcats" data-parent=".sidebar">Категорія 2</a>
+				<div class="collapse subcats list-group-submenu">
+					<a href="" class="list-group-item">Підкатегорія 1</a>
+					<a href="" class="list-group-item">Підкатегорія 2</a>
+					<a href="" class="list-group-item">Підкатегорія 3</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+ -->
+
+
+
+<div class="row">
+	<div class="col-md-3">
+		<div class="sidebar">
+			<div class="list-group panel">
+				<div class="cat" ng-repeat="service in services">
+						<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.key}}" data-parent=".sidebar">{{service.name}}</a>
+						<div ng-repeat="cat in service.subcats" class="collapse {{service.key}} list-group-submenu">
+							<a href="" class="list-group-item">{{cat.subName}}</a>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>

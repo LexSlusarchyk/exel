@@ -35,7 +35,7 @@
 
 						<!-- portfolio items start -->
 						<div ng-cloak class="ng-cloak portfolio-container row grid-space-20">
-							<div  ng-repeat="work in portfolio | filter: myFilter track by $index" class="col-sm-6 col-md-4 portfolio-item {{work.type}}">
+							<div  ng-repeat="work in portfolio | filter: myFilter | orderBy: priority track by $index" class="col-sm-6 col-md-4 portfolio-item {{work.type}}">
 								<div class="image-box">
 									<div class="overlay-container">
 										<img ng-src="{{work.imageUrl}}" alt="">
