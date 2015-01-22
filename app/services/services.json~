@@ -139,7 +139,7 @@
     {	
 	"id": 11,
         "key": "web", 
-        "name": "сувенірна продукція", 
+        "name": "розробка сайтів", 
         "subcats": [
 		    {"subKey": "design", "subName": "дизайн"}, 
 		    {"subKey": "develop", "subName": "створення"}, 

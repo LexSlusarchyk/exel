@@ -146,6 +146,8 @@
 	border: 1px solid #cacaca;
 	color: #666666;
 	font-size: 15px;
+	text-align: left;
+}
+.nav-pills > li > a::first-letter {
 	text-transform: uppercase;
-	font-weight: 300;
 }

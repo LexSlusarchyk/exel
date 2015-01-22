@@ -19,10 +19,10 @@
 			<div class="container-fluid">
 				<div class="row object-non-visible" data-animation-effect="fadeIn">
 				<!-- isotope filters start -->
-						<div class="col-md-3 filters text-center">
+						<div class="col-md-3 filters">
 							<ul class="nav nav-pills nav-stacked ">
 							<li class="active"><a  href="" ng-click="myFilter=''">Всі роботи</a></li>
-							<li ng-repeat="cat in categories | orderBy:orderProp"><a href="" ng-click="myFiltering(cat.filter)">{{cat.name}}</a></li>
+							<li ng-repeat="cat in categories"><a href="" ng-click="myFiltering(cat.filter)">{{cat.name}}</a></li>
 							</ul>
 						</div>
 						<!-- isotope filters end -->
@@ -40,8 +40,8 @@
 									<div class="overlay-container">
 										<img ng-src="{{work.imageUrl}}" alt="">
 										<a class="overlay" ng-click="modal(work)" data-target="#{{$index}}">
-											<i class="fa fa-search-plus"></i>
-											<span>{{work.snippet}}</span>
+											<i class="glyphicon glyphicon-zoom-in"></i>
+											<span>{{work.type}}</span>
 										</a>
 									</div>
 									<a class="btn btn-default btn-block" ng-click="modal(work)" data-target="#{{$index}}">{{work.name}}</a>
@@ -54,9 +54,4 @@
 			</div>
 		</div>
 		<!-- section end -->
-
-
-<!-- <div ng-controller="ModalDemoCtrl">
-    <button ng-click="open()">CLICK</button>
-</div> -->
 

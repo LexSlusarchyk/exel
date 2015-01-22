@@ -16,7 +16,7 @@
         "snippet": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
     }, 
     {
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 2, 
         "carrier": "AT&T", 
         "id": "motorola-atrix-4g", 
@@ -25,7 +25,7 @@
         "snippet": "MOTOROLA ATRIX 4G the world's most powerful smartphone."
     }, 
     {	
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 3, 
         "id": "dell-streak-7", 
         "imageUrl": "images/portfolio-4.jpg",
@@ -33,7 +33,7 @@
         "snippet": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
     }, 
     {	
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 4, 
         "carrier": "Cellular South", 
         "id": "samsung-gem", 
@@ -76,7 +76,7 @@
         "snippet": "Feel Free to Tab\u2122. The Samsung Galaxy Tab\u2122 brings you an ultra-mobile entertainment experience through its 7\u201d display, high-power processor and Adobe\u00ae Flash\u00ae Player compatibility."
     }, 
     {	
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 9, 
         "carrier": "Cellular South", 
         "id": "samsung-showcase-a-galaxy-s-phone", 
@@ -103,7 +103,7 @@
         "snippet": "The next generation of DOES."
     }, 
     {
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 12, 
         "carrier": "AT&T", 
         "id": "motorola-bravo-with-motoblur", 
@@ -121,7 +121,7 @@
         "snippet": "Are you ready for everything life throws your way?"
     }, 
     {
-	"type": "polygraphy",
+	"type": "poligraphy",
         "priority": 14, 
         "carrier": "T-Mobile", 
         "id": "t-mobile-mytouch-4g", 

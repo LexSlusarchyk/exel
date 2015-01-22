@@ -1,4 +1,8 @@
-
+html {
+overflow: -moz-scrollbars-vertical; 
+overflow-y: scroll;
+}
+[ng\:cloak], [ng-cloak], .ng-cloak { display: none; }
 html,
 body {
 	height: 100%;

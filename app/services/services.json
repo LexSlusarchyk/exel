@@ -40,7 +40,7 @@
     }, 
     {	
 	"id": 4,
-        "key": "outside", 
+        "key": "street", 
         "name": "зовнішня реклама", 
         "subcats": [
 		    {"subKey": "brandm", "subName": "брендмауери"}, 
