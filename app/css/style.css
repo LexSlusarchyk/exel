@@ -2,7 +2,7 @@ html {
 overflow: -moz-scrollbars-vertical; 
 overflow-y: scroll;
 }
-[ng\:cloak], [ng-cloak], .ng-cloak { display: none; }
+[ng\:cloak], [ng-cloak], .ng-cloak { display: none !important; }
 html,
 body {
 	height: 100%;
@@ -191,8 +191,4 @@ width: 100%;
 
 .team-member p {
     margin-top: 0;
-}
-
-.image-box img {
-width: 100%;
 }

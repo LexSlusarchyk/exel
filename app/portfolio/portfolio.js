@@ -14,7 +14,10 @@ $http.get('portfolio/portfolio.json').success(function(data) {
     $scope.portfolio = data;
 });
 
-$scope.categories = services;
+$http.get('services/services.json').success(function(data) {
+    $scope.categories = data;
+});
+
 
 $scope.myFiltering = function(cat) {
 $scope.myFilter = cat;

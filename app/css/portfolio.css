@@ -151,3 +151,7 @@
 .nav-pills > li > a::first-letter {
 	text-transform: uppercase;
 }
+
+.image-box img {
+	width: 100%;
+}

@@ -12,23 +12,43 @@
 		<img src="images/banners.jpeg" width="100%">
 </div>
 <div style="width: 100%; height: 40px;"></div>
+
+
 <div class="container-fluid">
 	<div class="row">
 
-		<div class="col-md-3">
-			<h2>Контакти:</h2>
-			<ul>
-			</ul>
-			<p>Україна, 79034 м.Львів вул. Литвиненка, 3<br> 
-			бізнес центр "Мальви"<br>
-			2-ий поверх, офіс 210</p>
-			<p>e-mail: excellence_lviv@ukr.net<br> 
-			тел. (032) 232-07-99<br> 
-			тел. (067) 756-37-04<br>
-			</p>
+		<div class="contacts col-md-4">
+			<div class="row">
+				<div class="col-xs-2">
+					<span class="glyphicon glyphicon-map-marker"></span>
+				</div>
+				<div class="col-xs-10">
+					<p>79034 м.Львів вул. Литвиненка,<br> буд. 3, бізнес-центр "Мальви"<br> 2-ий поверх, офіс 210.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<span class="glyphicon glyphicon-envelope"></span>
+				</div>
+				<div class="col-xs-10">
+					<p>e-mail: excellence_lviv@ukr.net</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">
+					<span class="glyphicon glyphicon-earphone"></span>
+				</div>
+				<div class="col-xs-10">
+					<p>
+					тел. (032)232-07-99<br> 
+					тел. (067)756-37-04<br>
+					</p>
+				</div>
+			</div>
 		</div>
+		
 
-		<div ng-cloak id="map_canvas" class="col-md-8 col-md-offset-1">
+		<div ng-cloak id="map_canvas" class="col-md-8">
 		    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
 		        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
 		        </ui-gmap-marker>
@@ -36,7 +56,7 @@
 		</div>
 	</div>
 </div>
-
+<div style="width: 100%; height: 40px;"></div>
 <section>
         <div class="container-fluid">
             <div class="row">

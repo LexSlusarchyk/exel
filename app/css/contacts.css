@@ -1,0 +1,25 @@
+.angular-google-map-container { 
+height: 300px;
+border: 7px solid #f5faed;
+}
+.contacts {
+	
+}
+
+.contacts p {
+	text-align: left;
+	font-size: 17px;
+}
+
+.contacts .glyphicon {
+	left: 10px;
+	font-size: 30px;
+}
+.contacts .glyphicon-earphone {
+	top: 10px;
+	left: 10px;
+}
+.contacts .glyphicon-map-marker {
+	top: 17px;
+	left: 10px;
+}
