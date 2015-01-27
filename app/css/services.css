@@ -9,7 +9,7 @@
 */
 .sidebar {
 	font-size: 15px;
-	padding-left: 15px;
+	margin: 0px 15px 0px 15px;
 }
 .sidebar a::first-letter {
 	text-transform: uppercase;

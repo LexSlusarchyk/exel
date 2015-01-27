@@ -60,11 +60,11 @@
                 </div>
                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">          
                   <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{ active: isActive('/')}"><a href="#/">{{main}}</a></li>
-                    <li ng-class="{ active: isActive('/about')}"><a href="#/about">{{about}}</a></li>
-                    <li ng-class="{ active: isActive('/services')}"><a href="#/services">{{services}}</a></li>
-                    <li ng-class="{ active: isActive('/portfolio')}"><a href="#/portfolio">{{portfolio}}</a></li>
-                    <li ng-class="{ active: isActive('/contacts')}"><a href="#/contacts">{{contacts}}</a></li>
+                    <li ng-class="{ active: isActive('/')}"><a ui-sref="main">{{main}}</a></li>
+                    <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">{{about}}</a></li>
+                    <li ng-class="{ active: isActive('/services')}"><a ui-sref="services">{{offers}}</a></li>
+                    <li ng-class="{ active: isActive('/portfolio')}"><a ui-sref="portfolio">{{portfolio}}</a></li>
+                    <li ng-class="{ active: isActive('/contacts')}"><a ui-sref="contacts">{{contacts}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -82,7 +82,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div ui-view></div>
 
 
   <footer id="footer">
@@ -106,6 +106,7 @@
   -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>

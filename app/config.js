@@ -11,7 +11,7 @@ angular.module('exel.CONFIG', [])
 .constant('CONFIG', {
   'MAIN' : 'Головна',
   'ABOUT' : 'Про нас',
-  'SERVICES': 'Послуги',
+  'OFFERS': 'Послуги',
   'PORTFOLIO':'Портфоліо',
   'CONTACTS': 'Контакти'
 })
@@ -22,7 +22,7 @@ angular.module('exel.CONFIG', [])
   'HANGER' : {'name': 'Вивіски', 'filter': 'hanger'},
   'INTER': {'name': 'Інтер’єри', 'filter': 'inter'},
   'STREER':{'name': 'Зовнішня реклама', 'filter': 'street'},
-  'POLIGRAOHY': {'name': 'Поліграфія', 'filter': 'poligraphy'},
+  'POLIGRAPHY': {'name': 'Поліграфія', 'filter': 'poligraphy'},
   'WIDE': {'name': 'Широкоформатний друк', 'filter': 'wide'},
   'DIGITAL': {'name': 'Цифровий друк', 'filter': 'digital'},
   'FLAG': {'name': 'Флагштоки', 'filter': 'flag'},

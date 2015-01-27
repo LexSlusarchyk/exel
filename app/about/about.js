@@ -2,12 +2,15 @@
 
 angular.module('exel.about', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/about', {
-    templateUrl: 'about/about.html',
-    controller: 'AboutUsController'
-  });
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+        .state('about', {
+            url:'/about',
+            templateUrl: 'about/about.html',
+            controller: 'AboutUsController'
+        })
 }])
+
 
 .controller('AboutUsController', [function() {
 

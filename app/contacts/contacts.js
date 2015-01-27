@@ -1,13 +1,15 @@
 'use strict';
 
-angular.module('exel.contacts', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/contacts', {
-    templateUrl: 'contacts/contacts.html',
-    controller: 'ContactsController'
-  });
+angular.module('exel.contacts', [])
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+        .state('contacts', {
+            url:'/contacts',
+            templateUrl: 'contacts/contacts.html',
+            controller: 'ContactsController'
+        })
 }])
+
 
 .controller('ContactsController', ['$scope', '$http', '$log', '$timeout', 'uiGmapGoogleMapApi', function($scope, $http, $log, $timeout, uiGmapGoogleMapApi) {
 	$http.get('contacts/team.json').success(function(data) {

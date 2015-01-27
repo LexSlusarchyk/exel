@@ -4,7 +4,7 @@
 
   	$scope.main = CONFIG.MAIN;
   	$scope.about = CONFIG.ABOUT;
-  	$scope.services = CONFIG.SERVICES;
+  	$scope.offers = CONFIG.OFFERS;
   	$scope.portfolio = CONFIG.PORTFOLIO;
   	$scope.contacts = CONFIG.CONTACTS;
      

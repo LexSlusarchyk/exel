@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('exel.portfolio', ['ngRoute', 'ui.bootstrap'])
+angular.module('exel.portfolio', ['ui.bootstrap'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/portfolio', {
-    templateUrl: 'portfolio/portfolio.html',
-    controller: 'PortfolioController'
-  });
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+        .state('portfolio', {
+            url:'/portfolio',
+            templateUrl: 'portfolio/portfolio.html',
+            controller: 'PortfolioController'
+        })
 }])
 
 .controller('PortfolioController', ['$scope', '$http', '$timeout', '$modal', '$log', 'services', function($scope, $http, $timeout, $modal, $log, services) {
@@ -20,19 +22,11 @@ $http.get('services/services.json').success(function(data) {
 
 
 $scope.myFiltering = function(cat) {
-$scope.myFilter = cat;
+  $scope.myFilter = cat;
+  $scope.selectedTab = cat;
 }
 
-$timeout(function(){
-	$('.nav-stacked li').click(function(){
-	          $(".nav-stacked").find("li.active").removeClass("active");
-	          $(this).addClass("active");
-	}) 
-});
-
-
 $scope.modal = function (_work) {
-
     var modalInstance = $modal.open({
       templateUrl: 'portfolio/myModalContent.html',
       controller: 'ModalInstanceCtrl',
@@ -48,9 +42,7 @@ $scope.modal = function (_work) {
 
 
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance, $animate, work) {
-
-  $scope.work = work;
-
+$scope.work = work;
 $animate.enabled(false);
 $scope.myInterval = 5000;
   var slides = $scope.slides = [{
@@ -69,6 +61,4 @@ $scope.myInterval = 5000;
   for (var i=0; i<4; i++) {
     $scope.addSlide();
   }
-
-
 });
