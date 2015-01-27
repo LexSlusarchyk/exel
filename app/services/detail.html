@@ -1,4 +1,13 @@
-<p>Shit</p>
-<div ng-cloak><p>{{services}}</p></div>
-
-
+<div class="row">	
+	<div class="col-md-9">
+		<carousel interval="myInterval">
+			<slide ng-repeat="slide in slides" active="slide.active">
+				<img ng-src="{{slide.image}}" style="margin:auto;">
+			</slide>
+		</carousel>
+	</div>
+</div>
+<div class="col-md-9 service-info">
+	<h2>{{service.name}}</h2>
+	<p>{{service.snippet}}</p>
+</div>

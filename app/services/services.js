@@ -37,14 +37,14 @@ $(document).on('click', '.cat > .list-group-item', function(event) {
 
 }])
 
-.controller('ServicesDetailController', ['$scope', '$stateParams',  "$http", function($scope, $stateParams, $http) {
+.controller('ServicesDetailController', ['$scope', '$animate', '$stateParams',  "$http", function($scope, $animate, $stateParams, $http) {
 
 
 $http.get('services/cats/'+ $stateParams.id +'.json').success(function(data) {
-    $scope.services = data;        
+    $scope.service = data;
+    $scope.slides = $scope.service.imagesUrl        
 
 });
-
-
-
+$animate.enabled(false);
+$scope.myInterval = 4000;
 }])

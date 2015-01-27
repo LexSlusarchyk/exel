@@ -1,12 +1,7 @@
 .cat {
 	margin-bottom: 2px;
-	margin-top: 2px;
 }
-/*.cat .collapse {
-	margin-top: 2px;
-	margin-bottom: 2px;
-}
-*/
+
 .sidebar {
 	font-size: 15px;
 	margin: 0px 15px 0px 15px;
@@ -25,8 +20,6 @@
   z-index: 1;
 }
 .cat  .list-group-item:hover {
-  /*border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px*/
   background-color: rgba(85, 172, 238, 0.9);
   color: #ffffff;
 }
@@ -42,4 +35,13 @@
 .list-group-item:hover {
   background-color: rgba(85, 172, 238, 0.9);
   color: #ffffff;
+}
+
+.service-info p, .service-info h2 {
+
+  text-align: justify;
+}
+.service-info p::first-letter, .service-info h2::first-letter {
+  text-transform: uppercase;
+  /*text-align: justify;*/
 }
