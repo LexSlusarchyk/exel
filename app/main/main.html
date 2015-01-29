@@ -17,10 +17,7 @@
 <carousel interval="myInterval">
   <slide ng-repeat="slideCollection in groupedSlides" active="slide.active">
     <div>
-      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image1.image}}" style="margin:auto;">   
-      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image2.image}}" style="margin:auto;"> 
-      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image3.image}}" style="margin:auto;">
-      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image4.image}}" style="margin:auto;">     
+      <img  ng-repeat="slide in slideCollection" class="col-sm-12 col-md-2" style="height: 60px; max-width: 100%"  ng-src="{{slide.image}}" style="margin:auto;">       
     </div>
   </slide>
 </carousel> 

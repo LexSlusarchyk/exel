@@ -29,9 +29,12 @@ $(document).on('click', '.cat > .list-group-item', function(event) {
         }
 })
 
+
+
+
 }])
 
-.controller('ServicesDetailController', ['$scope', '$animate', '$stateParams',  "$http", function($scope, $animate, $stateParams, $http) {
+.controller('ServicesDetailController', ['$scope', '$animate', '$stateParams',  "$http", '$modal', function($scope, $animate, $stateParams, $http, $modal) {
 
 
 $http.get('services/cats/'+ $stateParams.id +'.json').success(function(data) {
@@ -41,4 +44,20 @@ $http.get('services/cats/'+ $stateParams.id +'.json').success(function(data) {
 });
 $animate.enabled(false);
 $scope.myInterval = 4000;
+
+$scope.modal = function (state) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'services/myModalContent.html',
+      controller: 'ModalInstanceCtrl2',
+      size: 'md',
+      resolve: {
+        
+      }
+    })
+  };
+
 }])
+.controller('ModalInstanceCtrl2', function ($scope, $modalInstance) {
+
+});

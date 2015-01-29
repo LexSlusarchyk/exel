@@ -44,3 +44,13 @@
 .service-info p::first-letter, .service-info h2::first-letter {
   text-transform: uppercase;
 }
+
+.side-buttons button {
+  width: 100%;
+  border-radius: 0;
+  margin-bottom: 10px;
+
+}
+.side-buttons span {
+  font-size: 150%;
+}
