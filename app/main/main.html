@@ -1,19 +1,29 @@
-	<div class="relative-div">
+	<div class="relative-divs">
 		<div class="line-caption">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
-						<h1 class="text-center">Екселенс</h1>
-							<p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos debitis provident nulla illum minus enim praesentium repellendus ullam cupiditate reiciendis optio voluptatem, recusandae nobis quis aperiam, sapiente libero ut at.</p>
+						<h1 style="font-weight: 700; font-size: 350%; text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.3);" class="text-center"><span>Досконалість</span> можлива.</h1>
+							<p style="font-size: 300%; text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);" class="lead text-center">В природі. І в <span style="color:#339BEB;">рекламі</span>.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 		<img src="images/banner.jpg">
 	</div>
-	
+<h2 class="text-center">Наші клієнти:</h2>
+<div style="width: 100%; height: 40px;"></div>
+<div class="clients col-md-10 col-md-offset-1">
+<carousel interval="myInterval">
+  <slide ng-repeat="slideCollection in groupedSlides" active="slide.active">
+    <div>
+      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image1.image}}" style="margin:auto;">   
+      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image2.image}}" style="margin:auto;"> 
+      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image3.image}}" style="margin:auto;">
+      <img class="col-md-3" style="height: 120px; max-width: 100%"  ng-src="{{slideCollection.image4.image}}" style="margin:auto;">     
+    </div>
+  </slide>
+</carousel> 
 
-
-
-
+</div>
 

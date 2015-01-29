@@ -23,17 +23,11 @@ $http.get('services/services.json').success(function(data) {
 });
 
 $(document).on('click', '.cat > .list-group-item', function(event) {
-        var $this = $(this);
-        var parent = $this.data('parent');
-        var actives = parent && $(parent).find('.collapse.in');
-        if (actives && actives.length) {
+        var actives = $(document).find('.collapse.in');
+        if (actives) {
             actives.collapse('hide');
         }
 })
-
-
-
-
 
 }])
 

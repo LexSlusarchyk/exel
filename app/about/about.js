@@ -12,7 +12,9 @@ angular.module('exel.about', ['ngRoute'])
 }])
 
 
-.controller('AboutUsController', [function() {
+.controller('AboutUsController', ['$scope', function($scope) {
+
+
 
 }]);
 

@@ -102,6 +102,16 @@ a, a:visited, a:focus, a:active, a:hover{
 min-height: 110px;
 width: 100%;
 }
+.relative-divs {
+	position: relative;
+	width: 100%;
+	min-height: 400px;
+}
+.relative-divs img {
+width: 100%;
+min-height: 400px;
+}
+
 
 .line-caption {
 	position: absolute;
@@ -171,3 +181,16 @@ width: 100%;
 	padding-right: 10px;
 	font-size: 20px;
 }
+h1 span,
+h2 span,
+h3 span,
+h4 span {
+	color: #339BEB;
+	text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+
+.clients .right.carousel-control, .clients .left.carousel-control {
+    display: none;
+}
+.clients .carousel-indicators li { visibility: hidden; }

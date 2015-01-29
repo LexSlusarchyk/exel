@@ -4,7 +4,7 @@
 
 .sidebar {
 	font-size: 15px;
-	margin: 0px 15px 0px 15px;
+	margin: -1px 0px 0px 0px;
 }
 .sidebar a::first-letter {
 	text-transform: uppercase;
@@ -43,5 +43,4 @@
 }
 .service-info p::first-letter, .service-info h2::first-letter {
   text-transform: uppercase;
-  /*text-align: justify;*/
 }
