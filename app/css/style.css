@@ -181,6 +181,22 @@ min-height: 400px;
 	padding-right: 10px;
 	font-size: 20px;
 }
+
+
+
+/* main */
+.main-heading h1 {
+	font-weight: 700;
+	font-size: 350%;
+	text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.3);
+}
+.main-heading p {
+	font-size: 300%;
+	 text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+
+
 h1 span,
 h2 span,
 h3 span,
@@ -193,4 +209,17 @@ h4 span {
 .clients .right.carousel-control, .clients .left.carousel-control {
     display: none;
 }
-.clients .carousel-indicators li { visibility: hidden; }
+.clients .carousel-indicators li { 
+	visibility: hidden; 
+}
+/* Quote */
+
+.quote {
+	color: #ffffff;
+	font-size: 150%;
+	padding: 100px 0px 100px 0px;
+	font-weight: 300;
+}
+.quote .text-right {
+	font-weight: 300;
+}

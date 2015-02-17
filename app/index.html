@@ -35,13 +35,13 @@
       <div class="col-md-4">
         <div class="header-left clearfix">
           <div class="logo">
-            <a href="#/"><img id="logo" src="images/logo.png"></a>
+            <a href="#/"><img id="logo" src="images/logo.svg"></a>
           </div>
           <div class="site-name-and-slogan">
             <div class="site-name">
-            <a href="#/">Екселенс</a>
+            <a href="#/"><img id="logo" height="50px" src="images/name.svg"></a>
             </div>
-            <div class="site-slogan">Весь спектр рекламних послуг.</div>
+            <!-- <div class="site-slogan">Весь спектр рекламних послуг.</div> -->
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
                   </button>
                 </div>
                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">          
-                  <ul class="nav navbar-nav navbar-right">
+                  <ul ng-cloak class="nav navbar-nav navbar-right">
                     <li ng-class="{ active: isActive('/')}"><a ui-sref="main">{{main}}</a></li>
                     <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">{{about}}</a></li>
                     <li ng-class="{ active: isActive('/services/detail/logo')}"><a ui-sref="services.detail ({id: 'logo'})">{{offers}}</a></li>
