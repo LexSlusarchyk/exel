@@ -12,6 +12,7 @@
 .sidebar i {
 	float: right;
 	top: 4px;
+  margin-left: 5px;
 }
 
 .cat > .list-group-item {
@@ -20,7 +21,7 @@
   z-index: 1;
 }
 .cat  .list-group-item:hover {
-  background-color: rgba(85, 172, 238, 0.9);
+  background-color: #55acee;
   color: #ffffff;
 }
 

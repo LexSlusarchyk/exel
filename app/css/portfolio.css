@@ -25,12 +25,15 @@
 	margin-bottom: 20px;
 }
 .portfolio-item .btn-default {
-	color: #999999;
+	border: 1px solid rgba(85, 172, 238, 0.9);
+	color: #000000;
 	border-radius: 0;
 }
 .portfolio-item .btn-default:hover {
+	background-color: #55acee;
+	
+	border-color: #55acee;
 	color: #ffffff;
-	background-color: rgba(85, 172, 238, 0.9);
 
 }
 @media (max-width:480px) {
@@ -53,7 +56,7 @@
 	bottom: -1px;
 	left: 0;
 	right: -1px;
-	background-color: rgba(85, 172, 238, 0.9);
+	background: rgba(0, 0, 0, 0.6) url(../images/pattern-3.png);
 	cursor: pointer;
 	overflow: hidden;
 	opacity: 0;
@@ -76,14 +79,14 @@
 	text-align: center;
 	width: 100%;
 	color: #ffffff;
-	font-size: 13px;
+	font-size: 17px;
 	font-weight: 300;
 }
 .overlay i {
 	position: absolute;
-	left: 50%;
-	top: 50%;
-	font-size: 18px;
+	left: 45%;
+	top: 45%;
+	font-size: 38px;
 	line-height: 1x;
 	color: #ffffff;
 	margin-top: -8px;
@@ -110,6 +113,7 @@
 }
 .modal-header {
 	background-color: #55acee;
+	
 	color: #ffffff;
 }
 .modal-header h4 {
@@ -147,6 +151,7 @@
 	color: #666666;
 	font-size: 15px;
 	text-align: left;
+	font-weight: 500;
 }
 .nav-pills > li > a::first-letter {
 	text-transform: uppercase;

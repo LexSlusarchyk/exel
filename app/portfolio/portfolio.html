@@ -1,23 +1,16 @@
-	<div class="relative-div">
-		<div class="line-caption">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8  col-md-offset-1 object-non-visible" data-animation-effect="fadeIn">
-						<h1 class="text-left">Портфоліо</h1>
-							<p class="lead text-left">Ось і наші роботи.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-		<img src="images/banners.jpeg">
+	<div class="page-heading">
+		<div class="page-headers">
+			<h1 class="text-left">Портфоліо</h1>
+			<p class="lead text-left">Ось і наші роботи.</p>
+		</div>			
 	</div>
 
-<div style="width: 100%; height: 40px;"></div>
+<div class="separator"></div>
 <!-- section start -->
 		<!-- ================ -->
-		<div class="section">
+		<div class="contain">
 			<div class="container-fluid">
-				<div class="row object-non-visible" data-animation-effect="fadeIn">
+				<div class="row">
 				<!-- isotope filters start -->
 						<div class="col-md-3 filters">
 							<ul class="nav nav-pills nav-stacked ">
@@ -41,7 +34,7 @@
 										<img ng-src="{{work.imageUrl}}" alt="">
 										<a class="overlay" ng-click="modal(work)" data-target="#{{$index}}">
 											<i class="glyphicon glyphicon-zoom-in"></i>
-											<span>{{work.type}}</span>
+											<span>Детальніше</span>
 										</a>
 									</div>
 									<a class="btn btn-default btn-block" ng-click="modal(work)" data-target="#{{$index}}">{{work.name}}</a>

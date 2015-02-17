@@ -3,6 +3,7 @@ overflow: -moz-scrollbars-vertical;
 overflow-y: scroll;
 }
 [ng\:cloak], [ng-cloak], .ng-cloak { display: none !important; }
+
 html,
 body {
 	height: 100%;
@@ -19,27 +20,19 @@ body {
 
 /* Site name and logo */
 .logo {
-margin: 10px 10px 10px 0;
-transform: scale(0.8);
+	top: 10px;
+margin: 15px -10px 0 0;
+transform: scale(0.6);
 }
 .logo,
 .site-name-and-slogan {
-	font-family: 'Raleway', sans-serif;
 	float: left;
 }
 .site-name {
-	font-size: 24px;
 	padding-top: 10px;
 }
-.site-name a:hover {
-	text-decoration: none;
-}
-.site-name a {
-	color: black;
-}
-.site-slogan {
-	margin-top: -5px;
-}
+
+
 
 /* Header */
 .header .navbar {
@@ -51,6 +44,7 @@ transform: scale(0.8);
 }
 .main-navigation .navbar-default .navbar-nav > li > a {
 	color: black;
+	display: inline-block;
 	padding: 10px 20px;
 	font-size: 18px;
 	font-weight: 350;
@@ -73,6 +67,9 @@ transform: scale(0.8);
 		-ms-transition: all 0.3s ease-in-out;
 		transition: all 0.3s ease-in-out;
 	}
+	.main-banner {
+	background-size: 100% auto;	
+	}
 }
 @media (min-width:768px) and (max-width:991px) {
 	.main-navigation .container-fluid {
@@ -83,106 +80,64 @@ transform: scale(0.8);
 		float: left !important;
 	}
 }
-@media (max-width:767px) {
-	.header.navbar-fixed-top {
-		position: absolute;
-	}
-}
+
 a, a:visited, a:focus, a:active, a:hover{
     outline:0 none !important;
 }
 
-/*Top-line headings and paragraphs*/
-.relative-div {
-	position: relative;
+/*Main page banner area*/
+.main-banner {
+	background: url(../images/1.jpg) center top no-repeat,
+	url(../images/pattern-3.png);
+	background-size: auto auto;
 	
 }
-
-.relative-div img {
-min-height: 110px;
-width: 100%;
-}
-.relative-divs {
-	position: relative;
-	width: 100%;
-	min-height: 400px;
-}
-.relative-divs img {
-width: 100%;
-min-height: 400px;
-}
-
-
-.line-caption {
-	position: absolute;
-	top: 10%;
-	z-index: 2;
+.main-heading {
+	background-color: rgba(0,0,0, 0.5);
+	border-radius: 5px;
+	margin: 150px 0 150px 0;
 	color: white;
 }
+/* Other pages*/
 
 
-/* Collapse
----------------------------------- */
-.panel-group .panel {
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	border: none;
+
+.page-heading {
+	background: url(../images/1.jpg) 100% 40% no-repeat;
+	background-size: 100% auto;
+	color: white;
 }
-.panel-default > .panel-heading {
-	padding: 0;
-	outline: none;
-	border: none;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	-o-border-radius: 0;
-	border-radius: 0;
-	width: 100%;
+.page-headers {
+	padding: 20px 0 20px 10%;
+	background: rgba(0,0,0,0.6);
 }
-.panel-default > .panel-heading + .panel-collapse > .panel-body {
-	border: 1px solid #f0f0f0;
-	border-top: none;
-	background-color: #fafafa
+.page-headers h1 {
+	-webkit-animation: fadeIn 1s;
+	animation: fadeIn 0.5s;
 }
-.panel-heading a {
-	font-weight: 400;
-	padding: 12px 35px 12px 15px;
-	display: inline-block;
-	width: 100%;
-	background-color: #55acee;
-	color: #ffffff;
-	position: relative;
-	text-decoration: none;
+.page-headers p {
+	-webkit-animation: slide 0.5s ease-out;
+	animation: slide 0.5s ease-out;
 }
-.panel-heading a.collapsed {
-	color: #ffffff;
-	background-color: #333333;
+@-webkit-keyframes fadeIn {
+from {
+opacity: 0;
 }
-.panel-heading a:after {
-	font-family: "FontAwesome";
-	content: "\f147";
-	position: absolute;
-	right: 15px;
-	font-size: 14px;
-	font-weight: 300;
-	top: 50%;
-	line-height: 1;
-	margin-top: -7px;
+to {
+opacity: 1;
 }
-.panel-heading a.collapsed:after {
-	content: "\f196";
-}
-.panel-heading a:hover {
-	text-decoration: none;
-	background-color: #55acee;
-	color: #ffffff;
-}
-.panel-title a i {
-	padding-right: 10px;
-	font-size: 20px;
 }
 
-
+@-webkit-keyframes slide {
+from {
+margin-left: -500px;
+opacity: 0;
+}
+to {
+margin-left: 0;
+opacity: 1;
+}
+}
 
 /* main */
 .main-heading h1 {
@@ -205,21 +160,23 @@ h4 span {
 	text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.3);
 }
 
-
+/* Removing default carousel controls */
 .clients .right.carousel-control, .clients .left.carousel-control {
     display: none;
 }
 .clients .carousel-indicators li { 
 	visibility: hidden; 
 }
-/* Quote */
-
-.quote {
-	color: #ffffff;
-	font-size: 150%;
-	padding: 100px 0px 100px 0px;
-	font-weight: 300;
+.separator {
+	width: 100%;
+	height: 40px;
 }
-.quote .text-right {
-	font-weight: 300;
+.contain {
+	max-width: 1400px;
+	margin: 0 auto 0 auto;
+}
+@media (min-width:768px) {
+	.main-banner {
+	background-size: 100% auto;	
+	}
 }

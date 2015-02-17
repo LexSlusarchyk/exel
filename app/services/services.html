@@ -1,23 +1,16 @@
-	<div class="relative-div">
-		<div class="line-caption">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8  col-md-offset-1 object-non-visible" data-animation-effect="fadeIn">
-						<h1 class="text-left">Послуги</h1>
-							<p class="lead text-left">А тут будуть всі наші послуги.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-		<img src="images/banners.jpeg" width="100%">
+<div class="page-heading">
+		<div class="page-headers">
+			<h1 class="text-left">Послуги</h1>
+			<p class="lead text-left">Тут ви знайдете повний перелік наших послуг!</p>
+		</div>			
 	</div>
-<div style="width: 100%; height: 40px;"></div>
-
+<div class="separator"></div>
+<div class="contain container-fluid">
 	<div class="col-md-3">
 		<div class="sidebar">
 			<div class="list-group panel">
-				<div class="cat" ng-repeat="service in services">
-					<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.key}}" data-parent=".sidebar">{{service.name}}<i class="glyphicon glyphicon-menu-down"></i></a>
+				<div class="cat" ng-cloak ng-repeat="service in services">
+					<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.key}}" data-parent=".sidebar"><i class="glyphicon glyphicon-menu-down"></i>{{service.name}}</a>
 					<div ng-repeat="cat in service.subcats" class="collapse {{service.key}} list-group-submenu">
 						<a ui-sref="services.detail({ id:cat.subKey })" class="list-group-item">{{cat.subName}}</a>
 					</div>
@@ -25,7 +18,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="service col-md-9" ui-view>
-		
-	</div>
-
+	<div class="service col-md-9" ui-view></div>
+</div>
