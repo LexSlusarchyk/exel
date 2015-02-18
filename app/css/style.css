@@ -87,21 +87,30 @@ a, a:visited, a:focus, a:active, a:hover{
 
 /*Main page banner area*/
 .main-banner {
-	background: url(../images/1.jpg) center top no-repeat,
-	url(../images/pattern-3.png);
+	background: url(../images/1.jpg) center top no-repeat;
 	background-size: auto auto;
 	
 }
+.main-banner .container-fluid { 
+padding: 0;
+}
 .main-heading {
-	background-color: rgba(0,0,0, 0.5);
-	border-radius: 5px;
-	margin: 150px 0 150px 0;
+	background-color: rgba(0,0,0, 0.7);
+	margin: 300px 0 0 0;
 	color: white;
 }
+.main-heading h1 {
+	-webkit-animation: fadeIn 1s;
+	-moz-animation: fadeIn 1s;
+	animation: fadeIn 1s;
+}
+.main-heading span {
+	-webkit-animation: fadeIn 2s;
+	-moz-animation: fadeIn 2s;
+	animation: fadeIn 2s;
+}
+
 /* Other pages*/
-
-
-
 .page-heading {
 	background: url(../images/1.jpg) 100% 40% no-repeat;
 	background-size: 100% auto;
@@ -165,12 +174,9 @@ opacity: 1;
 .main-heading h1 {
 	font-weight: 700;
 	font-size: 350%;
-	text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.3);
+	margin: 30px 0 30px 0;
 }
-.main-heading p {
-	font-size: 300%;
-	 text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
-}
+
 
 
 

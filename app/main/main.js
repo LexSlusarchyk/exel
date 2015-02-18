@@ -11,10 +11,13 @@ angular.module('exel.main', ['ngRoute'])
         })
 }])
 
-.controller('MainPageController', ['$scope', '$animate', function($scope,$animate) {
-$scope.slides = [{"image": "images/clients/1.jpg"}, {"image": "images/clients/2.jpg"}, {"image": "images/clients/3.jpg"}, {"image": "images/clients/4.jpg"}, {"image": "images/clients/5.jpg"}, {"image": "images/clients/6.jpg"}, {"image": "images/clients/7.jpg"}, {"image": "images/clients/8.jpg"}, {"image": "images/clients/9.jpg"}, {"image": "images/clients/10.jpg"}, {"image": "images/clients/11.jpg"}, {"image": "images/clients/12.jpg"}]
+.controller('MainPageController', ['$scope', '$http', '$animate', function($scope, $http, $animate) {
+$http.get('main/slides.json').success(function(data) {
+      $scope.slides = data;
+  });
+
 $animate.enabled(false);
-$scope.myInterval = 4000;
+$scope.myInterval = 6000;
 
 
 $scope.$watch('slides', function(values) {
