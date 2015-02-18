@@ -25,16 +25,14 @@
 	margin-bottom: 20px;
 }
 .portfolio-item .btn-default {
-	border: 1px solid rgba(85, 172, 238, 0.9);
-	color: #000000;
+	border-top: none;
+	color: #999999;
 	border-radius: 0;
 }
 .portfolio-item .btn-default:hover {
 	background-color: #55acee;
-	
 	border-color: #55acee;
 	color: #ffffff;
-
 }
 @media (max-width:480px) {
 	.filters .nav-pills > li {
@@ -159,4 +157,7 @@
 
 .image-box img {
 	width: 100%;
+}
+.image-box {
+	box-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
 }

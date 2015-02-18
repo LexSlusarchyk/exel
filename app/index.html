@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/contacts.css">
   <link rel="stylesheet" href="css/portfolio.css">
@@ -88,14 +89,26 @@
       <div class="subfooter">
         <div class="container">
           <div class="row">
-            <div class="col-md-12">
-              <p class="text-center">Copyright © 2014 <a target="_blank" href="http://excellence.lviv.ua">Excellence</a>.</p>
+            <div class="col-md-2">
+                  <ul>
+                    <li><a ui-sref="main">{{main}}</a></li>
+                    <li><a ui-sref="about">{{about}}</a></li>
+                    <li><a ui-sref="services.detail ({id: 'logo'})">{{offers}}</a></li>
+                    <li><a ui-sref="portfolio">{{portfolio}}</a></li>
+                    <li><a ui-sref="contacts">{{contacts}}</a></li>
+                  </ul>
+            </div>
+            <div class="col-md-5 col-md-offset-1 mini-about lead">
+              <p>ПП "Екселенс" - рекламне агентство повного циклу, яке надає широкий спектр якісних рекламних послуг. Ми займаємось розробкою дизайн-проектів та виготовляємо: вивіски, бігборди, флагштоки, дорожні знаки та поліграфічну продукцію. Повний перелік послуг ви знайдете <a ui-sref="services.detail ({id: 'logo'})">тут</a>.</p>
+            </div>
+            <div class="col-md-2 col-md-offset-1 social">
+              <a href=""><i class="icon-facebook"></i>facebook</a>
             </div>
           </div>
         </div>
       </div>
       <!-- .subfooter end -->
-
+<p style="margin-top: 30px;" class="text-center">Copyright © 2014 <a target="_blank" href="http://excellence.lviv.ua">Excellence</a>.</p>
     </footer>
 
 

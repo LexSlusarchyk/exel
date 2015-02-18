@@ -113,10 +113,12 @@ a, a:visited, a:focus, a:active, a:hover{
 }
 .page-headers h1 {
 	-webkit-animation: fadeIn 1s;
+	-moz-animation: fadeIn 0.5s;
 	animation: fadeIn 0.5s;
 }
 .page-headers p {
 	-webkit-animation: slide 0.5s ease-out;
+	-moz-animation: slide 0.5s ease-out;
 	animation: slide 0.5s ease-out;
 }
 @-webkit-keyframes fadeIn {
@@ -128,7 +130,27 @@ opacity: 1;
 }
 }
 
+@-moz-keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
 @-webkit-keyframes slide {
+from {
+margin-left: -500px;
+opacity: 0;
+}
+to {
+margin-left: 0;
+opacity: 1;
+}
+}
+
+@-moz-keyframes slide {
 from {
 margin-left: -500px;
 opacity: 0;
@@ -179,4 +201,51 @@ h4 span {
 	.main-banner {
 	background-size: 100% auto;	
 	}
+}
+
+ /* footer styles */
+footer {
+	margin-top: 40px;
+	border-top: 14px solid rgb(207,233,230);
+	padding: 10px 20px;
+	font-size: 18px;
+	font-weight: 350;
+	background-color: #333333;
+	color: white;
+}
+.subfooter {
+	margin-top: 30px;
+}
+footer ul {
+	list-style-type: none;
+}
+/*footer li {
+	display: inline-block;
+}*/
+footer a {
+	text-decoration: none;
+	color: white;
+}
+footer a:hover {
+	text-decoration: none;
+	color: #55acee;
+}
+footer .mini-about {
+	font-size: 16px;
+	text-align: justify;
+}
+.mini-about a {
+	color: #55acee;
+}
+
+.social a {
+	font-size: 18px;
+	color: #55acee;
+}
+.social i {
+	font-size: 25px;
+	margin-right: 5px;
+}
+.social a:hover {
+	text-decoration: underline;
 }
