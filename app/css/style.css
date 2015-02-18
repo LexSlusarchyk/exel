@@ -90,7 +90,7 @@ a, a:visited, a:focus, a:active, a:hover{
 
 /*Main page banner area*/
 .main-banner {
-	background: url(../images/1.jpg) center top no-repeat;
+	background: url(../images/banner.jpg) center top no-repeat;
 	background-size: auto auto;
 	
 }
@@ -115,7 +115,7 @@ padding: 0;
 
 /* Other pages*/
 .page-heading {
-	background: url(../images/1.jpg) 100% 40% no-repeat;
+	background: url(../images/banner.jpg) 100% 40% no-repeat;
 	background-size: 100% auto;
 	color: white;
 }
