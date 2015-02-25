@@ -7,7 +7,7 @@
 	margin: -1px 0px 0px 0px;
 }
 .sidebar a::first-letter {
-	text-transform: uppercase;
+	text-transform: uppercase !important;
 }
 .sidebar i {
 	float: right;
