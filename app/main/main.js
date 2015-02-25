@@ -14,11 +14,6 @@ angular.module('exel.main', ['ngRoute'])
 .controller('MainPageController', ['$scope', '$http', '$animate', function($scope, $http, $animate) {
 $http.get('main/slides.json').success(function(data) {
       $scope.slides = data;
-  });
-
-$animate.enabled(false);
-$scope.myInterval = 6000;
-
 
 $scope.$watch('slides', function(values) {
   var i, a = [], b;
@@ -40,7 +35,9 @@ $scope.$watch('slides', function(values) {
   $scope.groupedSlides = a;
 }, true);
 
-
+  });
+$animate.enabled(false);
+$scope.myInterval = 6000;
 
 
 }]);
