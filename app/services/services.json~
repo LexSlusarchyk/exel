@@ -40,7 +40,7 @@
     }, 
     {	
 	"id": 4,
-        "key": "outside", 
+        "key": "street", 
         "name": "зовнішня реклама", 
         "subcats": [
 		    {"subKey": "brandm", "subName": "брендмауери"}, 
@@ -51,7 +51,7 @@
 		    {"subKey": "baner", "subName": "банери"},
 		    {"subKey": "banernet", "subName": "банерні сітки"}, 
 		    {"subKey": "screen", "subName": "LED екрани"},
-		    {"subKey": "string", "subName": "біжучі стрічки"} 
+		    {"subKey": "string", "subName": "біжучі стрічки"}, 
 		   
 		   ]
     }, 
