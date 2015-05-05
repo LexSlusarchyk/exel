@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('exel.contacts', [])
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider) {
+  $locationProvider.hashPrefix('!');
   $stateProvider
         .state('contacts', {
             url:'/contacts',
