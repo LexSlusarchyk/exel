@@ -2,7 +2,7 @@
 
 angular.module('exel.contacts', [])
 .config(['$stateProvider', '$urlRouterProvider', "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.hashPrefix('!');
+  $locationProvider.html5Mode(true);
   $stateProvider
         .state('contacts', {
             url:'/contacts',
