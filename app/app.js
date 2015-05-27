@@ -8,6 +8,7 @@ angular.module('exel', [
   'ngAnimate',
   'uiGmapgoogle-maps',
   'exel.CONFIG',
+  'textAngular',
   'exel.main',
   'exel.about',
   'exel.services',
