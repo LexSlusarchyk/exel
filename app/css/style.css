@@ -46,7 +46,7 @@ body {
 	border: none;
 }
 .main-navigation .navbar-default .navbar-nav > li > a {
-	color: black;
+	color: #777;
 	display: inline-block;
 	padding: 10px 20px;
 	font-size: 18px;
