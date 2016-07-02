@@ -1,18 +1,45 @@
-	<div class="main-banner">
-		
-			<div class="container-fluid">
-				<div class="main-heading row">
-					<div class="col-md-12">
-						<h1 class="text-center lead">Весь спектр <span>рекламних</span> послуг.</h1>
-							
-							</div>
-						</div>
-					</div>
-				
+<div class="main-banner">
+	<div class="container-fluid">
+		<div class="main-heading row">
+			<div class="col-md-12">
+				<h1 class="text-center lead">Весь спектр <span>рекламних</span> послуг</h1>
+			
+			</div>
+		</div>
 	</div>
+</div>
 
-	<div text-angular ng-model="news" height="400px"></div>
-	<p>{{news}}</p>
+
+<section class="news">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 main-article">
+				<img ng-src="{{mainArticle.image}}">
+				<a ui-sref="news({articleId:mainArticle.id})" class="main-article-overlay">
+					<h3>{{mainArticle.title}}</h3>
+					<h4>{{mainArticle.spec}}</h4>
+				</a>
+				<!-- <span></span> -->
+			</div>
+			<div class="col-md-6">
+				<a ng-repeat="article in news" class="news-item" ui-sref="news({articleId:article.id})">
+					<img ng-src="{{article.image}}">
+					<div class="article-block-headers">
+						<h4>{{article.title}}</h4>
+						<p>{{article.spec}}</p>
+						<button class="btn btn-default">Детальніше</button>
+					</div>
+					
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
 <div class="container-fluid">
 	<h2 class="text-center">Наші клієнти:</h2>
 	<div class="separator"></div>

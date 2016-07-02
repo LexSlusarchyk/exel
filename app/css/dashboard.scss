@@ -1,0 +1,130 @@
+.dashboard-container .dashboard-nav {
+	.btn-default {
+		display: inline-block;
+		width: 100%;
+	}
+}
+
+.input-group {
+	.form-control {
+		margin: 10px 0 10px 0;
+	}
+}
+
+.list-group {
+	.list-group-item {
+		overflow: hidden;
+		.btn {
+			float: right;
+		}
+		span {
+			line-height: 34px;
+		}
+		a {
+			margin-right: 20px;
+		}
+	}
+	.subcat {
+		margin-left: 50px;
+		.btn {
+			margin-left: 20px;
+		}
+		&:hover {
+			background-color: transparent;
+			color: #333;
+		}
+	}
+}
+
+.summernote {
+	height: 400px;
+	margin-top: 30px;
+	display: block;
+}
+.note-editor {
+	margin-top: 30px;
+}
+
+#photo-input {
+	display: none;
+}
+
+
+.photoes-to-add {
+	margin: 30px 0;
+	&.photoes-single {
+		margin: 0;
+
+		.photo-container {
+			margin-bottom: 15px; 
+			img {
+				margin-bottom: 10px;
+			}
+		}
+		
+	}
+	.photo-container {
+		img {
+			width: 100%;
+		}
+		a.delete-btn {
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+}
+
+
+.modal-body {
+	.show-preview {
+			display: block;
+			margin: 30px auto;
+			padding: 10 30px;
+		
+	}
+	.img-container {
+		width: 70%;
+		margin: 0 auto;
+	}
+	.preview-container {
+		img {
+			width: 50%;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.photo-submit-container {
+		padding: 30px;
+		text-align: center;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

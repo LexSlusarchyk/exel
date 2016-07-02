@@ -9,56 +9,61 @@ angular.module('exel.portfolio', ['ui.bootstrap'])
             templateUrl: 'portfolio/portfolio.html',
             controller: 'PortfolioController'
         })
+        .state('portfolio.all', {
+            url:'/:filterId',
+            templateUrl: 'portfolio/portfolioAll.html',
+            controller: 'PortfolioAllController'
+        })
+        .state('portfolio.item', {
+            url:'/item/:itemId',
+            templateUrl: 'portfolio/portfolioItem.html',
+            controller: 'PortfolioItemController'
+        })
 }])
 
-.controller('PortfolioController', ['$scope', '$http', '$timeout', '$modal', '$log', 'services', function($scope, $http, $timeout, $modal, $log, services) {
-$http.get('portfolio/portfolio.json').success(function(data) {
-    $scope.portfolio = data;
-});
-
-$http.get('services/services.json').success(function(data) {
-    $scope.categories = data;
-});
+.controller('PortfolioController', ['$scope', '$location', '$state', '$stateParams', '$filter', 'portfolioService', 'catService', function($scope, $location, $state, $stateParams, $filter, portfolioService, catService) {
 
 
-$scope.myFiltering = function(cat) {
-  $scope.myFilter = cat;
-  $scope.selectedTab = cat;
+$scope.selectedTab = $location.path().split('/')[2];
+
+catService.getCats().then(function(data){
+  $scope.categories = data;
+})
+
+$scope.selectTab = function(select) {
+  $scope.selectedTab = select;
+  $state.go('portfolio.all', {filterId: select});
 }
 
-$scope.modal = function (_work) {
-    var modalInstance = $modal.open({
-      templateUrl: 'portfolio/myModalContent.html',
-      controller: 'ModalInstanceCtrl',
-      size: 'lg',
-      resolve: {
-        work: function () {
-          return _work;
-        }
-      }
-    })
-  };
 }])
 
+.controller('PortfolioAllController', ['$scope', '$stateParams', '$filter', 'portfolioService', 'catService', function($scope, $stateParams, $filter, portfolioService, catService) {
 
-.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $animate, work) {
-$scope.work = work;
-$animate.enabled(false);
-$scope.myInterval = 5000;
-  var slides = $scope.slides = [{
-      image: work.imageUrl,
-      // text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-      //   ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    }];
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
-    slides.push({
-      image: 'http://placekitten.com/' + newWidth + '/300',
-      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    });
-  };
-  for (var i=0; i<4; i++) {
-    $scope.addSlide();
-  }
-});
+portfolioService.getItems().then(function(data){
+  $scope.portfolio = data;
+  console.log($scope.portfolio)
+})
+
+if($stateParams.filterId) {
+  $scope.myFilter = $stateParams.filterId;
+  $scope.selectedTab = $stateParams.filterId;
+  $filter('filter')($scope.portfolio, $scope.filterFn);
+}
+  
+$scope.filterFn = function(item) {
+    if(item.c_id === $scope.myFilter) {
+        return true; 
+    }
+    return false; 
+};
+
+
+}])
+
+.controller('PortfolioItemController', ['$scope', '$stateParams', 'portfolioService', function($scope, $stateParams, portfolioService) {
+
+  portfolioService.getItem($stateParams.itemId).then(function(data){
+    $scope.item = data;
+  })
+
+}])

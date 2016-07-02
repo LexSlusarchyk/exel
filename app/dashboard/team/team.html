@@ -1,0 +1,14 @@
+<div class="photoes-to-add photoes-single">
+	<div class="row">
+		<div ng-repeat="member in team track by $index" class="col-md-3 photo-container text-center">
+			<img ng-src="{{member.image}}" class="img-circle">
+			<a ui-sref="dashboard.editmember({memberId: member.id})" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+			<a href="" ng-click="deleteMember(member, $index)"  class="btn btn-danger"><i class="fa fa-trash"></i></a>
+			<h4>{{member.name}}</h4>
+			<p class="text-muted">{{member.position}}</p>
+		</div>
+	</div>
+</div>
+
+
+<a href="" class="btn btn-success" ui-sref="dashboard.addmember"><i class="fa fa-plus"></i> Додати</a>

@@ -1,8 +1,8 @@
-.angular-google-map-container { 
-height: 300px;
-border: 7px solid #f5faed;
-}
-.contacts {
+.angular-google-map-container {
+  height: 300px;
+  /*border: 7px solid #f5faed;*/ }
+
+/*.contacts {
 	
 }
 
@@ -22,25 +22,28 @@ border: 7px solid #f5faed;
 .contacts .glyphicon-map-marker {
 	top: 30px;
 	left: 10px;
-}
-
-/* Team! */
-.team-member {
-    margin-bottom: 20px;
+}*/
+.contacts {
+  font-size: 20px; }
+  .contacts span {
+    display: block;
     text-align: center;
-}
+    font-size: 35px;
+    margin-bottom: 15px;
+    margin-top: 30px; }
 
-.team-member img {
+.team-member {
+  margin-bottom: 20px;
+  text-align: center; }
+  .team-member img {
+    width: 255px;
     margin: 0 auto;
-    border: 7px solid #f5faed;
-}
-
-.team-member h4 {
+    border: 7px solid #f5faed; }
+  .team-member h4 {
     margin-top: 25px;
     margin-bottom: 0;
-    text-transform: none;
-}
+    text-transform: none; }
+  .team-member p {
+    margin-top: 0; }
 
-.team-member p {
-    margin-top: 0;
-}
+/*# sourceMappingURL=contacts.css.map */

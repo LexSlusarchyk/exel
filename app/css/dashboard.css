@@ -1,0 +1,64 @@
+.dashboard-container .dashboard-nav .btn-default {
+  display: inline-block;
+  width: 100%; }
+
+.input-group .form-control {
+  margin: 10px 0 10px 0; }
+
+.list-group .list-group-item {
+  overflow: hidden; }
+  .list-group .list-group-item .btn {
+    float: right; }
+  .list-group .list-group-item span {
+    line-height: 34px; }
+  .list-group .list-group-item a {
+    margin-right: 20px; }
+.list-group .subcat {
+  margin-left: 50px; }
+  .list-group .subcat .btn {
+    margin-left: 20px; }
+  .list-group .subcat:hover {
+    background-color: transparent;
+    color: #333; }
+
+.summernote {
+  height: 400px;
+  margin-top: 30px;
+  display: block; }
+
+.note-editor {
+  margin-top: 30px; }
+
+#photo-input {
+  display: none; }
+
+.photoes-to-add {
+  margin: 30px 0; }
+  .photoes-to-add.photoes-single {
+    margin: 0; }
+    .photoes-to-add.photoes-single .photo-container {
+      margin-bottom: 15px; }
+      .photoes-to-add.photoes-single .photo-container img {
+        margin-bottom: 10px; }
+  .photoes-to-add .photo-container img {
+    width: 100%; }
+  .photoes-to-add .photo-container a.delete-btn {
+    width: 100%;
+    border-radius: 0; }
+
+.modal-body .show-preview {
+  display: block;
+  margin: 30px auto;
+  padding: 10 30px; }
+.modal-body .img-container {
+  width: 70%;
+  margin: 0 auto; }
+.modal-body .preview-container img {
+  width: 50%;
+  display: block;
+  margin: 0 auto; }
+.modal-body .photo-submit-container {
+  padding: 30px;
+  text-align: center; }
+
+/*# sourceMappingURL=dashboard.css.map */

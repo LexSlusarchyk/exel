@@ -12,17 +12,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
   <!-- BOWER !!!-->
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+  
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css">
+  <link href="bower_components/ng-cropper/dist/ngCropper.all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/contacts.css">
   <link rel="stylesheet" href="css/portfolio.css">
   <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/news.css">
+
+  <link rel="stylesheet" media="(max-width: 992px)" href="css/small.css" />
 
 
   
@@ -38,13 +48,13 @@
       <div class="col-md-4">
         <div class="header-left clearfix">
           <div class="logo">
-            <a href="#/"><img id="logo" src="images/logo.svg"></a>
+            <a href="#/"><img id="logo" src="images/logo22.svg" height="80px"></a>
           </div>
-          <div class="site-name-and-slogan">
+          <!-- <div class="site-name-and-slogan">
             <div class="site-name">
             <a ui-sref="main"><img id="logo" height="50px" src="images/name.svg"></a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-md-8">
@@ -62,11 +72,11 @@
                 </div>
                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">       
                   <ul ng-cloak class="nav navbar-nav navbar-right">
-                    <li ng-class="{ active: isActive('/')}"><a ui-sref="main">{{main}}</a></li>
-                    <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">{{about}}</a></li>
-                    <li ng-class="{ active: isActive('/services/detail/logo')}"><a ui-sref="services.detail ({id: 'logo'})">{{offers}}</a></li>
-                    <li ng-class="{ active: isActive('/portfolio')}"><a ui-sref="portfolio">{{portfolio}}</a></li>
-                    <li ng-class="{ active: isActive('/contacts')}"><a ui-sref="contacts">{{contacts}}</a></li>
+                    <li ng-class="{ active: isActive('')}"><a ui-sref="main">{{main}}</a></li>
+                    <li ng-class="{ active: isActive('about')}"><a ui-sref="about">{{about}}</a></li>
+                    <li ng-class="{ active: isActive('services')}"><a ui-sref="services.detail ({id: '20'})">{{offers}}</a></li>
+                    <li ng-class="{ active: isActive('portfolio')}"><a ui-sref="portfolio.all({filterId: ''})">{{portfolio}}</a></li>
+                    <li ng-class="{ active: isActive('contacts')}"><a ui-sref="contacts">{{contacts}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -96,7 +106,7 @@
                     <li><a ui-sref="main">{{main}}</a></li>
                     <li><a ui-sref="about">{{about}}</a></li>
                     <li><a ui-sref="services.detail ({id: 'logo'})">{{offers}}</a></li>
-                    <li><a ui-sref="portfolio">{{portfolio}}</a></li>
+                    <li><a ui-sref="portfolio.all({filterId:''})">{{portfolio}}</a></li>
                     <li><a ui-sref="contacts">{{contacts}}</a></li>
                   </ul>
             </div>
@@ -118,13 +128,17 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/summernote/dist/summernote.min.js"></script>
+  <script src="bower_components/summernote/plugin/summernote-ext-video.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+  <script src="bower_components/ng-cropper/dist/ngCropper.all.min.js"></script>
 
 
 
@@ -133,19 +147,28 @@
 
 
 
-
+  <script src="directives/readMarkupDirective.js"></script>
 
 
   <script src="bower_components/lodash/dist/lodash.min.js"></script>
   <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
   <script src="applicationController.js"></script>
+  <script src="Factories/cropFactory.js"></script>
+  <script src="Factories/categoriesFactory.js"></script>
+  <script src="Factories/confirmFactory.js"></script>
+  <script src="Factories/newsFactory.js"></script>
+  <script src="Factories/portfolioFactory.js"></script>
+  <script src="Factories/modalsFactory.js"></script>
+  <script src="Factories/teamFactory.js"></script>
+
+
   <script src="main/main.js"></script>
   <script src="about/about.js"></script>
   <script src="services/services.js"></script>
   <script src="portfolio/portfolio.js"></script>
   <script src="contacts/contacts.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="news/news.js"></script>
+  <script src="dashboard/dashboard.js"></script>
+
 </body>
 </html>

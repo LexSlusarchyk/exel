@@ -11,7 +11,8 @@
 
 
 $scope.isActive = function (viewLocation) { 
-        return viewLocation === $location.path();
+    
+        return viewLocation === $location.path().split('/')[1];
     };
 
   }]);

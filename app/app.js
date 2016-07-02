@@ -5,15 +5,15 @@ angular.module('exel', [
   'ngRoute',
   'ui.router',
   'ui.bootstrap',
-  'ngAnimate',
+  'summernote',
   'uiGmapgoogle-maps',
+  'ngCropper',
   'exel.CONFIG',
   'exel.main',
   'exel.about',
   'exel.services',
   'exel.portfolio',
   'exel.contacts',
-  'exel.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/'});

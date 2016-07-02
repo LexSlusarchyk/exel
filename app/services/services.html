@@ -11,9 +11,9 @@
 			<div class="sidebar">
 				<div class="list-group panel">
 					<div class="cat" ng-cloak ng-repeat="service in services">
-						<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.key}}" data-parent=".sidebar"><i class="glyphicon glyphicon-menu-down"></i>{{service.name}}</a>
-						<div ng-repeat="cat in service.subcats" class="collapse {{service.key}} list-group-submenu">
-							<a ui-sref="services.detail({ id:cat.subKey })" class="list-group-item">{{cat.subName}}</a>
+						<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.eng_title}}" data-parent=".sidebar"><i class="glyphicon glyphicon-menu-down"></i>{{service.title}}</a>
+						<div ng-repeat="subcat in service.subcats" class="collapse {{service.eng_title}} list-group-submenu">
+							<a ui-sref="services.detail({ id:subcat.s_id })" class="list-group-item">{{subcat.title}}</a>
 						</div>
 					</div>
 				</div>

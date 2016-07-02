@@ -15,12 +15,22 @@ angular.module('exel.services', [])
         });
 }])
 
-.controller('ServicesController', ['$scope', "$http", function($scope, $http) {
+.controller('ServicesController', ['$scope', "$http", "catService", function($scope, $http, catService) {
 
 
-$http.get('services/services.json').success(function(data) {
-    $scope.services = data;
-});
+// $http.get('services/services.json').success(function(data) {
+//     $scope.services = data;
+
+// });
+
+
+
+catService.getCats().then(function(data){
+  $scope.services = data;
+  console.log(data);
+})
+
+
 
 $(document).on('click', '.cat > .list-group-item', function(event) {
         var actives = $(document).find('.collapse.in');
@@ -34,19 +44,26 @@ $(document).on('click', '.cat > .list-group-item', function(event) {
 
 }])
 
-.controller('ServicesDetailController', ['$scope', '$animate', '$stateParams',  "$http", '$modal', function($scope, $animate, $stateParams, $http, $modal) {
+.controller('ServicesDetailController', ['$scope', '$animate', '$stateParams',  "$http", '$modal', 'catService', function($scope, $animate, $stateParams, $http, $modal, catService) {
 
 
-$http.get('services/cats/'+ $stateParams.id +'.json').success(function(data) {
+// $http.get('services/cats/'+ $stateParams.id +'.json').success(function(data) {
+//     $scope.service = data;
+//     $scope.slides = $scope.service.imagesUrl        
+
+// });
+
+catService.getSubcat($stateParams.id).then(function(data){
     $scope.service = data;
-    $scope.slides = $scope.service.imagesUrl        
+})
 
-});
+
+
+
 $animate.enabled(false);
 $scope.myInterval = 4000;
 
 $scope.modal = function (state) {
-
     var modalInstance = $modal.open({
       templateUrl: 'services/myModalContent.html',
       controller: 'ModalInstanceCtrl2',

@@ -14,34 +14,15 @@
 				<!-- isotope filters start -->
 						<div class="col-md-3 filters">
 							<ul class="nav nav-pills nav-stacked ">
-								<li ng-class="{'active':selectedTab === undefined}"><a  href="" ng-click="myFiltering('')">Всі роботи</a></li>
-								<li ng-class="{'active':selectedTab === cat.key}" ng-repeat="cat in categories"><a href="" ng-click="myFiltering(cat.key)">{{cat.name}}</a></li>
+								<li ng-class="{'active': !selectedTab}"><a ng-click="selectTab('')">Всі роботи</a></li>
+								<li ng-class="{'active':selectedTab === cat.c_id}" ng-repeat="cat in categories"><a ng-click="selectTab(cat.c_id)">{{cat.title}}</a></li>
 							</ul>
 						</div>
 						<!-- isotope filters end -->
 						
 				
 					<div class="col-md-9">
-
-						
-						
-
-						<!-- portfolio items start -->
-						<div ng-cloak class="ng-cloak portfolio-container row grid-space-20">
-							<div  ng-repeat="work in portfolio | filter: myFilter | orderBy: priority track by $index" class="col-sm-6 col-md-4 portfolio-item {{work.type}}">
-								<div class="image-box">
-									<div class="overlay-container">
-										<img ng-src="{{work.imageUrl}}" alt="">
-										<a class="overlay" ng-click="modal(work)" data-target="#{{$index}}">
-											<i class="glyphicon glyphicon-zoom-in"></i>
-											<span>Детальніше</span>
-										</a>
-									</div>
-									<a class="btn btn-default btn-block" ng-click="modal(work)" data-target="#{{$index}}">{{work.name}}</a>
-								</div>
-							</div>
-						</div>
-						<!-- portfolio items end -->
+						<div ui-view></div>
 					</div>
 				</div>
 			</div>

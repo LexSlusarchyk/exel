@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
+    <h4 class="modal-title">Додавання фото</h4>
+</div>
+<div class="modal-body">
+    
+        <h3>Обріжте фото:</h3>
+          
+
+      <div ng-if="dataUrl" class="img-container" ng-hide="preview.dataUrl">
+        <img ng-if="dataUrl" ng-src="{{dataUrl}}"
+             ng-cropper
+             ng-cropper-proxy="cropperProxy"
+             ng-cropper-show="showEvent"
+             ng-cropper-hide="hideEvent"
+             ng-cropper-options="options">
+      </div>
+
+      <button ng-hide="preview.dataUrl" class="btn btn-success show-preview" ng-click="preview()">Далі</button>
+
+      <div class="preview-container">
+        <img ng-if="preview.dataUrl" ng-src="{{preview.dataUrl}}">
+      </div>
+
+      <div ng-show="preview.dataUrl" class="photo-submit-container">
+        <a href="" class="btn btn-success" ng-click="sendFile(preview.dataUrl)">Зберегти</a>
+        <a href="" class="btn btn-primary" ng-click="scale()">Адаптувати</a>
+        <a href="" class="btn btn-danger" ng-click="preview.dataUrl = null">Відмінити</a>
+      </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Закрити</button>
+</div>

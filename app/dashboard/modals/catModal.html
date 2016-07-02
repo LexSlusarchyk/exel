@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
+    <h4 class="modal-title">Додати категорію</h4>
+</div>
+<div class="modal-body">
+        <h3>Додати:</h3>
+        <form ng-submit="createCategory(category)">
+          <div class="input-group">
+            <input ng-model="category.title" class="form-control" placeholder="Назва категорії">
+            <input ng-model="category.eng_title" class="form-control" placeholder="Назва англійською">
+          </div>
+          <input type="submit" value="Створити категорію" class="btn btn-success">
+        </form>
+     
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Закрити</button>
+</div>

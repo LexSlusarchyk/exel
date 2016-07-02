@@ -1,0 +1,24 @@
+<div class="page-heading">
+	<div class="page-headers">
+		<h1 class="text-left" style="color: transparent;">Адміністративна панель</h1>
+		<p class="lead text-left" style="color: transparent;">Дізнайтесь про нас більше!</p>
+	</div>			
+</div>
+<div class="separator"></div>
+
+<div class="container-fluid dashboard-container">
+	<div class="row">
+		<div class="col-md-2 dashboard-nav">
+			<div class="btn-group-vertical" role="group" aria-label="...">
+			  <a ui-sref="dashboard.categories" class="btn btn-default">Розділи</a>
+			  <a ui-sref="dashboard.news" class="btn btn-default">Новини</a>
+			  <a ui-sref="dashboard.portfolio" class="btn btn-default">Портфоліо</a>
+			  <a ui-sref="dashboard.team" class="btn btn-default">Команда</a>
+			</div>
+		</div>
+		<div class="col-md-10" ui-view>
+
+		</div>
+	</div>
+</div>
+
