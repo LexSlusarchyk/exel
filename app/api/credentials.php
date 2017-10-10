@@ -1,8 +1,8 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "exel";
+$servername = "excelle.mysql.ukraine.com.ua";
+$username = "excelle_db";
+$password = "qwerty";
+$dbname = "excelle_db";
 
 ?>

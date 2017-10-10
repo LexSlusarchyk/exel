@@ -51,17 +51,17 @@ angular.module('exel')
   })
   .state('dashboard.addportfolio', {
     url:'/addportfolio',
-    templateUrl: 'dashboard/portfolio/addportfolio.html',
+    templateUrl: 'dashboard/portfolio/addPortfolio.html',
     controller: 'DashboardAddPortfolioController'
   })
   .state('dashboard.editportfolio', {
     url:'/editportfolio/:itemId',
-    templateUrl: 'dashboard/portfolio/addportfolio.html',
+    templateUrl: 'dashboard/portfolio/addPortfolio.html',
     controller: 'DashboardAddPortfolioController'
   })
   .state('dashboard.addmember', {
     url:'/addmember',
-    templateUrl: 'dashboard/team/addmember.html',
+    templateUrl: 'dashboard/team/addMember.html',
     controller: 'DashboardAddMemberController'
   })
   .state('dashboard.editmember', {
