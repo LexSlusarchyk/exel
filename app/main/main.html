@@ -37,6 +37,31 @@
 </section>
 
 
+<section class="products">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 main-article">
+				<img ng-src="{{mainProduct.image}}">
+				<a ui-sref="products({productId:mainProduct.id})" class="main-article-overlay">
+					<h3>{{mainProduct.title}}</h3>
+					<h4>{{mainProduct.spec}}</h4>
+				</a>
+				<!-- <span></span> -->
+			</div>
+			<div class="col-md-6">
+				<a ng-repeat="product in products" class="news-item" ui-sref="products({productId:product.id})">
+					<img ng-src="{{product.image}}">
+					<div class="article-block-headers">
+						<h4>{{product.title}}</h4>
+						<p>{{product.spec}}</p>
+						<button class="btn btn-default">Детальніше</button>
+					</div>
+					
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 

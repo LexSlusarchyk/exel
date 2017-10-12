@@ -11,7 +11,7 @@ angular.module('exel.main', ['ngRoute'])
         })
 }])
 
-.controller('MainPageController', ['$scope', '$http', '$animate', 'newsService', function($scope, $http, $animate, newsService) {
+.controller('MainPageController', ['$scope', '$http', '$animate', 'newsService', 'productsService', function($scope, $http, $animate, newsService, productsService) {
 $http.get('main/slides.json').success(function(data) {
       $scope.slides = data;
 
@@ -47,6 +47,15 @@ newsService.getNews().then(function(data){
 
 })
 
+
+productsService.getProducts().then(function(data){
+  $scope.products = data.reverse();
+  if ($scope.products.length > 4) {
+    $scope.products = $scope.products.splice(0, 4);
+  }
+  $scope.mainProduct = $scope.products.splice(0, 1)[0];
+
+})
 
 
 }]);
