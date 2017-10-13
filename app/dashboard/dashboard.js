@@ -19,6 +19,11 @@ angular.module('exel')
     templateUrl: 'dashboard/news/news.html',
     controller: 'DashboardNewsController'
   })
+  .state('dashboard.products', {
+    url:'/products',
+    templateUrl: 'dashboard/products/products.html',
+    controller: 'DashboardProductsController'
+  })
   .state('dashboard.portfolio', {
     url:'/portfolio',
     templateUrl: 'dashboard/portfolio/portfolio.html',
@@ -48,6 +53,16 @@ angular.module('exel')
     url:'/editarticle/:articleId',
     templateUrl: 'dashboard/news/addArticle.html',
     controller: 'DashboardAddArticleController'
+  })
+  .state('dashboard.addproduct', {
+    url:'/addproduct',
+    templateUrl: 'dashboard/products/addProduct.html',
+    controller: 'DashboardAddProductController'
+  })
+  .state('dashboard.editproduct', {
+    url:'/editproduct/:productId',
+    templateUrl: 'dashboard/products/addProduct.html',
+    controller: 'DashboardAddProductController'
   })
   .state('dashboard.addportfolio', {
     url:'/addportfolio',
@@ -327,6 +342,30 @@ function sendFile(file) {
 
 }])
 
+.controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', function($scope, $modalStack, productsService, confirmService) {
+    productsService.getProducts().then(function(data){
+        $scope.products = data;
+    })
+
+    $scope.deleteProduct = function(product, index) {
+        var message = "Ви справді бажаєте видалити товар " + product.title + " ?";
+        confirmService.openConfirm(message).then(function(data){
+            if (data === true) {
+                productsService.deleteProduct(product.id).then(function(data){
+                    $scope.products.splice(index, 1);
+                    $modalStack.dismissAll();
+                })    
+            } else {
+                $modalStack.dismissAll();
+            }
+        })        
+    }
+
+}])
+
+
+
+
 .controller('DashboardAddArticleController', ['$scope', '$stateParams', '$location', 'cropperService', 'newsService', function($scope, $stateParams, $location, cropperService, newsService) {
     $scope.article = {};
 
@@ -365,6 +404,50 @@ function sendFile(file) {
     }
 
 }])
+
+
+
+.controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', function($scope, $stateParams, $location, cropperService, productsService) {
+    $scope.product = {};
+
+    if ($stateParams.productId) {
+        productsService.getProduct($stateParams.productId).then(function(data){
+            $scope.product = data;
+        }) 
+    }
+ 
+    $scope.submitProduct = function(product) {
+        if ($stateParams.productId) {
+            productsService.editProduct(product).then(function(data){
+                $location.path('dashboard/products');
+            })
+        } else {
+            productsService.createProduct(product).then(function(data){
+                $location.path('dashboard/products')
+            })
+        }
+        
+    }
+
+    $scope.triggerInput = function() {
+        $('#photo-input').click();
+    }
+
+    $scope.onFile = function(file) {
+        cropperService.openCropper(file, 1.6, 900).then(function(data){
+            $('#photo-input').val(null);
+            $scope.product.image = data;
+        });
+    }
+
+    $scope.deletePhoto = function(index) {
+        $scope.product.image = null;
+    }
+
+}])
+
+
+
 
 .controller('DashboardPortfolioController', ['$scope', '$modalStack', 'portfolioService', 'confirmService', function($scope, $modalStack, portfolioService, confirmService) {
     portfolioService.getItems().then(function(data){
