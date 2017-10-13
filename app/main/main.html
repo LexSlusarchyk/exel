@@ -2,14 +2,14 @@
 	<div class="container-fluid">
 		<div class="main-heading row">
 			<div class="col-md-12">
-				<h1 class="text-center lead">Весь спектр <span>рекламних</span> послуг</h1>
+				<h1 class="text-center lead">Весь спектр <span>товарів</span> на Ваш вибір</h1>
 			
 			</div>
 		</div>
 	</div>
 </div>
 
-
+<!-- <span>
 <section class="news">
 	<div class="container-fluid">
 		<div class="row">
@@ -19,7 +19,7 @@
 					<h3>{{mainArticle.title}}</h3>
 					<h4>{{mainArticle.spec}}</h4>
 				</a>
-				<!-- <span></span> -->
+				
 			</div>
 			<div class="col-md-6">
 				<a ng-repeat="article in news" class="news-item" ui-sref="news({articleId:article.id})">
@@ -35,38 +35,53 @@
 		</div>
 	</div>
 </section>
+</span> -->
+<a href="#/dashboard/products" class="text-center"><h2> Адмін панель</h2></a>
+<br>
 
-
+<div class="container-fluid">
 <section class="products">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6 main-article">
-				<img ng-src="{{mainProduct.image}}">
-				<a ui-sref="products({productId:mainProduct.id})" class="main-article-overlay">
-					<h3>{{mainProduct.title}}</h3>
-					<h4>{{mainProduct.spec}}</h4>
-				</a>
-				<!-- <span></span> -->
-			</div>
-			<div class="col-md-6">
-				<a ng-repeat="product in products" class="news-item" ui-sref="products({productId:product.id})">
-					<img ng-src="{{product.image}}">
-					<div class="article-block-headers">
-						<h4>{{product.title}}</h4>
-						<p>{{product.spec}}</p>
-						<button class="btn btn-default">Детальніше</button>
-					</div>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="row">
+
+				<div class="container col-lg-3">
+					<ul>
+	                    <li><a href="#/">Телефони</a></li>
+	                    <li><a href="#/">Комп'ютери</a></li>
+	                </ul>
+				</div>
+
+				<!-- <span>
+				<div class="col-lg-6 main-article">
+					<img ng-src="{{mainProduct.image}}">
+					<a ui-sref="products({productId:mainProduct.id})" class="main-article-overlay">
+						<h3>{{mainProduct.title}}</h3>
+						<h4>{{mainProduct.spec}}</h4>
+					</a>
 					
-				</a>
+				</div>
+				</span> -->
+				<div class="col-lg-9">
+					<a ng-repeat="product in products" class="news-item" ui-sref="products({productId:product.id})">
+						<img ng-src="{{product.image}}">
+						<div class="article-block-headers">
+							<h4>{{product.title}}</h4>
+							<p>{{product.spec}}</p>
+							<button class="btn btn-default">Детальніше</button>
+						</div>
+						
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
+</div>
 
 
 <div class="container-fluid">
-	<h2 class="text-center">Наші клієнти:</h2>
+	<h2 class="text-center">Наші клієнти test:</h2>
 	<div class="separator"></div>
 	<div class="clients col-md-12">
 		<carousel interval="myInterval">
