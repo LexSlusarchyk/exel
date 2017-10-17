@@ -7,7 +7,7 @@ $request = json_decode($postdata);
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-
+mysqli_set_charset($conn,"utf8");
 
 $request->text =  addslashes($request->text);
 $request->spec =  addslashes($request->spec);

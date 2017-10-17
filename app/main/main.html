@@ -50,6 +50,14 @@
 	                    <li><a href="#/">Телефони</a></li>
 	                    <li><a href="#/">Комп'ютери</a></li>
 	                </ul>
+	                     <p>
+			        Sort by:
+			        <select ng-model="$products.orderProp">
+			          <option value="title">Назва товару</option>
+			          <option value="price">Ціна</option>
+
+			        </select>
+			      </p>
 				</div>
 
 				<!-- <span> Головний товар
@@ -63,7 +71,12 @@
 				</div>
 				</span> -->
 				<div class="col-lg-9">
-					<a ng-repeat="product in products" class="news-item" ui-sref="products({productId:product.id})">
+					<p>
+				        Search:
+				        <input ng-model="$products.query">
+    			    </p>
+
+					<a ng-repeat="product in products | filter:$products.query | orderBy:$products.orderProp" class="news-item" ui-sref="products({productId:product.id})">
 						<img ng-src="{{product.image}}">
 						<div class="article-block-headers">
 							<h4>{{product.title}}</h4>
@@ -82,7 +95,7 @@
 
 
 <div class="container-fluid">
-	<h2 class="text-center">Наші клієнти test:</h2>
+	<h2 class="text-center">Найпопулярніші виробники:</h2>
 	<div class="separator"></div>
 	<div class="clients col-md-12">
 		<carousel interval="myInterval">
