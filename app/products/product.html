@@ -16,14 +16,18 @@
 					<div class="article-block-headers">
 						<h4>{{product.title}}</h4>
 						<p>{{product.spec}}</p>
+						<p>{{product.price}}</p>
 					</div>
 
 			</a>
 		</div>
 		<div class="col-md-6 article">
 			<h2 class="no-top-margin">{{product.title}}</h2>
+			<p>{{product.price}}</p>
 			<img ng-src="{{product.image}}">
-			<read-markup mark="article.text"></read-markup>
+			<div data-ng-bind-html="product.text"></div>
+			
+
 		</div>
 		<div class="col-md-2 user-buttons">
 			

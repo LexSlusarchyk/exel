@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('exel', [
   'ngRoute',
+  'ngSanitize',
   'ui.router',
   'ui.bootstrap',
   'summernote',
