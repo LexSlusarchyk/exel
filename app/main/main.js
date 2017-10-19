@@ -51,9 +51,9 @@ newsService.getNews().then(function(data){
 productsService.getProducts().then(function(data){
   $scope.products = data.reverse();
   if ($scope.products.length > 4) {
-    $scope.products = $scope.products.splice(0, 5);
+    $scope.products = $scope.products.splice(0, 10);
   }
-  $scope.mainProduct = $scope.products.splice(0, 1)[0];
+  //$scope.mainProduct = $scope.products.splice(0, 1)[0];
 
 })
 

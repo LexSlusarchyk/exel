@@ -19,8 +19,8 @@ if ($conn->connect_error) {
 $request->title = addslashes($request->title);
 $request->text = addslashes($request->text);
 $request->spec = addslashes($request->spec);
-$request->spec = addslashes($request->price);
-$request->spec = addslashes($request->cat);
+$request->price = addslashes($request->price);
+$request->cat = addslashes($request->cat);
 
 $sql = "INSERT INTO Products (title, spec, text, image, price, cat) VALUES ('$request->title', '$request->spec', '$request->text', '$request->image', '$request->price', '$request->cat')";
 
