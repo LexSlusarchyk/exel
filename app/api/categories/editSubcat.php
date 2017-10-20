@@ -5,6 +5,7 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+mysqli_set_charset($conn,"utf8");
 // Check connection
 if ($request->images) {
 	$request->images = serialize($request->images);
