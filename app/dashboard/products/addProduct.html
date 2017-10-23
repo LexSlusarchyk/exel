@@ -1,9 +1,29 @@
+<p>{{product}}</p>
 <form ng-submit="submitProduct(product)">
 	<div class="input-group">
 		<input ng-model="product.title" placeholder="Назва товару" class="form-control" required>
 		<textarea ng-model="product.spec" placeholder="Короткий опис" class="form-control" required></textarea>
 		<input ng-model="product.price" placeholder="Ціна" class="form-control" required>
-		<input ng-model="product.cat" placeholder="Категорія" class="form-control" required>
+		<!-- <input ng-model="product.cat" placeholder="Категорія" class="form-control" required>
+		<h4>Категорія:</h4>
+		<select ng-model="product.cat" required>
+		    <option ng-repeat="cat in categories track by $index" value="{{cat.c_id}}">{{cat.title}}</option>
+		</select>
+	  	<br>
+	  	<input ng-model="product.subcat" placeholder="Підкатегорія" class="form-control" required>
+	  	<h4>Підкатегорія:</h4>
+	  	<select ng-model="product.subcat" required>
+		    <option ng-repeat="subcat in cat.subcats track by $index" value="{{cat.s_id}}">{{subcat.title}}</option>
+		</select>-->
+		<select ng-options="cat.c_id as cat.title for cat in categories" ng-model="product.cat" ng-change="getSubcatsList()" required>
+		<option selected disabled value="">Вкажіть категорію</option>
+		</select>
+
+		<select ng-if="subcatsList" ng-options="subcat.s_id as subcat.title for subcat in subcatsList" ng-model="product.subcat" required>
+		<option selected disabled value="">Вкажіть підкатегорію</option>
+		</select>
+
+		<br><br>
 		<input type="file" id='photo-input' onchange="angular.element(this).scope().onFile(this.files[0])">
 		<a href="" class="btn btn-primary" ng-click="triggerInput()">Додати фото</a>
 	</div>
@@ -20,3 +40,4 @@
 	<summernote id="summernote" config="options" ng-model="product.text" on-image-upload="imageUpload(files)" on-paste="paste()" required></summernote>
 	<input type="submit" value="Створити" class="btn btn-success">
 </form>
+				

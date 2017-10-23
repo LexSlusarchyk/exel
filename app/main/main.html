@@ -10,51 +10,27 @@
 	</div>
 </div>
 -->
-<!-- <span>
-<section class="news">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6 main-article">
-				<img ng-src="{{mainArticle.image}}">
-				<a ui-sref="news({articleId:mainArticle.id})" class="main-article-overlay">
-					<h3>{{mainArticle.title}}</h3>
-					<h4>{{mainArticle.spec}}</h4>
-				</a>
-				
-			</div>
-			<div class="col-md-6">
-				<a ng-repeat="article in news" class="news-item" ui-sref="news({articleId:article.id})">
-					<img ng-src="{{article.image}}">
-					<div class="article-block-headers">
-						<h4>{{article.title}}</h4>
-						<p>{{article.spec}}</p>
-						<button class="btn btn-default">Детальніше</button>
-					</div>
-					
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
-</span> -->
+<!-- <span></span> -->
 <a href="#/dashboard/products" class="text-center"><h2> Адмін панель</h2></a>
 <br>
 
 <div class="container-fluid">
 <section class="products">
-	<div class="list-group panel">
-					<div class="cat" ng-cloak ng-repeat="service in services">
-						<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.eng_title}}" data-parent=".sidebar"><i class="glyphicon glyphicon-menu-down"></i>{{service.title}}</a>
-						<div ng-repeat="subcat in service.subcats" class="collapse {{service.eng_title}} list-group-submenu">
-							<a ui-sref="services.detail({ id:subcat.s_id })" class="list-group-item">{{subcat.title}}</a>
-						</div>
-					</div>
-				</div>
+	
 	<div class="row">
 		<div class="container-fluid">
 			<div class="row">
 
 				<div class="container col-lg-3">
+				    <div class="list-group">
+ 						<div ng-repeat="cat in categories track by $index" class="cat">
+  							<div class="list-group-item cat">{{cat.title}}</div>
+							<div ng-repeat="subcat in cat.subcats track by $index" class="list-group-item subcat">
+								<span>{{subcat.title}}</span>
+							</div>
+  						</div>
+					</div>
+					<!-- <span>
 					<ul>
 						<li><button ng-click="catFilter = {cat: 'Телефони'}">Телефони</button></li>
 						<li><button ng-click="catFilter = {cat: 'Ноутбуки'}">Ноутбуки</button></li>
@@ -101,6 +77,7 @@
 				       </ul>
 				      </li>
 				    </ul>
+				    </span> -->
 				</div>
 
 				<!-- <span> Головний товар
@@ -152,35 +129,4 @@
 		</carousel> 
 	</div>
 </div>
-</div>
-
-
-
-
-<div class="list-group">
-  <div ng-repeat="cat in categories track by $index" class="cat">
-  	<div class="list-group-item cat">{{cat.title}} 	
-      <a href="" ng-click="deleteCategory(cat, $index)"  class="btn btn-danger">Видалити категорію</a>
-      <a ui-sref="dashboard.addsubcat({catId: cat.c_id})" class="btn btn-default"><i class="fa fa-plus"></i> Додати підкатегорію</a>
-  	</div>
-  	
-		<div ng-repeat="subcat in cat.subcats track by $index" class="list-group-item subcat">
-			<span>{{subcat.title}}</span>
-      <a ui-sref="dashboard.editsubcat({subcatId: subcat.s_id})" class="btn btn-warning">Редагувати підкатегорію</a>
-      <a ng-click="deleteSubcategory(subcat, $parent.$index, $index)" href="" class="btn btn-danger">Видалити підкатегорію</a>
-		</div>
-  </div>
-</div>
-
-<div class="col-md-3">
-			<div class="sidebar">
-				<div class="list-group panel">
-					<div class="cat" ng-cloak ng-repeat="service in services">
-						<a href="" class="list-group-item" data-toggle="collapse" data-target=".{{service.eng_title}}" data-parent=".sidebar"><i class="glyphicon glyphicon-menu-down"></i>{{service.title}}</a>
-						<div ng-repeat="subcat in service.subcats" class="collapse {{service.eng_title}} list-group-submenu">
-							<a ui-sref="services.detail({ id:subcat.s_id })" class="list-group-item">{{subcat.title}}</a>
-						</div>
-					</div>
-				</div>
-			</div>
 </div>

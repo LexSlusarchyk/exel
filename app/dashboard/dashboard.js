@@ -407,13 +407,34 @@ function sendFile(file) {
 
 
 
-.controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', function($scope, $stateParams, $location, cropperService, productsService) {
+.controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', 'catService', function($scope, $stateParams, $location, cropperService, productsService, catService) {
     $scope.product = {};
 
     if ($stateParams.productId) {
         productsService.getProduct($stateParams.productId).then(function(data){
             $scope.product = data;
         }) 
+    }
+
+    catService.getCats().then(function(data){
+        $scope.categories = data;
+        if ($stateParams.productId) {
+            productsService.getProduct($stateParams.productId).then(function(data){
+                $scope.product = data;  
+                $scope.getSubcatsList();
+            })
+        };
+    });
+
+    $scope.product = {};
+
+    $scope.getSubcatsList = function() {
+        for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].c_id === $scope.product.cat) {
+                $scope.subcatsList = $scope.categories[i].subcats;
+                break
+            }
+        }
     }
  
     $scope.submitProduct = function(product) {
@@ -443,6 +464,18 @@ function sendFile(file) {
     $scope.deletePhoto = function(index) {
         $scope.product.image = null;
     }
+
+    catService.getCats().then(function(data){
+  $scope.services = data;
+  console.log(data);
+})
+
+catService.getCats().then(function(data){
+        $scope.categories = data;
+        
+    });
+
+    $scope.category = {};
 
 }])
 

@@ -59,6 +59,11 @@ productsService.getProducts().then(function(data){
 
 
 catService.getCats().then(function(data){
+  $scope.services = data;
+  console.log(data);
+})
+
+catService.getCats().then(function(data){
         $scope.categories = data;
         
     });
