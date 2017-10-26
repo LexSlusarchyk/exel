@@ -53,7 +53,13 @@ angular.module('exel').factory('productsService', ['$http', '$q', '$modal', func
 		return defer.promise
 	};
 	
-	
+	_getListBySubCategoryId = function(id) {
+		defer = $q.defer();
+		$http.post('api/products/getProductsBySubCategoryId.php', id).success(function(data){
+			defer.resolve(data);
+		});
+		return defer.promise
+	};
 
 	
 
@@ -65,7 +71,7 @@ angular.module('exel').factory('productsService', ['$http', '$q', '$modal', func
 	productsService.editProduct = _editProduct;
 	productsService.deleteProduct = _deleteProduct;
 	productsService.getListByCategoryId = _getListByCategoryId;
-	
+	productsService.getListBySubCategoryId = _getListBySubCategoryId;
 	
     return productsService;
 }]);

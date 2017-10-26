@@ -15,21 +15,28 @@
 <br>
 
 <div class="container-fluid">
-<section class="products">
-	
+<section class="products">	
 	<div class="row">
 		<div class="container-fluid">
 			<div class="row">
-
 				<div class="container col-lg-3">
+					<p>
+				        Пошук:
+				        <input ng-model="$products.query">
+    			    </p>
 				    <div class="list-group">
  						<div ng-repeat="cat in categories track by $index" class="cat">
-  							<div class="list-group-item cat"><a ui-sref="category({ id:c_id })" class="text-center">{{cat.title}}</a></div>
+  							<div class="list-group-item cat"><a ui-sref="main.category({ catId: cat.c_id })" class="text-center">{{cat.title}}</a></div>
 							<div ng-repeat="subcat in cat.subcats track by $index" class="list-group-item subcat">
-								<span>{{subcat.title}}</span>
+								<a ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}}</span></a>
 							</div>
   						</div>
 					</div>
+					 <li>
+				       Телефони
+				       <input type="checkbox" ng-model="yourFilter.s_id" ng-true-value="'16'" ng-false-value="null"/>
+				      </li>
+				      <li><button ng-click="yourFilter = {s_id: 'Телефони'}">Телефони</button></li>
 					<!-- <span>
 					<ul>
 						<li><button ng-click="catFilter = {cat: 'Телефони'}">Телефони</button></li>
@@ -79,32 +86,27 @@
 				    </ul>
 				    </span> -->
 				</div>
-
 				<!-- <span> Головний товар
 				<div class="col-lg-6 main-article">
 					<img ng-src="{{mainProduct.image}}">
 					<a ui-sref="products({productId:mainProduct.id})" class="main-article-overlay">
 						<h3>{{mainProduct.title}}</h3>
 						<h4>{{mainProduct.spec}}</h4>
-					</a>
-					
+					</a>		
 				</div>
 				</span> -->
 				<div class="col-lg-9">
 					<div ui-view></div>
-					<p>
-				        Пошук:
-				        <input ng-model="$products.query">
-    			    </p>
-
+					<hr>
+					<h3>Новинки</h3>
 					<a ng-repeat="product in products | filter:yourFilter | filter:catFilter | filter:$products.query | orderBy:$products.orderProp" class="news-item" ui-sref="products({productId:product.id})">
 						<img ng-src="{{product.image}}">
 						<div class="article-block-headers">
 							<h4>{{product.title}}</h4>
 							<p>{{product.date}}</p>
 							<p>Опис: {{product.spec}}</p>
-							<p>Ціна: {{product.price}}</p>
-							<p>Категорія: {{product.cat}}</p>
+							<p>Ціна: {{product.price + ' ₴'}}</p>
+							<p>Категорія: {{product.c_id}}</p>
 							<button class="btn btn-default">Детальніше</button>
 						</div>
 						
@@ -115,7 +117,6 @@
 	</div>
 </section>
 </div>
-
 
 <div class="container-fluid">
 	<h2 class="text-center">Найпопулярніші виробники:</h2>

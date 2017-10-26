@@ -1,2 +1,13 @@
-<p>{{products}}</p>
-<h1>Hello i'm working</h1>
+<!--<p>{{products}}</p>-->
+
+<a ng-repeat="product in products track by $index" class="news-item" ui-sref="products({productId:product.id})">
+<img ng-src="{{product.image}}">
+<div class="article-block-headers">
+<h4>{{product.title}}</h4>
+<p>{{product.date}}</p>
+<p>Опис: {{product.spec}}</p>
+<p>Ціна: {{product.price}}</p>
+<p>Категорія: {{product.c_id}}</p>
+<button class="btn btn-default">Детальніше</button>
+</div>						
+</a>
