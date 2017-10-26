@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "exel";
+$dbname = "inko";
 // Create connection
 // $conn = new mysqli($servername, $username, $password);
 
@@ -84,6 +84,18 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 // name VARCHAR(542) NOT NULL,
 // position VARCHAR(10000) NOT NULL,
 // image VARCHAR(10000) NOT NULL
+// )";
+
+// $sql = "CREATE TABLE Products (
+// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// title VARCHAR(542) NOT NULL,
+// eng_title VARCHAR(142) NOT NULL,
+// images VARCHAR(10000) NOT NULL,
+// text TEXT NOT NULL,
+// s_id INT(6) UNSIGNED,
+// c_id INT(6) UNSIGNED,
+// FOREIGN KEY (c_id) REFERENCES Categories(c_id),
+// FOREIGN Key (s_id) REFERENCES Subcats(s_id)
 // )";
 
 if ($conn->query($sql) === TRUE) {

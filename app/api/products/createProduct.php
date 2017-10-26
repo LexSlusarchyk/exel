@@ -20,10 +20,9 @@ $request->title = addslashes($request->title);
 $request->text = addslashes($request->text);
 $request->spec = addslashes($request->spec);
 $request->price = addslashes($request->price);
-$request->cat = addslashes($request->cat);
-$request->subcat = addslashes($request->subcat);
 
-$sql = "INSERT INTO Products (title, spec, text, image, price, cat, subcat) VALUES ('$request->title', '$request->spec', '$request->text', '$request->image', '$request->price', '$request->cat', '$request->subcat')";
+
+$sql = "INSERT INTO Products (title, spec, text, image, price, c_id, s_id) VALUES ('$request->title', '$request->spec', '$request->text', '$request->image', '$request->price', '$request->c_id', '$request->s_id')";
 
 if ($conn->query($sql) === TRUE) {
  	echo "Товар додано успішно.";

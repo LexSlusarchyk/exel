@@ -15,11 +15,11 @@
 	  	<select ng-model="product.subcat" required>
 		    <option ng-repeat="subcat in cat.subcats track by $index" value="{{cat.s_id}}">{{subcat.title}}</option>
 		</select>-->
-		<select ng-options="cat.c_id as cat.title for cat in categories" ng-model="product.cat" ng-change="getSubcatsList()" required>
+		<select ng-options="cat.c_id as cat.title for cat in categories" ng-model="product.c_id" ng-change="getSubcatsList()" required>
 		<option selected disabled value="">Вкажіть категорію</option>
 		</select>
 
-		<select ng-if="subcatsList" ng-options="subcat.s_id as subcat.title for subcat in subcatsList" ng-model="product.subcat" required>
+		<select ng-if="subcatsList" ng-options="subcat.s_id as subcat.title for subcat in subcatsList" ng-model="product.s_id" required>
 		<option selected disabled value="">Вкажіть підкатегорію</option>
 		</select>
 

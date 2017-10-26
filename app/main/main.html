@@ -24,7 +24,7 @@
 				<div class="container col-lg-3">
 				    <div class="list-group">
  						<div ng-repeat="cat in categories track by $index" class="cat">
-  							<div class="list-group-item cat">{{cat.title}}</div>
+  							<div class="list-group-item cat"><a ui-sref="category({ id:c_id })" class="text-center">{{cat.title}}</a></div>
 							<div ng-repeat="subcat in cat.subcats track by $index" class="list-group-item subcat">
 								<span>{{subcat.title}}</span>
 							</div>
@@ -91,6 +91,7 @@
 				</div>
 				</span> -->
 				<div class="col-lg-9">
+					<div ui-view></div>
 					<p>
 				        Пошук:
 				        <input ng-model="$products.query">
