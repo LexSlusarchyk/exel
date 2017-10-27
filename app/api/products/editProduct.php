@@ -9,10 +9,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 mysqli_set_charset($conn,"utf8");
 
-$request->text =  addslashes($request->text);
-$request->spec =  addslashes($request->spec);
 
-$sql = "UPDATE Products SET title='$request->title', spec='$request->spec', text='$request->text', image='$request->image', price='$request->price', cat='$request->cat' WHERE id='$request->id'";
+$request->title = addslashes($request->title);
+$request->text = addslashes($request->text);
+$request->spec = addslashes($request->spec);
+$request->price = addslashes($request->price);
+
+$sql = "UPDATE Products SET title='$request->title', spec='$request->spec', text='$request->text', image='$request->image', price='$request->price', c_id='$request->c_id', s_id='$request->s_id' WHERE id='$request->id'";
 
 if ($conn->query($sql) === TRUE) {
     echo "successfully updated";

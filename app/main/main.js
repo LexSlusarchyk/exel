@@ -29,6 +29,27 @@ angular.module('exel.main', ['ngRoute'])
         })
 }])
 
+//фільтр товарів за ціною
+.filter('priceLessThan', function () {
+ 
+    return function (input, price) {
+        var output = [];
+        if (isNaN(price)) {
+ 
+            output = input;
+        }
+        else {
+            angular.forEach(input, function (item) {
+ 
+                if (item.price < price) {
+                    output.push(item)
+                }
+            });
+        }
+        return output;
+    }
+})
+
 .controller('ProductController', ['$scope', '$location', '$state', '$stateParams', 'productsService', 'modalsService', function($scope, $location, $state, $stateParams, productsService, modalsService) {
     console.log("xx")
     productsService.getProduct($stateParams.productId).then(function(data){
@@ -128,7 +149,7 @@ $scope.myInterval = 6000;
 productsService.getProducts().then(function(data){
   $scope.products = data.reverse();
   if ($scope.products.length > 4) {
-    $scope.products = $scope.products.splice(0, 10);
+    $scope.products = $scope.products.splice(0, 9);
   }
   //$scope.mainProduct = $scope.products.splice(0, 1)[0];
 })

@@ -1,4 +1,4 @@
-<!--
+ <!--
 <div class="main-banner">
 	<div class="container-fluid">
 		<div class="main-heading row">
@@ -86,20 +86,13 @@
 				    </ul>
 				    </span> -->
 				</div>
-				<!-- <span> Головний товар
-				<div class="col-lg-6 main-article">
-					<img ng-src="{{mainProduct.image}}">
-					<a ui-sref="products({productId:mainProduct.id})" class="main-article-overlay">
-						<h3>{{mainProduct.title}}</h3>
-						<h4>{{mainProduct.spec}}</h4>
-					</a>		
-				</div>
-				</span> -->
+
 				<div class="col-lg-9">
 					<div ui-view></div>
+
 					<hr>
 					<h3>Новинки</h3>
-					<a ng-repeat="product in products | filter:yourFilter | filter:catFilter | filter:$products.query | orderBy:$products.orderProp" class="news-item" ui-sref="products({productId:product.id})">
+					<!--<a ng-repeat="product in products | filter:yourFilter | filter:catFilter | filter:$products.query | orderBy:$products.orderProp" class="news-item" ui-sref="products({productId:product.id})">
 						<img ng-src="{{product.image}}">
 						<div class="article-block-headers">
 							<h4>{{product.title}}</h4>
@@ -108,9 +101,24 @@
 							<p>Ціна: {{product.price + ' ₴'}}</p>
 							<p>Категорія: {{product.c_id}}</p>
 							<button class="btn btn-default">Детальніше</button>
+						</div>	
+					</a>-->
+					<div ng-cloak class="ng-cloak portfolio-container row grid-space-20">
+						<div  ng-repeat="product in products track by $index" class="col-sm-6 col-md-4 portfolio-item {{product.title}}">
+							<div class="image-box">
+								<p>{{product.title}}</p>
+								<div class="overlay-container">
+								<img ng-src="{{product.image}}" alt="">
+								<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+								<i class="glyphicon glyphicon-zoom-in"></i>
+								<span>{{product.price + ' ₴'}}</span>
+								</a>
+								<span>{{product.price + ' ₴'}}</span>
+								</div>
+							
+							</div>
 						</div>
-						
-					</a>
+					</div> 
 				</div>
 			</div>
 		</div>
