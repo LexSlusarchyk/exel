@@ -20,71 +20,49 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="container col-lg-3">
-					<p>
-				        Пошук:
-				        <input ng-model="$products.query">
-    			    </p>
+					<span id="clickSearch"><input id="formSearch" ng-model="$products.query" placeholder="Пошук" style="height:50px;width:50%;padding-left:15px;border-radius:4px;">
+					</span>
+					<hr/ style="margin:10px 0;">
+					<script>
+ 					$(document).ready(function(){
+ 					    $("#clickSearch").click(function(){
+ 					        var div = $("#formSearch");
+ 					        div.animate({height: '50px', width: '100%'}, "slow");
+ 					    });
+ 					});
+ 					</script>
+
+ 					<script>
+ 					$(document).ready(function(){
+ 					    $("#clickSearch").hover(function(){
+ 								var div = $("#formSearch");
+ 								div.animate({height: '50px', width: '100%'}, "slow");
+ 					    },
+ 					    function(){
+ 								var div = $("#formSearch");
+ 								div.animate({height: '50px', width: '50%'}, "slow");
+ 					    });
+ 					});
+ 					</script>
+
 				    <div class="list-group">
  						<div ng-repeat="cat in categories track by $index" class="cat">
-  							<div class="list-group-item cat"><a ui-sref="main.category({ catId: cat.c_id })" class="text-center">{{cat.title}}</a></div>
-							<div ng-repeat="subcat in cat.subcats track by $index" class="list-group-item subcat">
-								<a ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}}</span></a>
-							</div>
+  							<nav class="navbar navbar-default">
+ 							  <div class="container">
+ 							    <ul class="nav navbar-nav">
+ 							      <li class="dropdown">
+ 							        <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="main.category({ catId: cat.c_id })" class="text-center">{{cat.title}}<span class="caret"></span></a>
+ 									<ul id="catMenu" class="dropdown-menu">
+ 										<div ng-repeat="subcat in cat.subcats track by $index">
+ 											<a ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}}<hr/ style="margin:0px;"></span></a>
+ 										</div>
+ 							        </ul>
+ 							      </li>
+ 							    </ul>
+ 							  </div>
+ 							</nav>
   						</div>
-					</div>
-					 <li>
-				       Телефони
-				       <input type="checkbox" ng-model="yourFilter.s_id" ng-true-value="'16'" ng-false-value="null"/>
-				      </li>
-				      <li><button ng-click="yourFilter = {s_id: 'Телефони'}">Телефони</button></li>
-					<!-- <span>
-					<ul>
-						<li><button ng-click="catFilter = {cat: 'Телефони'}">Телефони</button></li>
-						<li><button ng-click="catFilter = {cat: 'Ноутбуки'}">Ноутбуки</button></li>
-						<li><button ng-click="catFilter = null">Очистити фільтр</button></li>
-	                </ul>
-	                <p>
-			        Сортувати за:
-			        <select ng-model="$products.orderProp">
-			          <option value="title">Назва товару</option>
-			          <option value="price">Ціна</option>
-			          <option value="date">Дата</option>
-			        </select>
-			        </p>
-			        <br>
-			        <ul>
-				      <li>
-				       Телефони
-				       <input type="checkbox" ng-model="yourFilter.cat" ng-true-value="'Телефони'" ng-false-value="null"/>
-				      </li>
-				      <li>
-				       Ноутбуки
-				       <input type="checkbox" ng-model="yourFilter.cat" ng-true-value="'Ноутбуки'" ng-false-value="null"/>
-				      </li>
-				      <li>
-				       За датою
-				       <input type="checkbox" ng-model="yourFilter.date" ng-true-value="1" ng-false-value="null"/>
-				      </li>
-				      
-				      <li>
-				       Характеристики: 
-				       <ul>
-					       <li>
-					       Екран: 1366x768
-					       <input type="checkbox" ng-model="yourFilter.spec" ng-true-value="'1366x768'" ng-false-value="null"/>
-					  	   </li>
-					  	   <li>
-					       Пам'ять RAM 4 ГБ
-					       <input type="checkbox" ng-model="yourFilter.spec" ng-true-value="'RAM 4 ГБ'" ng-false-value="null"/>
-					       </li>
-					       <li>
-					       Пам'ять RAM 6 ГБ
-					       <input type="checkbox" ng-model="yourFilter.spec" ng-true-value="'RAM 6 ГБ'" ng-false-value="null"/>
-					       </li>
-				       </ul>
-				      </li>
-				    </ul>
-				    </span> -->
+					</div>	
 				</div>
 
 				<div class="col-lg-9">
@@ -92,28 +70,18 @@
 
 					<hr>
 					<h3>Новинки</h3>
-					<!--<a ng-repeat="product in products | filter:yourFilter | filter:catFilter | filter:$products.query | orderBy:$products.orderProp" class="news-item" ui-sref="products({productId:product.id})">
-						<img ng-src="{{product.image}}">
-						<div class="article-block-headers">
-							<h4>{{product.title}}</h4>
-							<p>{{product.date}}</p>
-							<p>Опис: {{product.spec}}</p>
-							<p>Ціна: {{product.price + ' ₴'}}</p>
-							<p>Категорія: {{product.c_id}}</p>
-							<button class="btn btn-default">Детальніше</button>
-						</div>	
-					</a>-->
+					
 					<div ng-cloak class="ng-cloak portfolio-container row grid-space-20">
 						<div  ng-repeat="product in products track by $index" class="col-sm-6 col-md-4 portfolio-item {{product.title}}">
 							<div class="image-box">
-								<p>{{product.title}}</p>
+								<p id="overflowTitle">{{product.title}}</p>
 								<div class="overlay-container">
 								<img ng-src="{{product.image}}" alt="">
 								<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
 								<i class="glyphicon glyphicon-zoom-in"></i>
 								<span>{{product.price + ' ₴'}}</span>
 								</a>
-								<span>{{product.price + ' ₴'}}</span>
+								<span id="stylePrice">{{product.price + ' ₴'}}</span>
 								</div>
 							
 							</div>
@@ -125,18 +93,19 @@
 	</div>
 </section>
 </div>
-
+<!--
 <div class="container-fluid">
 	<h2 class="text-center">Найпопулярніші виробники:</h2>
 	<div class="separator"></div>
-	<div class="clients col-md-12">
-		<carousel interval="myInterval">
-		  <slide ng-repeat="slideCollection in groupedSlides" active="slide.active">
-		    <div>
-		      <img  ng-repeat="slide in slideCollection" style="padding: 10px 20px 10px 20px; height: 80px; max-width: 100%"  ng-src="{{slide.image}}" style="margin:auto;">       
-		    </div>
-		  </slide>
-		</carousel> 
+		<div class="clients col-md-12">
+			<carousel interval="myInterval">
+			  <slide ng-repeat="slideCollection in groupedSlides" active="slide.active">
+			    <div>
+			      <img  ng-repeat="slide in slideCollection" style="padding: 10px 20px 10px 20px; height: 80px; max-width: 100%"  ng-src="{{slide.image}}" style="margin:auto;">       
+			    </div>
+			  </slide>
+			</carousel> 
+		</div>
 	</div>
 </div>
-</div>
+-->
