@@ -7,6 +7,10 @@
     <div class="row">
       <p class="text-center">Напишіть нам!</p> 
     </div>
+    <h2 class="no-top-margin">{{product.title}}</h2>
+      <p>{{product.price + ' ₴'}}</p>
+      <p>{{product.spec}}</p>
+      <img ng-src="{{product.image}}">
     <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Ваше ім’я..."><br>
@@ -17,8 +21,6 @@
   <button type="submit" class="btn btn-success">Підтвердити</button>
 </form>
 </div>
-
-
 
 
 <div class="modal-footer">

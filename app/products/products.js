@@ -27,6 +27,7 @@ angular.module('exel')
     console.log("xx")
     productsService.getProduct($stateParams.productId).then(function(data){
         $scope.product = data;
+        console.log($scope.product);
     })
 
     productsService.getProducts().then(function(data){
@@ -35,6 +36,12 @@ angular.module('exel')
 
     $scope.callModal = function () {
         modalsService.openModal();
+    }
+
+    $scope.callOrderModal = function () {
+        if (!$scope.product) { return false; }
+
+        modalsService.openOrderModal($scope.product.id);
     }
 
 }])
