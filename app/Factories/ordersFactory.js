@@ -4,9 +4,9 @@ angular.module('exel').factory('ordersService', ['$http', '$q', '$modal', functi
     var defer;
 
 
-    _createOrder = function(category) {
+    _createOrder = function(order) {
     	defer = $q.defer();
-    	$http.post('api/categories/createCat.php', category).success(function(data){
+    	$http.post('api/orders/createOrder.php', order).success(function(data){
             defer.resolve(data);
         });
         return defer.promise;
@@ -14,7 +14,7 @@ angular.module('exel').factory('ordersService', ['$http', '$q', '$modal', functi
   	
     _getOrder = function(id) {
 		var defer = $q.defer();
-		$http.post('api/products/getProduct.php', id).success(function(data){
+		$http.post('api/orders/getOrder.php', id).success(function(data){
 	        defer.resolve(data);
 	    });
 	    return defer.promise;
@@ -22,7 +22,7 @@ angular.module('exel').factory('ordersService', ['$http', '$q', '$modal', functi
 
 	_getOrders = function() {
 		defer = $q.defer();
-		$http.get('api/categories/getCats.php').success(function(data){
+		$http.get('api/orders/getOrders.php').success(function(data){
 	        defer.resolve(data);
 	    });
 	    return defer.promise;
@@ -31,7 +31,7 @@ angular.module('exel').factory('ordersService', ['$http', '$q', '$modal', functi
 
 	_deleteOrder = function(id) {
 		defer = $q.defer();
-		$http.post('api/categories/deleteCat.php', id).success(function(data){
+		$http.post('api/orders/deleteOrder.php', id).success(function(data){
 			defer.resolve(data);
 		});
 		return defer.promise
@@ -39,13 +39,11 @@ angular.module('exel').factory('ordersService', ['$http', '$q', '$modal', functi
 
 
 
-	ordersService.createOrder = _createCat;
-	ordersService.getCats = _getCats;
-	ordersService.getSubcat = _getSubcat;
-	ordersService.deleteCategory = _deleteCat;
-	ordersService.createSubcat = _createSubcat;
-	ordersService.editSubсat = _editSubcat;
-	ordersService.deleteSubcat = _deleteSubcat;
+	ordersService.createOrder = _createOrder;
+	ordersService.getOrder = _getOrder;
+	ordersService.getOrders = _getOrders;
+	ordersService.deleteOrder = _deleteOrder;
+	
 	
 	
     return ordersService;

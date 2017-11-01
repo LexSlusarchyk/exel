@@ -4,11 +4,6 @@ angular.module('exel')
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
-        // .state('news', {
-        //     url:'/news',
-        //     templateUrl: 'news/news.html',
-        //     controller: 'NewsController'
-        // })
 
         .state('products', {
             url:'/products/:productId',
@@ -17,11 +12,6 @@ angular.module('exel')
         })
 }])
 
-// .controller('NewsController', ['$scope', '$location', '$state', '$stateParams', 'newsService', function($scope, $location, $state, $stateParams, newsService) {
-//     newsService.getNews().then(function(data){
-//         $scope.news = data;
-//     })
-// }])
 
 .controller('ProductsController', ['$scope', '$location', '$state', '$stateParams', 'productsService', 'modalsService', function($scope, $location, $state, $stateParams, productsService, modalsService) {
     console.log("xx")
@@ -44,4 +34,4 @@ angular.module('exel')
         modalsService.openOrderModal($scope.product.id);
     }
 
-}])
+}]) 

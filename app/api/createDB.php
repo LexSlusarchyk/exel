@@ -104,6 +104,16 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 // FOREIGN KEY (product_id) REFERENCES Products(id)
 // )";
 
+ //$sql = "CREATE TABLE Orders (
+ //id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// name VARCHAR(15) NOT NULL,
+ //phone VARCHAR(13) NOT NULL,
+ //comment VARCHAR(100) NOT NULL,
+ //product_id INT(6) UNSIGNED,
+// FOREIGN KEY (product_id) REFERENCES Products(id)
+// )";
+
+
 
 if ($conn->query($sql) === TRUE) {
     echo "Table subCats created successfully";
