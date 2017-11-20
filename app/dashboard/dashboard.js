@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 angular.module('exel')
 
@@ -23,6 +23,16 @@ angular.module('exel')
     url:'/products',
     templateUrl: 'dashboard/products/products.html',
     controller: 'DashboardProductsController'
+  })
+  .state('dashboard.orders', {
+    url:'/orders',
+    templateUrl: 'dashboard/orders/orders.html',
+    controller: 'DashboardOrdersController'
+  })
+  .state('dashboard.order', {
+    url:'/orders/order/:orderId',
+    templateUrl: 'dashboard/orders/order.html',
+    controller: 'DashboardOrdersController'
   })
   .state('dashboard.portfolio', {
     url:'/portfolio',
@@ -356,6 +366,17 @@ function sendFile(file) {
 
 }])
 
+.controller('DashboardOrdersController', ['$scope', '$modalStack', 'ordersService', 'confirmService', '$stateParams', function($scope, $modalStack, ordersService, confirmService, $stateParams) {
+    ordersService.getOrders().then(function(data){
+        $scope.orders = data;
+    })
+
+    ordersService.getOrder($stateParams.orderId).then(function(data){
+        $scope.order = data;
+        console.log($scope.order);
+    })
+
+}])
 
 
 
