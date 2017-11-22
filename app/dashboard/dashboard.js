@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';  
 
 angular.module('exel')
 
@@ -49,9 +49,19 @@ angular.module('exel')
     templateUrl: 'dashboard/categories/addSubcat.html',
     controller: 'DashboardCategoriesController'
   })
+  .state('dashboard.addssubcat', {
+    url:'/addssubcat/:subcatId',
+    templateUrl: 'dashboard/categories/addSsubcat.html',
+    controller: 'DashboardCategoriesController'
+  })
   .state('dashboard.editsubcat', {
     url:'/editsubcat/:subcatId',
     templateUrl: 'dashboard/categories/addSubcat.html',
+    controller: 'DashboardCategoriesController'
+  })
+  .state('dashboard.editssubcat', {
+    url:'/editssubcat/:ssubcatId',
+    templateUrl: 'dashboard/categories/addSsubcat.html',
     controller: 'DashboardCategoriesController'
   })
   .state('dashboard.addarticle', {
@@ -226,10 +236,23 @@ function sendFile(file) {
     $scope.subcatId = $stateParams.subcatId;
     $scope.subcategory = {};
     $scope.subcategory.c_id = $scope.categoryId;
+    
+    $scope.subcategoryId = $stateParams.subcatId;
+    $scope.ssubcatId = $stateParams.ssubcatId;
+    $scope.ssubcategory = {};
+    $scope.ssubcategory.s_id = $scope.subcatId;
+
+
 
     if ($scope.subcatId) {
         catService.getSubcat($scope.subcatId).then(function(data){
             $scope.subcategory = data;
+        })
+    }
+
+    if ($scope.ssubcatId) {
+        catService.getSsubcat($scope.ssubcatId).then(function(data){
+            $scope.ssubcategory = data;
         })
     }
 
@@ -273,6 +296,17 @@ function sendFile(file) {
         }        
     }
 
+    $scope.createSsubcategory = function(ssubcategory) {
+        if ($scope.subcatId) {
+            catService.createSsubcat(ssubcategory).then(function(data){
+                $location.path('dashboard/categories');
+            });
+        } else {
+            catService.editSsubсat(ssubcategory).then(function(data){
+                $location.path('dashboard/categories');
+            });
+        }        
+    }
 
     $scope.deleteCategory = function(category, index) {
         var message = "Ви справді бажаєте видалити категорію " + category.title + " та всі її підкатегорії?";
@@ -306,6 +340,22 @@ function sendFile(file) {
 
     }
 
+    $scope.deleteSsubcategory = function(ssubcategory, parentIndex, index) {
+        var id = ssubcategory.ss_id;
+        var message = "Ви справді бажаєте видалити підкатегорію " + ssubcategory.title + " ?";
+        confirmService.openConfirm(message).then(function(data){
+            if (data === true) {
+                catService.deleteSsubcat(id).then(function(data){
+                    $scope.categories[parentIndex].ssubcats.splice(index, 1);
+                    $modalStack.dismissAll();
+                });
+            } else {
+                $modalStack.dismissAll();
+            }
+        });
+
+    }
+
 
     $scope.triggerInput = function() {
             $('#photo-input').click();    
@@ -315,11 +365,13 @@ function sendFile(file) {
         cropperService.openCropper(file, 1.6, 900).then(function(data){
             $('#photo-input').val(null);
             $scope.subcategory.images = data;
+            $scope.ssubcategory.images = data;
         });
     }
 
     $scope.deletePhoto = function(index) {
         $scope.subcategory.images = null;
+        $scope.ssubcategory.images = null;
     }
 
 }])
@@ -480,11 +532,11 @@ function sendFile(file) {
     }
 
     catService.getCats().then(function(data){
-  $scope.services = data;
-  console.log(data);
-})
+        $scope.services = data;
+        console.log(data);
+        })
 
-catService.getCats().then(function(data){
+    catService.getCats().then(function(data){
         $scope.categories = data;
         
     });
