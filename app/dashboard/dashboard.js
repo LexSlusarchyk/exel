@@ -498,6 +498,7 @@ function sendFile(file) {
         for (var i = 0; i < $scope.categories.length; i++) {
             if ($scope.categories[i].c_id === $scope.product.c_id) {
                 $scope.subcatsList = $scope.categories[i].subcats;
+                console.log($scope.subcatsList)
                 break
             }
         }
