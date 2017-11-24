@@ -13,7 +13,7 @@ mysqli_set_charset($conn,"utf8");
 
 $request->text =  addslashes($request->text);
 
-$sql = "UPDATE Ssubcats SET s_id='$request->s_id', title='$request->title', eng_title='$request->eng_title', text='$request->text', images='$request->images' WHERE ss_id='$request->ss_id'";
+$sql = "UPDATE Ssubcats SET title='$request->title', eng_title='$request->eng_title', text='$request->text', images='$request->images' WHERE ss_id='$request->ss_id'";
 
 if ($conn->query($sql) === TRUE) {
     echo "success";

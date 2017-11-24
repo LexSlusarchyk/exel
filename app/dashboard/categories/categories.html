@@ -13,15 +13,18 @@
 			<span>{{subcat.title}}</span>
       <a ui-sref="dashboard.addssubcat({subcatId: subcat.s_id})" class="btn btn-warning">Додати субкатегорію</a>
       <a ui-sref="dashboard.editsubcat({subcatId: subcat.s_id})" class="btn btn-warning">Редагувати підкатегорію</a>
-      <a ng-click="deleteSubcategory(subcat, $parent.$index, $index)" href="" class="btn btn-danger">Видалити підкатегорію</a> 
+      <a ng-click="deleteSubcategory(subcat, $parent.$index, $index)" href="" class="btn btn-danger">Видалити підкатегорію</a>
+
+      <div ng-repeat="subsubcat in subcat.subcats track by $index" class="list-group-item ssubcat">
+        <span>{{subsubcat.title}}</span>
+        <a ui-sref="dashboard.editssubcat({ssubcatId: subsubcat.ss_id})" class="btn btn-warning">Редагувати субкатегорію</a>
+        <a ng-click="deleteSsubcategory(subsubcat, $parent.$index, $index)" href="" class="btn btn-danger">Видалити субкатегорію</a> 
+      </div>
+
+
 		</div>
 
-    <div ng-repeat="ssubcat in cat.ssubcats track by $index" class="list-group-item ssubcat">
-      <span>{{ssubcat.title}}</span>
-      <a ui-sref="dashboard.editssubcat({ssubcatId: ssubcat.ss_id})" class="btn btn-warning">Редагувати субкатегорію</a>
-      <a ng-click="deleteSsubcategory(ssubcat, $parent.$index, $index)" href="" class="btn btn-danger">Видалити субкатегорію</a> 
-    </div>
-
+    
   </div>
 </div>
   

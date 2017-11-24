@@ -242,7 +242,7 @@ function sendFile(file) {
     $scope.ssubcategory = {};
     $scope.ssubcategory.s_id = $scope.subcatId;
 
-
+ 
 
     if ($scope.subcatId) {
         catService.getSubcat($scope.subcatId).then(function(data){
@@ -258,7 +258,7 @@ function sendFile(file) {
 
     catService.getCats().then(function(data){
         $scope.categories = data;
-        
+        console.log($scope.categories);
     });
 
     $scope.category = {};
@@ -346,7 +346,7 @@ function sendFile(file) {
         confirmService.openConfirm(message).then(function(data){
             if (data === true) {
                 catService.deleteSsubcat(id).then(function(data){
-                    $scope.categories[parentIndex].ssubcats.splice(index, 1);
+                    $scope.categories[parentIndex].subcats.splice(index, 1);
                     $modalStack.dismissAll();
                 });
             } else {
