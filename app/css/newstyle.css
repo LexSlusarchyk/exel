@@ -11,24 +11,17 @@ body {
   font-size: 1em;
 }*/
 
-hr {
-  margin: 0;
-  padding: 0;
-}
-
 .topBar {
   color: #324A5E;
   font-family: 'Play', sans-serif;
-  font-size: 18px;
-  padding-top: 10px;
+  font-size: 14px;
+  padding-top: 5px;
   text-align: center;
 }
 
 #headerBar {
   width: 100%;
-  background-color: #54C0EB;
-  border-bottom: 7px solid #84DBFF;
-  border-top: 7px solid #84DBFF;
+  background-color: #1D73B8;
 }
 
 .logo {
@@ -38,12 +31,29 @@ hr {
 }
 
 #name {
-  color: #324A5E;
+  color: #ffffff;
   font-weight: bold;
   font-family: 'Play', sans-serif;
   font-size: 95px;
   line-height: 0.9em;
   text-decoration: none;
+}
+
+#navButton {
+	background-color: #54C0EB;
+	border: 2px solid #324A5E;
+	position: relative;
+	top: -70px;
+}
+
+#navButton:active {
+	background-color: #84DBFF;
+}
+
+#navButtonNext {
+  font-size: 20px;
+  color: #324A5E;
+  padding:2px 3px 0px 3px;
 }
 
 .cat .navbar-default .navbar-nav > li > a {
@@ -53,22 +63,76 @@ hr {
 	font-weight: bold;
 }
 
-#catMenu {
+#seachInput {
+  padding: 5px 20px 5px 20px;
+  border-radius: 4px;
+  text-align: right;
+}
+
+#formSearch {
+  height: 40px;
+  width: 34%;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.dropSubMenu {
+    position: relative;
+}
+
+#dropMenu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+#subSubcatMenu {
+  color: #324A5E;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+#subSubcatMenu > a {
+  text-align: left;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+#subCatMenu {
   color: #324A5E;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  line-height: 3em;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+}
+#catMenu {
+  color: #324A5E;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
 }
 
-  #overflowTitle {
-    font-size: 1.1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 300px;
-    height: 50px;
-    padding-left: 10px
-  }
+#productState {
+  width: 100%;
+	border-radius: 10px;
+}
+
+#overflowTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 95%;
+  height: 45px;
+}
 
 #stylePrice {
   font-size: 1em;
@@ -77,4 +141,27 @@ hr {
   padding: 1px 6px 2px 6px;
   background-color: #54C0EB;
   border-radius: 10px;
+}
+
+#productArea {
+  padding: 0 3%;
+}
+
+#productBar {
+  padding-left: 3%;
+}
+
+#productPrice {
+  font-size: 1.4em;
+  color: #ffffff;
+  background-color: #54C0EB;
+  border-radius: 10px;
+  padding: 1px 6px 2px 6px;
+}
+
+#hiddenBar {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 700px;
+  border-bottom: 10px solid rgba(84, 192, 235, 0.6);
 }

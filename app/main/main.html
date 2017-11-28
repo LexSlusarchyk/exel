@@ -3,91 +3,91 @@
 <br>
 
 <div class="container-fluid">
-<section class="products">	
-	<div class="row">
-		<div class="container-fluid col-lg-12"> 
-			<div class="list-group">
- 						<div ng-repeat="cat in categories track by $index" class="cat">
-  							<nav class="navbar navbar-default">
- 							  <div class="container">
- 							    <ul class="nav navbar-nav">
- 							      <li class="dropdown">
- 							        <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="main.category({ catId: cat.c_id })" class="text-center">{{cat.title}}<span class="caret"></span></a>
- 									<ul id="catMenu" class="dropdown-menu">
- 										<!--Підкатегорії-->
- 										<div ng-repeat="subcat in cat.subcats track by $index">
- 											<a ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span><img ng-src="{{subcat.images}}" alt="" style="height: 50%; width: 50%;">{{subcat.title}}<hr/ style="margin:0px;"></span></a>
- 											<!--Субкатегорії-->
- 											<div ng-repeat="subsubcat in subcat.subcats track by $index" class="list-group-item ssubcat">
-										        <a ui-sref="main.ssubcategory({ ssubcatId: subsubcat.ss_id })" class="text-center"><span><img ng-src="{{subsubcat.images}}" alt="" style="height: 50%; width: 50%;">{{subsubcat.title}}</span></a>     
-									        </div>
+<section class="products">
+      </br>
+      <nav class="navbar navbar-default">
+        <div class="row">
 
- 										</div>
- 							        </ul>
- 							      </li>
- 							    </ul>
- 							  </div>
- 							</nav>
-  						</div>
-					</div>	
-		</div>
-		<div class="container-fluid">
+          <div class="col-md-8">
+            <ul class="nav navbar-nav" ng-repeat="cat in categories track by $index" class="cat">
+              <li id="catMenu" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" class="text-center">{{cat.title}}<span class="caret"></span></a>
+                <ul id="subCatMenu" class="dropdown-menu">
+                  <li class="dropdown" ng-repeat="subcat in cat.subcats track by $index">
+                    <a class="dropSubMenu" tabindex="-1" ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}}<span class="caret"></span></span></a>
+                    <ul class="dropdown-menu" id="dropMenu">
+                      <li id="subSubcatMenu" class="dropdown" ng-repeat="subsubcat in subcat.subcats track by $index">
+                        <a tabindex="-1" ui-sref="main.ssubcategory({ ssubcatId: subsubcat.ss_id })" class="text-center"><span><img ng-src="{{subsubcat.images}}" alt="" style="height: 50%; width: 50%;"> {{subsubcat.title}}</span></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <script>
+            var $j = jQuery.noConflict();
+            $j(document).ready(function(){
+              $j('.dropSubMenu').on("click", function(e){
+                $j(this).next('ul').toggle();
+                e.stopPropagation();
+              });
+            });
+          </script>
+
+          <div class="col-md-4">
+            <div id="seachInput" class="row"><span id="clickSearch"><input id="formSearch" ng-model="$products.query" placeholder="Пошук">
+            </span></div>
+          </div>
+
+        </div>
+      </nav>
+
+
+          <script>
+          $j(document).ready(function(){
+              $j("#clickSearch").focusin(function(){
+                  var div = $j("#formSearch");
+                  div.animate({width: '100%'}, "slow");
+              });
+              $j("#clickSearch").focusout(function(){
+                  var div = $j("#formSearch");
+                  div.animate({width: '34%'}, "slow");
+              });
+          });
+          </script>
+
+
 			<div class="row">
-				<div class="container col-lg-3">
-					<span id="clickSearch"><input id="formSearch" ng-model="$products.query" placeholder="Пошук" style="height:50px;width:50%;padding-left:15px;border-radius:4px;">
-					</span>
-					<hr/ style="margin:10px 0;">
-					<script>
- 					$(document).ready(function(){
- 					    $("#clickSearch").click(function(){
- 					        var div = $("#formSearch");
- 					        div.animate({height: '50px', width: '100%'}, "slow");
- 					    });
- 					});
- 					</script>
-
- 					<script>
- 					$(document).ready(function(){
- 					    $("#clickSearch").hover(function(){
- 								var div = $("#formSearch");
- 								div.animate({height: '50px', width: '100%'}, "slow");
- 					    },
- 					    function(){
- 								var div = $("#formSearch");
- 								div.animate({height: '50px', width: '50%'}, "slow");
- 					    });
- 					});
- 					</script>
-
-				    	
-				</div> 
-
-				<div class="col-lg-9">
-					<div ui-view></div>
-
-					<hr>
-					<h3>Новинки</h3>
+				<div class="container col-md-3">
 					
-					<div ng-cloak class="ng-cloak portfolio-container row grid-space-20">
-						<div  ng-repeat="product in products track by $index" class="col-sm-6 col-md-4 portfolio-item {{product.title}}">
-							<div class="image-box">
-								<p id="overflowTitle">{{product.title}}</p>
-								<div class="overlay-container">
-								<img ng-src="{{product.image}}" alt="">
-								<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
-								<i class="glyphicon glyphicon-zoom-in"></i>
-								<span>{{product.price + ' ₴'}}</span>
-								</a>
-								<span id="stylePrice">{{product.price + ' ₴'}}</span>
-								</div>
-							
-							</div>
-						</div>
-					</div> 
+
 				</div>
+
+				<div class="col-md-9">
+					<div ui-view></div>
+					<hr>
+
+					<h3>Новинки</h3>
+					<div class="container-fluid" ng-cloak class="ng-cloak portfolio-container">
+							<div ng-repeat="product in products track by $index" class="portfolio-item">
+								<div class="col-sm-3 col-md-3 image-box">
+									<p id="overflowTitle">{{product.title}}</p>
+									<div class="overlay-container">
+										<img ng-src="{{product.image}}" alt="">
+										<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+  										<i class="glyphicon glyphicon-zoom-in"></i>
+  										<span>{{product.price + ' ₴'}}</span>
+										</a>
+										<span id="stylePrice">{{product.price + ' ₴'}}</span>
+								  </div>
+  							</div>
+  						</div>
+  				</div>
+
 			</div>
-		</div>
-	</div>
+
 </section>
 </div>
 <!--
