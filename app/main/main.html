@@ -29,7 +29,7 @@
           <script>
             var $j = jQuery.noConflict();
             $j(document).ready(function(){
-              $j('.dropSubMenu').on("click", function(e){
+              $j('.dropSubMenu').mouseenter (function(e){
                 $j(this).next('ul').toggle();
                 e.stopPropagation();
               });
