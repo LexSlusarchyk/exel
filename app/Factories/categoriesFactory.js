@@ -94,6 +94,13 @@ angular.module('exel').factory('catService', ['$http', '$q', '$modal', 'Cropper'
 		return defer.promise
 	}
 
+	_getSsubcatsBySubCategoryId = function(id) {
+		defer = $q.defer();
+		$http.post('api/categories/getSsubcatsBySubCategoryId.php', id).success(function(data){
+			defer.resolve(data);
+		});
+		return defer.promise
+	};
 
 	catService.createCat = _createCat;
 	catService.getCats = _getCats;
@@ -106,7 +113,7 @@ angular.module('exel').factory('catService', ['$http', '$q', '$modal', 'Cropper'
 	catService.editSsubсat = _editSsubcat;
 	catService.deleteSubcat = _deleteSubcat;
 	catService.deleteSsubcat = _deleteSsubcat;
-	
+	catService.getSsubcatsBySubCategoryId = _getSsubcatsBySubCategoryId;
 	
     return catService;
 }]);

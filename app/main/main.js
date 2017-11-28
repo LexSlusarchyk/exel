@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 angular.module('exel.main', ['ngRoute'])
 
@@ -112,16 +112,21 @@ angular.module('exel.main', ['ngRoute'])
         })
     }
 
-    catService.getCats().then(function(data){
-        $scope.categories = data;
+//    catService.getCats().then(function(data){
+//        $scope.categories = data;
         
-    });
+//    });
 
-    $scope.category = {};
+   $scope.category = {};
 
 
     productsService.getListBySubCategoryId($stateParams.subcatId).then(function(data){
         $scope.products = data;
+    })
+
+    catService.getSsubcatsBySubCategoryId($stateParams.subcatId).then(function(data){
+        $scope.ssubs = data;
+        console.log($scope.ssubs);
     })
 
 }])

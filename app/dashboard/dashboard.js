@@ -399,7 +399,7 @@ function sendFile(file) {
 
 .controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', function($scope, $modalStack, productsService, confirmService) {
     productsService.getProducts().then(function(data){
-        $scope.products = data;
+        $scope.products = data.reverse();
     })
 
     $scope.deleteProduct = function(product, index) {
@@ -420,7 +420,7 @@ function sendFile(file) {
 
 .controller('DashboardOrdersController', ['$scope', '$modalStack', 'ordersService', 'confirmService', '$stateParams', function($scope, $modalStack, ordersService, confirmService, $stateParams) {
     ordersService.getOrders().then(function(data){
-        $scope.orders = data;
+        $scope.orders = data.reverse();
     })
 
     ordersService.getOrder($stateParams.orderId).then(function(data){
@@ -516,17 +516,50 @@ function sendFile(file) {
     }
  
     $scope.submitProduct = function(product) {
+        var dataToSend = $scope.getData(product);
         if ($stateParams.productId) {
-            productsService.editProduct(product).then(function(data){
+            productsService.editProduct(dataToSend).then(function(data){
                 $location.path('dashboard/products');
             })
         } else {
-            productsService.createProduct(product).then(function(data){
+            productsService.createProduct(dataToSend).then(function(data){
                 $location.path('dashboard/products')
             })
         }
-        
     }
+
+    $scope.getData = function(product) {
+        var data = {};
+ 
+        if (product.title) {
+            data.title = product.title;
+        }
+        if (product.spec) {
+            data.spec = product.spec;
+        }
+        if (product.price) {
+            data.price = product.price;
+        }   
+        if (product.c_id) {
+            data.c_id = product.c_id;
+        }
+        if (product.s_id) {
+            data.s_id = product.s_id;
+        }
+        if (product.ss_id) {
+            data.ss_id = product.ss_id;
+        }
+        if (product.image) {
+            data.image = product.image;
+        } 
+        if (product.text) {
+            data.text = product.text;
+        }
+        return data;
+
+    }
+
+
 
     $scope.triggerInput = function() {
         $('#photo-input').click();
