@@ -23,7 +23,7 @@ angular.module('exel.main', ['ngRoute'])
         })
 
         .state('main.ssubcategory', {
-            url:'/subcategory/:ssubcatId',
+            url:'/ssubcategory/:ssubcatId',
             templateUrl: 'products/category.html',
             controller: 'SsubCategoryController'
         })
