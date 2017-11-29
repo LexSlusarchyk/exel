@@ -165,20 +165,39 @@ angular.module('exel.main', ['ngRoute'])
 
 
 
-productsService.getProducts().then(function(data){
-    console.log(data);
-  $scope.products = data.reverse();
-  if ($scope.products.length > 4) {
-    $scope.products = $scope.products.splice(0, 9);
-  }
-  //$scope.mainProduct = $scope.products.splice(0, 1)[0];
-})
+    productsService.getProducts().then(function(data){
+        console.log(data);
+      $scope.products = data.reverse();
+      if ($scope.products.length > 4) {
+        $scope.products = $scope.products.splice(0, 9);
+      }
+      //$scope.mainProduct = $scope.products.splice(0, 1)[0];
+    })
 
-catService.getCats().then(function(data){
-        $scope.categories = data;
-        
+    catService.getCats().then(function(data){
+            $scope.categories = data;
+            
+        });
+
+        $scope.category = {};
+
+    var $j = jQuery.noConflict();
+        $j(document).ready(function(){
+          $j('.dropSubMenu').mouseenter (function(e){
+            $j(this).next('ul').toggle();
+            e.stopPropagation();
+          });
     });
 
-    $scope.category = {};
+    $j(document).ready(function(){
+      $j("#clickSearch").focusin(function(){
+          var div = $j("#formSearch");
+          div.animate({width: '100%'}, "slow");
+      });
+      $j("#clickSearch").focusout(function(){
+          var div = $j("#formSearch");
+          div.animate({width: '34%'}, "slow");
+      });
+    });
 
 }]);
