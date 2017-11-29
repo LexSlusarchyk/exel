@@ -160,8 +160,8 @@ angular.module('exel.main', ['ngRoute'])
 
 
 
-.controller('MainPageController', ['$scope', '$http', '$animate', 'newsService', 'productsService', 'catService', 
-    function($scope, $http, $animate, newsService, productsService, catService) {
+.controller('MainPageController', ['$scope', '$http', '$animate', 'productsService', 'catService', 
+    function($scope, $http, $animate, productsService, catService) {
 
 
 
