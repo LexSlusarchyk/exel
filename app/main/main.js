@@ -154,7 +154,7 @@ angular.module('exel.main', ['ngRoute'])
         })
     }
 
-
+    $scope.loadMore();
 
 
 
