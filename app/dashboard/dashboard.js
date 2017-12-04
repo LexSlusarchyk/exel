@@ -463,6 +463,9 @@ function sendFile(file) {
         if (product.ss_id) {
             data.ss_id = product.ss_id;
         }
+        if (product.maker) {
+            data.maker = product.maker;
+        }
         if (product.image) {
             data.image = product.image;
         } 

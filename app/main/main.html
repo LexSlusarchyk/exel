@@ -5,27 +5,28 @@
 <div class="container-fluid">
 <section class="products">
 			<div class="row">
+				<!--
 				<div class="container col-md-3">
 					
 
-				</div>
-
-				<div class="col-md-9">
+				</div>-->
+					
+				<div class="col-md-12">
 					<div ui-view></div>
 					<hr>
 
 					<h3>Новинки</h3>
 					<div class="container-fluid" ng-cloak class="ng-cloak portfolio-container">
-							<div ng-repeat="product in products track by $index" class="portfolio-item">
+							<div ng-repeat="newProduct in newProducts track by $index" class="portfolio-item">
 								<div class="col-sm-3 col-md-3 image-box">
-									<p id="overflowTitle">{{product.title}}</p>
+									<p id="overflowTitle">{{newProduct.title}}</p>
 									<div class="overlay-container">
-										<img ng-src="{{product.image}}" alt="">
-										<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+										<img ng-src="{{newProduct.image}}" alt="">
+										<a class="overlay" ui-sref="products({productId:newProduct.id})" data-target="#{{$index}}">
   										<i class="glyphicon glyphicon-zoom-in"></i>
-  										<span>{{product.price + ' ₴'}}</span>
+  										<span>{{newProduct.price + ' ₴'}}</span>
 										</a>
-										<span id="stylePrice">{{product.price + ' ₴'}}</span>
+										<span id="stylePrice">{{newProduct.price + ' ₴'}}</span>
 								  </div>
   							</div>
   						</div>

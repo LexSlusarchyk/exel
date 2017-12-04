@@ -8,20 +8,49 @@
 	<a ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center"><span><img ng-src="{{ssub.images}}" alt="" style="height: 25%; width: 25%;">{{ssub.title}}</span></a> 
 </div>
 <!--infinite-scroll='loadMore()' infinite-scroll-distance='2' Place on div for infinity scrol-->
+<hr>
+<div class="row">
+	<div class="col-md-3">
 
-<div ng-cloak class="ng-cloak portfolio-container row grid-space-20" >
-	<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class="col-sm-6 col-md-4 portfolio-item {{product.title}}">
-		<div class="image-box">
-			<p id="overflowTitle">{{product.title}}</p>
-			<div class="overlay-container">
-				<img ng-src="{{product.image}}" alt="">
-				<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
-				<i class="glyphicon glyphicon-zoom-in"></i>
-				<span>{{product.price + ' ₴'}}</span>
-				</a>
-				<span id="stylePrice">{{product.price + ' ₴'}}</span>
-			</div>					
-		</div>
+		<h2>Фільтри</h2>
+		<a href="" class="btn btn-primary" ng-click="filterMore()">Фільтрувати товари</a>
+		<a href="" class="btn btn-primary" ng-click="cleanFilter()">Скинути фільтри</a>
 	</div>
-</div> 
-<a href="" class="btn btn-primary" ng-click="loadMore()">Загрузити ще товарів</a>
+
+	<div class="col-md-9">
+		<div ng-cloak class="ng-cloak portfolio-container row grid-space-20" >
+			<div  ng-repeat="filtproduct in filtproducts track by $index" class="col-sm-6 col-md-4 portfolio-item">
+				<div class="image-box">
+					<p id="overflowTitle">{{filtproduct.title}}</p>
+					<div class="overlay-container">
+						<img ng-src="{{filtproduct.image}}" alt="">
+						<a class="overlay" ui-sref="products({productId:filtproduct.id})" data-target="#{{$index}}">
+						<i class="glyphicon glyphicon-zoom-in"></i>
+						<span>{{filtproduct.price + ' ₴'}}</span>
+						</a>
+						<span id="stylePrice">{{filtproduct.price + ' ₴'}}</span>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div ng-cloak ng-hide="filtproducts.length > 0" class="ng-cloak portfolio-container row grid-space-20" >
+
+			<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class="col-sm-6 col-md-4 portfolio-item">
+				<div class="image-box">
+					<p id="overflowTitle">{{product.title}}</p>
+					<div class="overlay-container">
+						<img ng-src="{{product.image}}" alt="">
+						<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+						<i class="glyphicon glyphicon-zoom-in"></i>
+						<span>{{product.price + ' ₴'}}</span>
+						</a>
+						<span id="stylePrice">{{product.price + ' ₴'}}</span>
+					</div>					
+				</div>
+				</div>
+			</div> 
+			<a href="" class="btn btn-primary" ng-click="loadMore()">Загрузити ще товарів</a>
+		</div>
+
+	</div>
+</div>

@@ -92,11 +92,11 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.category = {};
 
-
+    /*
     productsService.getListByCategoryId($stateParams.catId).then(function(data){
         $scope.products = data;
     })
-
+    */
 }])
 
 .controller('SubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService) {
@@ -112,11 +112,6 @@ angular.module('exel.main', ['ngRoute'])
         })
     }
 
-//    catService.getCats().then(function(data){
-//        $scope.categories = data;
-        
-//    });
-
    $scope.category = {};
 
    catService.getSsubcatsBySubCategoryId($stateParams.subcatId).then(function(data){
@@ -124,14 +119,8 @@ angular.module('exel.main', ['ngRoute'])
         console.log($scope.ssubs);
     })
 
-
-    /*productsService.getListBySubCategoryId($stateParams.subcatId).then(function(data){
-        $scope.products = data;
-    }) */
-
     $scope.products = [];
-
-    
+   
     $scope.loadMore = function() {
 
         var params = {
@@ -153,9 +142,33 @@ angular.module('exel.main', ['ngRoute'])
             }
         })
     }
-
     $scope.loadMore();
 
+    $scope.filtproducts = [];
+    $scope.filterMore = function() {
+
+        var params = {
+        s_id: $stateParams.subcatId,
+        maker: 1
+        }
+
+        productsService.getFilterListBySubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.filtproducts.push(response[i]);
+
+                }
+            }
+        })
+    }
+
+    $scope.cleanFilter = function() {
+        $scope.filtproducts = [];
+        
+    }
 
 
 
@@ -181,10 +194,37 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.category = {};
 
-
+/*
     productsService.getListBySsubCategoryId($stateParams.ssubcatId).then(function(data){
         $scope.products = data;
     })
+*/
+    $scope.products = [];
+
+    
+    $scope.loadMore = function() {
+
+        var params = {
+        ss_id: $stateParams.ssubcatId,
+        limit: 10,
+        offset: $scope.products.length
+        
+        }
+
+        productsService.getListBySsubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.products.push(response[i]);
+
+                }
+            }
+        })
+    }
+
+    $scope.loadMore();
 
 }])
 
@@ -197,9 +237,9 @@ angular.module('exel.main', ['ngRoute'])
 
     productsService.getProducts().then(function(data){
         console.log(data);
-      $scope.products = data.reverse();
-      if ($scope.products.length > 4) {
-        $scope.products = $scope.products.splice(0, 9);
+      $scope.newProducts = data.reverse();
+      if ($scope.newProducts.length > 4) {
+        $scope.newProducts = $scope.newProducts.splice(0, 9);
       }
       //$scope.mainProduct = $scope.products.splice(0, 1)[0];
     })
