@@ -383,7 +383,7 @@ function sendFile(file) {
 
 
 
-.controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', 'catService', function($scope, $stateParams, $location, cropperService, productsService, catService) {
+.controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', 'catService', 'filtersService', function($scope, $stateParams, $location, cropperService, productsService, catService, filtersService) {
     $scope.product = {};
 
     if ($stateParams.productId) {
@@ -402,7 +402,11 @@ function sendFile(file) {
         };
     });
 
-    $scope.product = {};
+    filtersService.getMakers($stateParams.productId).then(function(data){
+            $scope.makers = data;
+        
+    });
+
 
     $scope.getSubcatsList = function() {
          $scope.subSubcatsList = null;
@@ -476,8 +480,6 @@ function sendFile(file) {
 
     }
 
-
-
     $scope.triggerInput = function() {
         $('#photo-input').click();
     }
@@ -492,18 +494,6 @@ function sendFile(file) {
     $scope.deletePhoto = function(index) {
         $scope.product.image = null;
     }
-
-    catService.getCats().then(function(data){
-        $scope.services = data;
-        console.log(data);
-        })
-
-    catService.getCats().then(function(data){
-        $scope.categories = data;
-        
-    });
-
-    $scope.category = {};
 
 }])
 

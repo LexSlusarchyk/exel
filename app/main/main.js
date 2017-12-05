@@ -99,7 +99,7 @@ angular.module('exel.main', ['ngRoute'])
     */
 }])
 
-.controller('SubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService) {
+.controller('SubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService, filtersService) {
     console.log('çontroller runs');
     $scope.categoryId = $stateParams.catId;
     $scope.subcatId = $stateParams.subcatId;
@@ -119,7 +119,17 @@ angular.module('exel.main', ['ngRoute'])
         console.log($scope.ssubs);
     })
 
+   filtersService.getMakers($stateParams.productId).then(function(data){
+            $scope.makers = data;   
+    });
+
+
     $scope.products = [];
+
+    $scope.onSelectOptionChanged = function() {
+        $scope.products.length = 0;
+        $scope.loadMore();
+    }
    
     $scope.loadMore = function() {
 
@@ -128,6 +138,10 @@ angular.module('exel.main', ['ngRoute'])
         limit: 10,
         offset: $scope.products.length
         
+        }
+
+        if ($scope.maker) {
+            params.maker = $scope.maker
         }
 
         productsService.getListBySubCategoryId(params).then(function(response) {
@@ -145,29 +159,15 @@ angular.module('exel.main', ['ngRoute'])
     $scope.loadMore();
 
     $scope.filtproducts = [];
-    $scope.filterMore = function() {
 
-        var params = {
-        s_id: $stateParams.subcatId,
-        maker: 1
-        }
-
-        productsService.getFilterListBySubCategoryId(params).then(function(response) {
-                console.log(response);
-            if (response) {
-
-                for (var i =0; i < response.length; i++) {
-
-                $scope.filtproducts.push(response[i]);
-
-                }
-            }
-        })
-    }
+    $scope.maker = null;
 
     $scope.cleanFilter = function() {
-        $scope.filtproducts = [];
-        
+
+        $scope.products.length = 0;
+        $scope.maker = null;
+        $scope.loadMore();
+
     }
 
 
