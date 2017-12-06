@@ -392,19 +392,40 @@ function sendFile(file) {
 }])
 
 .controller('DashboardOrdersController', ['$scope', '$modalStack', 'ordersService', 'confirmService', '$stateParams', function($scope, $modalStack, ordersService, confirmService, $stateParams) {
-    ordersService.getOrders().then(function(data){
-        $scope.orders = data.reverse();
-    })
-
-    ordersService.getOrder($stateParams.orderId).then(function(data){
+    
+    if ($stateParams.orderId) {
+        ordersService.getOrder($stateParams.orderId).then(function(data){
         $scope.order = data;
         console.log($scope.order);
-    })
+        })
+    }
+
+    $scope.orders = [];
+    $scope.loadMore = function() {
+
+        var params = {
+        limit: 5,
+        offset: $scope.orders.length        
+        }
+
+        ordersService.getOrders(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.orders.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMore();
 
 }])
 
 
-
+ 
 .controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', 'catService', 'filtersService', function($scope, $stateParams, $location, cropperService, productsService, catService, filtersService) {
     $scope.product = {};
 
