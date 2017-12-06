@@ -349,9 +349,31 @@ function sendFile(file) {
 
 
 .controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', function($scope, $modalStack, productsService, confirmService) {
-    productsService.getProducts().then(function(data){
+ /*   productsService.getProducts().then(function(data){
         $scope.products = data.reverse();
     })
+*/
+    $scope.products = [];
+    $scope.loadMore = function() {
+
+        var params = {
+        limit: 20,
+        offset: $scope.products.length        
+        }
+
+        productsService.getProducts(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.products.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMore();
 
     $scope.deleteProduct = function(product, index) {
         var message = "Ви справді бажаєте видалити товар " + product.title + " ?";

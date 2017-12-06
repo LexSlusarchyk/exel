@@ -234,8 +234,6 @@ angular.module('exel.main', ['ngRoute'])
     }
     $scope.loadMore();
 
-    $scope.filtproducts = [];
-
     $scope.maker = null;
 
     $scope.cleanFilter = function() {
@@ -253,19 +251,30 @@ angular.module('exel.main', ['ngRoute'])
 
 
 
-.controller('MainPageController', ['$scope', '$http', '$animate', 'productsService', 'catService', 
-    function($scope, $http, $animate, productsService, catService) {
+.controller('MainPageController', ['$scope', '$http', '$animate', 'productsService', 'catService', '$stateParams', 
+    function($scope, $http, $animate, productsService, catService, $stateParams) {
 
+    $scope.newProducts = [];
+    $scope.loadMore = function() {
 
+        var params = {
+        limit: 10,
+        offset: $scope.newProducts.length        
+        }
 
-    productsService.getProducts().then(function(data){
-        console.log(data);
-      $scope.newProducts = data.reverse();
-      if ($scope.newProducts.length > 4) {
-        $scope.newProducts = $scope.newProducts.splice(0, 9);
-      }
-      //$scope.mainProduct = $scope.products.splice(0, 1)[0];
-    })
+        productsService.getProducts(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.newProducts.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMore();
 
     catService.getCats().then(function(data){
             $scope.categories = data;

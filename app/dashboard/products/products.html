@@ -1,17 +1,3 @@
-<!--
-<a href="" class="btn btn-success" ui-sref="dashboard.addproduct"><i class="fa fa-plus"></i> Додати товар</a>
-<br><br>
-<div class="list-group">
-  <div ng-repeat="product in products track by $index" class="cat">
-  	<div class="list-group-item cat"><img ng-src="{{product.image}}"> {{product.title}} 	
-      <a href="" ng-click="deleteProduct(product, $index)"  class="btn btn-danger">Видалити товар</a>
-      <a ui-sref="dashboard.editproduct({productId: product.id})" class="btn btn-default">Редагувати товар</a>
-  	</div>
-  	<br>
-
-  </div>
-</div>
--->
 
 <a href="" class="btn btn-success" ui-sref="dashboard.addproduct"><i class="fa fa-plus"></i> Додати товар</a>
 <hr>
@@ -30,3 +16,4 @@
 		</div>
 	</div>
 </div> 
+<a href="" class="btn btn-primary" ng-click="loadMore()">Загрузити ще товарів</a>

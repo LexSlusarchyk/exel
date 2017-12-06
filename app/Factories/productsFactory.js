@@ -11,13 +11,12 @@ angular.module('exel').factory('productsService', ['$http', '$q', '$modal', func
         });
         return defer.promise;
     }
-  
-	_getProducts = function() {
+	_getProducts = function(params) {
 		var defer = $q.defer();
-		$http.get('api/products/getProducts.php').success(function(data){
-	        defer.resolve(data);
-	    });
-	    return defer.promise;
+		$http.post('api/products/getProducts.php', params).success(function(data){
+			defer.resolve(data);
+		});
+		return defer.promise
 	};
 
 	_getProduct = function(id) {
