@@ -112,17 +112,35 @@ angular.module('exel.main', ['ngRoute'])
         })
     }
 
-   $scope.category = {};
+    $scope.category = {};
 
-   catService.getSsubcatsBySubCategoryId($stateParams.subcatId).then(function(data){
+    catService.getSsubcatsBySubCategoryId($stateParams.subcatId).then(function(data){
         $scope.ssubs = data;
         console.log($scope.ssubs);
     })
 
-   filtersService.getMakers($stateParams.productId).then(function(data){
-            $scope.makers = data;   
-    });
+    $scope.makers = [];
+    $scope.loadMakers = function() {
 
+        var params = {
+        s_id: $stateParams.subcatId,
+        limit: 20,
+        offset: $scope.makers.length       
+        }
+
+        filtersService.getListBySubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.makers.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMakers();
 
     $scope.products = [];
 
@@ -158,7 +176,6 @@ angular.module('exel.main', ['ngRoute'])
     }
     $scope.loadMore();
 
-    $scope.filtproducts = [];
 
     $scope.maker = null;
 
@@ -194,11 +211,28 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.category = {};
 
+    $scope.makers = [];
+    $scope.loadMakers = function() {
 
-    filtersService.getMakers($stateParams.productId).then(function(data){
-            $scope.makers = data;   
-    });
+        var params = {
+        s_id: $stateParams.subcatId,
+        limit: 20,
+        offset: $scope.makers.length       
+        }
 
+        filtersService.getListBySubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.makers.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMakers();
 
     $scope.products = [];
 

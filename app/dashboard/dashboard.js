@@ -19,6 +19,31 @@ angular.module('exel')
     templateUrl: 'dashboard/products/products.html',
     controller: 'DashboardProductsController'
   })
+  .state('dashboard.addproduct', {
+    url:'/addproduct',
+    templateUrl: 'dashboard/products/addProduct.html',
+    controller: 'DashboardAddProductController'
+  })
+  .state('dashboard.editproduct', {
+    url:'/editproduct/:productId',
+    templateUrl: 'dashboard/products/addProduct.html',
+    controller: 'DashboardAddProductController'
+  })
+  .state('dashboard.makers', {
+    url:'/makers',
+    templateUrl: 'dashboard/makers/makers.html',
+    controller: 'DashboardMakersController'
+  })
+  .state('dashboard.addmaker', {
+    url:'/addmaker',
+    templateUrl: 'dashboard/makers/addMaker.html',
+    controller: 'DashboardAddMakerController'
+  })
+  .state('dashboard.editmaker', {
+    url:'/editmaker/:makerId',
+    templateUrl: 'dashboard/makers/addMaker.html',
+    controller: 'DashboardAddMakerController'
+  })
   .state('dashboard.orders', {
     url:'/orders',
     templateUrl: 'dashboard/orders/orders.html',
@@ -53,16 +78,6 @@ angular.module('exel')
     url:'/editssubcat/:ssubcatId',
     templateUrl: 'dashboard/categories/addSsubcat.html',
     controller: 'DashboardCategoriesController'
-  })
-  .state('dashboard.addproduct', {
-    url:'/addproduct',
-    templateUrl: 'dashboard/products/addProduct.html',
-    controller: 'DashboardAddProductController'
-  })
-  .state('dashboard.editproduct', {
-    url:'/editproduct/:productId',
-    templateUrl: 'dashboard/products/addProduct.html',
-    controller: 'DashboardAddProductController'
   })
   .state('dashboard.addmember', {
     url:'/addmember',
@@ -105,7 +120,6 @@ $scope.paste = function(e) {
     console.log('Called event paste'); 
 }
 
-
 function sendFile(file) {
     var data = new FormData();
     data.append("file", file);
@@ -124,16 +138,12 @@ function sendFile(file) {
 
 }])
 
-
-
 .controller('ConfirmController', ['$scope',  '$modalStack', 'confirmService', 'message', function($scope, $modalStack, confirmService, message) { 
     $scope.message = message;
     $scope.answerSubmit = function(answer) {
         confirmService.confirmResolve(answer);
     }
 }])
-
-
 
 .controller('CropController', ['$scope', '$http', '$modalInstance', '$animate', 'blob', 'Cropper', '$timeout', 'cropWidth', 'aspectRatio', '$modalStack', 'cropperService', function($scope, $http, $modalInstance, $animate, blob, Cropper, $timeout, cropWidth, aspectRatio, $modalStack, cropperService) {
 
@@ -150,7 +160,6 @@ function sendFile(file) {
     $scope.cropper = {};
     $scope.cropperProxy = 'cropper.first';
 
-
     $scope.preview = function() {
         if (!file || !data) return;
         Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
@@ -158,7 +167,6 @@ function sendFile(file) {
           cropperService.imageData.cropped = dataUrl;
       });
     };
-
 
     $scope.clear = function(degrees) {
         if (!$scope.cropper.first) return;
@@ -180,7 +188,6 @@ function sendFile(file) {
         $modalStack.dismissAll()
     }
 
-
     $scope.showEvent = 'show';
     $scope.hideEvent = 'hide';
 
@@ -197,9 +204,6 @@ function sendFile(file) {
 
 }])
 
-
-
-
 .controller('DashboardCategoriesController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'confirmService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, confirmService) {
 
     $scope.categoryId = $stateParams.catId;
@@ -211,8 +215,6 @@ function sendFile(file) {
     $scope.ssubcatId = $stateParams.ssubcatId;
     $scope.ssubcategory = {};
     $scope.ssubcategory.s_id = $scope.subcatId;
-
- 
 
     if ($scope.subcatId) {
         catService.getSubcat($scope.subcatId).then(function(data){
@@ -240,8 +242,6 @@ function sendFile(file) {
             scope: $scope	     
         })
     };
-
-
 
     $scope.createCategory = function(category) {
         catService.createCat(category).then(function(data){
@@ -293,7 +293,6 @@ function sendFile(file) {
          });
     }
 
-
     $scope.deleteSubcategory = function(subcategory, parentIndex, index) {
         var id = subcategory.s_id;
         var message = "Ви справді бажаєте видалити підкатегорію " + subcategory.title + " ?";
@@ -326,7 +325,6 @@ function sendFile(file) {
 
     }
 
-
     $scope.triggerInput = function() {
             $('#photo-input').click();    
     }
@@ -346,13 +344,7 @@ function sendFile(file) {
 
 }])
 
-
-
 .controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', function($scope, $modalStack, productsService, confirmService) {
- /*   productsService.getProducts().then(function(data){
-        $scope.products = data.reverse();
-    })
-*/
     $scope.products = [];
     $scope.loadMore = function() {
 
@@ -391,6 +383,48 @@ function sendFile(file) {
 
 }])
 
+
+.controller('DashboardMakersController', ['$scope', '$modalStack', 'filtersService', 'confirmService', function($scope, $modalStack, filtersService, confirmService) {
+    $scope.makers = [];
+    $scope.loadMore = function() {
+
+        var params = {
+        limit: 20,
+        offset: $scope.makers.length        
+        }
+
+        filtersService.getMakers(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.makers.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadMore();
+
+    $scope.deleteMaker = function(maker, index) {
+        var message = "Ви справді бажаєте видалити виробника " + maker.name + " ?";
+        confirmService.openConfirm(message).then(function(data){
+            if (data === true) {
+                filtersService.deleteMaker(maker.id).then(function(data){
+                    $scope.makers.splice(index, 1);
+                    $modalStack.dismissAll();
+                })    
+            } else {
+                $modalStack.dismissAll();
+            }
+        })        
+    }
+
+}])
+
+
+
 .controller('DashboardOrdersController', ['$scope', '$modalStack', 'ordersService', 'confirmService', '$stateParams', function($scope, $modalStack, ordersService, confirmService, $stateParams) {
     
     if ($stateParams.orderId) {
@@ -424,8 +458,6 @@ function sendFile(file) {
 
 }])
 
-
- 
 .controller('DashboardAddProductController', ['$scope', '$stateParams', '$location', 'cropperService', 'productsService', 'catService', 'filtersService', function($scope, $stateParams, $location, cropperService, productsService, catService, filtersService) {
     $scope.product = {};
 
@@ -444,12 +476,6 @@ function sendFile(file) {
             })
         };
     });
-
-    filtersService.getMakers($stateParams.productId).then(function(data){
-            $scope.makers = data;
-        
-    });
-
 
     $scope.getSubcatsList = function() {
          $scope.subSubcatsList = null;
@@ -540,30 +566,83 @@ function sendFile(file) {
 
 }])
 
+.controller('DashboardAddMakerController', ['$scope', '$stateParams', '$location', 'catService', 'filtersService', function($scope, $stateParams, $location, catService, filtersService) {
+    $scope.maker = {};
 
-
-
-.controller('DashboardPortfolioController', ['$scope', '$modalStack', 'portfolioService', 'confirmService', function($scope, $modalStack, portfolioService, confirmService) {
-    portfolioService.getItems().then(function(data){
-        $scope.items = data;
-    })
-
-    $scope.deleteItem = function(item, index) {
-        var message = "Ви справді бажаєте видалити елемент " + item.title + " з Вашого портфоліо?";
-        confirmService.openConfirm(message).then(function(data){
-            if (data === true) {
-                portfolioService.deleteItem(item.id).then(function(data){
-                    $scope.items.splice(index, 1);
-                    $modalStack.dismissAll();
-                })    
-            } else {
-                $modalStack.dismissAll();
-            }
-        })        
+    if ($stateParams.makerId) {
+        filtersService.getMaker($stateParams.makerId).then(function(data){
+            $scope.maker = data;
+        }) 
     }
+
+    catService.getCats().then(function(data){
+        $scope.categories = data;
+        if ($stateParams.makerId) {
+            filtersService.getMaker($stateParams.makerId).then(function(data){
+                $scope.maker = data;  
+                $scope.getSubcatsList();
+            })
+        };
+    });
+
+    $scope.getSubcatsList = function() {
+         $scope.subSubcatsList = null;
+        for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].c_id === $scope.maker.c_id) {
+                $scope.subcatsList = $scope.categories[i].subcats;
+                console.log($scope.subcatsList)
+                break
+            }
+        }
+    }
+
+    $scope.getSubSubcatsList = function() {
+        for (var i = 0; i < $scope.subcatsList.length; i++) {
+            if ($scope.subcatsList[i].s_id === $scope.maker.s_id) {
+                $scope.subSubcatsList = $scope.subcatsList[i].subcats;
+                console.log($scope.subSubcatsList)
+                break
+            }
+        }
+    }
+ 
+    $scope.submitMaker = function(maker) {
+        var dataToSend = $scope.getData(maker);
+        
+        if ($stateParams.makerId) {
+            filtersService.editMaker(dataToSend).then(function(data){
+                $location.path('dashboard/makers');
+            })
+        } else {
+            filtersService.createMaker(dataToSend).then(function(data){
+                $location.path('dashboard/makers')
+            })
+        }
+    }
+
+    $scope.getData = function(maker) {
+        var data = {};
+        
+        if (maker.id) {
+            data.id = maker.id;
+        }
+        if (maker.name) {
+            data.name = maker.name;
+        }
+        if (maker.c_id) {
+            data.c_id = maker.c_id;
+        }
+        if (maker.s_id) {
+            data.s_id = maker.s_id;
+        }
+        if (maker.ss_id) {
+            data.ss_id = maker.ss_id;
+        }
+        return data;
+
+    }
+
 }])
-
-
 
 .controller('DashboardTeamController', ['$scope', '$modalStack', 'confirmService', 'teamService', function($scope, $modalStack, confirmService, teamService) {
 
@@ -586,9 +665,6 @@ function sendFile(file) {
         })        
     }
 
-
-
-
 }])
 
 .controller('DashboardAddMemberController', ['$scope', '$location', '$stateParams', 'cropperService', 'teamService', function($scope, $location, $stateParams, cropperService, teamService) {
@@ -601,7 +677,6 @@ function sendFile(file) {
             
         })
     }
-
 
     $scope.submitMember = function(member) {
         if ($stateParams.memberId) {

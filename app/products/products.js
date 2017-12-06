@@ -23,7 +23,7 @@ angular.module('exel')
     $scope.loadMore = function() {
 
         var params = {
-        limit: 10,
+        limit: 5,
         offset: $scope.products.length        
         }
 
