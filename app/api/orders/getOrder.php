@@ -8,11 +8,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 mysqli_set_charset($conn,"utf8");
 $sql = "SELECT * FROM Orders WHERE id=$postdata";
 
-$result = $conn->query($sql)->fetch_object();
-/*
-$result->spec = stripslashes($result->spec);
-$result->text = stripslashes($result->text);
-*/
+
+
+$result = $conn->query($sql);
+
+$result = $result->fetch_object();
+
 print json_encode($result);
 
 $conn->close();

@@ -174,7 +174,7 @@ angular.module('exel.main', ['ngRoute'])
 
 }])
 
-.controller('SsubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService) {
+.controller('SsubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService, filtersService) {
     console.log('çontroller runs');
     $scope.subcategoryId = $stateParams.subcatId;
     $scope.ssubcatId = $stateParams.ssubcatId;
@@ -194,21 +194,30 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.category = {};
 
-/*
-    productsService.getListBySsubCategoryId($stateParams.ssubcatId).then(function(data){
-        $scope.products = data;
-    })
-*/
+
+    filtersService.getMakers($stateParams.productId).then(function(data){
+            $scope.makers = data;   
+    });
+
+
     $scope.products = [];
 
-    
+    $scope.onSelectOptionChanged = function() {
+        $scope.products.length = 0;
+        $scope.loadMore();
+    }
+   
     $scope.loadMore = function() {
 
         var params = {
-        ss_id: $stateParams.ssubcatId,
+        s_id: $stateParams.subcatId,
         limit: 10,
         offset: $scope.products.length
         
+        }
+
+        if ($scope.maker) {
+            params.maker = $scope.maker
         }
 
         productsService.getListBySsubCategoryId(params).then(function(response) {
@@ -223,8 +232,22 @@ angular.module('exel.main', ['ngRoute'])
             }
         })
     }
-
     $scope.loadMore();
+
+    $scope.filtproducts = [];
+
+    $scope.maker = null;
+
+    $scope.cleanFilter = function() {
+
+        $scope.products.length = 0;
+        $scope.maker = null;
+        $scope.loadMore();
+
+    }
+
+
+
 
 }])
 
