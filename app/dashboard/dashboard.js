@@ -384,16 +384,56 @@ function sendFile(file) {
 }])
 
 
-.controller('DashboardMakersController', ['$scope', '$modalStack', 'filtersService', 'confirmService', function($scope, $modalStack, filtersService, confirmService) {
+.controller('DashboardMakersController', ['$scope', '$modalStack', 'filtersService', 'confirmService', '$stateParams', 'catService', function($scope, $modalStack, filtersService, confirmService, $stateParams, catService) {
+   
+
+    catService.getCats().then(function(data){
+        $scope.categories = data;
+    });
+
+    $scope.getSubcatsList = function() {
+         $scope.subSubcatsList = null;
+        for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].c_id === $scope.maker.c_id) {
+                $scope.subcatsList = $scope.categories[i].subcats;
+                console.log($scope.subcatsList)
+                break
+            }
+        }
+    }
+
+    $scope.getSubSubcatsList = function() {
+        for (var i = 0; i < $scope.subcatsList.length; i++) {
+            if ($scope.subcatsList[i].s_id === $scope.maker.s_id) {
+                $scope.subSubcatsList = $scope.subcatsList[i].subcats;
+                console.log($scope.subSubcatsList)
+                break
+            }
+        }
+    }
+
+
+
     $scope.makers = [];
+
+    $scope.onSelectOptionChanged = function() {
+        $scope.makers.length = 0;
+        $scope.loadMore();
+    }
+
     $scope.loadMore = function() {
 
         var params = {
         limit: 20,
-        offset: $scope.makers.length        
+        offset: $scope.makers.length,
+        s_id: $scope.maker.s_id,       
         }
 
-        filtersService.getMakers(params).then(function(response) {
+        if ($scope.maker.ss_id) {
+            params.ss_id = $scope.maker.ss_id
+        }
+
+        filtersService.getListBySubCategoryId(params).then(function(response) {
                 console.log(response);
             if (response) {
 
@@ -405,7 +445,17 @@ function sendFile(file) {
             }
         })
     }
-    $scope.loadMore();
+   // $scope.loadMore();
+
+    $scope.cleanFilter = function() {
+        $scope.makers.length = 0;
+        $scope.maker = null;
+
+    }
+
+
+
+
 
     $scope.deleteMaker = function(maker, index) {
         var message = "Ви справді бажаєте видалити виробника " + maker.name + " ?";

@@ -16,7 +16,7 @@ if (isset($request->ss_id)) {
 
 $sql = getSqlQuery($ss_id, $request->limit, $request->offset);
 function getSqlQuery($ss_id, $limit=NULL, $offset=NULL) {
-    $sql = "SELECT * FROM Products WHERE ss_id='$ss_id'";
+    $sql = "SELECT * FROM Makers WHERE ss_id='$ss_id'";
 
     if ($limit) {
         $sql .= " LIMIT $limit";
