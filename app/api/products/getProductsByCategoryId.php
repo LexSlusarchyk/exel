@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 
 include '../credentials.php';
@@ -9,7 +9,39 @@ $request = json_decode($postdata);
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 mysqli_set_charset($conn,"utf8");
-$sql = "SELECT * FROM Products WHERE c_id='$postdata'";
+
+if (isset($request->ss_id)) {
+    $ss_id = $request->ss_id;
+} else {
+    $ss_id = NULL;
+}
+
+if (isset($request->s_id)) {
+    $s_id = $request->s_id;
+} else {
+    $s_id = NULL;
+}
+
+$sql = getSqlQuery($s_id, $request->limit, $request->offset, $ss_id);
+function getSqlQuery($s_id, $limit=NULL, $offset=NULL, $ss_id) {
+    $sql = "SELECT * FROM Products WHERE 1=1";
+
+    if ($s_id) {
+        $sql .= " AND s_id=$s_id";
+    }
+    if ($ss_id) {
+        $sql .= " AND ss_id=$ss_id";
+    }
+    if ($limit) {
+        $sql .= " LIMIT $limit";
+    }
+     if ($offset) {
+        $sql .= " OFFSET $offset";
+    }
+    
+    return $sql;
+ }
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -20,7 +52,7 @@ if ($result->num_rows > 0) {
 		print json_encode($rows);   
     
 } else {
-    echo "0 results";
+    echo json_encode(array());
 }
 
 

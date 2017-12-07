@@ -344,7 +344,38 @@ function sendFile(file) {
 
 }])
 
-.controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', function($scope, $modalStack, productsService, confirmService) {
+.controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', 'catService', function($scope, $modalStack, productsService, confirmService, catService) {
+   
+    catService.getCats().then(function(data){
+        $scope.categories = data;
+    });
+
+    $scope.getSubcatsList = function() {
+         $scope.subSubcatsList = null;
+        for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].c_id === $scope.product.c_id) {
+                $scope.subcatsList = $scope.categories[i].subcats;
+                console.log($scope.subcatsList)
+                break
+            }
+        }
+    }
+
+    $scope.getSubSubcatsList = function() {
+        for (var i = 0; i < $scope.subcatsList.length; i++) {
+            if ($scope.subcatsList[i].s_id === $scope.product.s_id) {
+                $scope.subSubcatsList = $scope.subcatsList[i].subcats;
+                console.log($scope.subSubcatsList)
+                break
+            }
+        }
+    }
+
+    $scope.onSelectOptionChanged = function() {
+        $scope.products.length = 0;
+        $scope.filterMore();
+    }
+
     $scope.products = [];
     $scope.loadMore = function() {
 
@@ -367,6 +398,43 @@ function sendFile(file) {
     }
     $scope.loadMore();
 
+
+    $scope.filterMore = function() {
+
+        var params = {
+        limit: 10,
+        offset: $scope.products.length
+             
+        }
+
+        if ($scope.product.s_id) {
+            params.s_id = $scope.product.s_id
+        }
+        if ($scope.product.ss_id) {
+            params.ss_id = $scope.product.ss_id
+        }
+
+        productsService.getListByCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.products.push(response[i]);
+
+                }
+            }
+        })
+    }
+
+    $scope.cleanFilter = function() {
+        $scope.products.length = 0;
+        $scope.product = null;
+        $scope.loadMore();
+    }
+
+
+
     $scope.deleteProduct = function(product, index) {
         var message = "Ви справді бажаєте видалити товар " + product.title + " ?";
         confirmService.openConfirm(message).then(function(data){
@@ -384,7 +452,7 @@ function sendFile(file) {
 }])
 
 
-.controller('DashboardMakersController', ['$scope', '$modalStack', 'filtersService', 'confirmService', '$stateParams', 'catService', function($scope, $modalStack, filtersService, confirmService, $stateParams, catService) {
+.controller('DashboardMakersController', ['$scope', '$modalStack', 'filtersService', 'confirmService', 'catService', function($scope, $modalStack, filtersService, confirmService, catService) {
    
 
     catService.getCats().then(function(data){
@@ -426,7 +494,7 @@ function sendFile(file) {
         var params = {
         limit: 20,
         offset: $scope.makers.length,
-        s_id: $scope.maker.s_id,       
+        s_id: $scope.maker.s_id      
         }
 
         if ($scope.maker.ss_id) {
