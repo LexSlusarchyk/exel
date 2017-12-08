@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 include '../credentials.php';
 $postdata = file_get_contents("php://input");
@@ -10,7 +10,7 @@ mysqli_set_charset($conn,"utf8");
 if (isset($request->title)) {
     $title = $request->title;
 } else {
-    $tite = NULL;
+    $title = NULL;
 }
 
 

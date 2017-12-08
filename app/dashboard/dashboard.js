@@ -345,7 +345,7 @@ function sendFile(file) {
 }])
 
 .controller('DashboardProductsController', ['$scope', '$modalStack', 'productsService', 'confirmService', 'catService', function($scope, $modalStack, productsService, confirmService, catService) {
-   
+///////////////// Підгрузка категорій для створення товару
     catService.getCats().then(function(data){
         $scope.categories = data;
     });
@@ -370,7 +370,7 @@ function sendFile(file) {
             }
         }
     }
-
+//////////////////////////////////////////////////Фільтр по категоріях
     $scope.onSelectOptionChanged = function() {
         $scope.products.length = 0;
         $scope.filterMore();
@@ -402,11 +402,17 @@ function sendFile(file) {
     $scope.filterMore = function() {
 
         var params = {
-        limit: 10,
+        limit: 50,
         offset: $scope.products.length
              
         }
 
+        if ($scope.title) {
+            params.title = $scope.title
+        }
+        if ($scope.product.c_id) {
+            params.c_id = $scope.product.c_id
+        }
         if ($scope.product.s_id) {
             params.s_id = $scope.product.s_id
         }
@@ -427,14 +433,17 @@ function sendFile(file) {
         })
     }
 
+    $scope.title = null;
+
     $scope.cleanFilter = function() {
         $scope.products.length = 0;
         $scope.product = null;
+        $scope.title = null;
         $scope.loadMore();
     }
 
 
-
+/////////////////////////////////////////////////////////
     $scope.deleteProduct = function(product, index) {
         var message = "Ви справді бажаєте видалити товар " + product.title + " ?";
         confirmService.openConfirm(message).then(function(data){
@@ -448,6 +457,7 @@ function sendFile(file) {
             }
         })        
     }
+
 
 }])
 

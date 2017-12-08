@@ -49,7 +49,7 @@
             }
         })
     }
-//    $scope.loadMore();
+
 
     $scope.title = null;
 
