@@ -1,4 +1,18 @@
 
+
+<div  ng-repeat="product in lostproducts track by $index" class="col-sm-6 col-md-4 portfolio-item">
+	<div class="image-box">
+		<p id="overflowTitle">{{product.title}}</p>
+		<div class="overlay-container">
+			<img ng-src="{{product.image}}" alt="">
+			<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+			<i class="glyphicon glyphicon-zoom-in"></i>
+			<span>{{product.price + ' ₴'}}</span>
+			</a>
+			<span id="stylePrice">{{product.price + ' ₴'}}</span>
+		</div>					
+	</div>
+</div>
 <a href="#/dashboard/products" class="text-center"><h2> Адмін панель</h2></a>
 <br>
 

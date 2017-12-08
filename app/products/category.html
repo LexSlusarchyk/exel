@@ -7,6 +7,21 @@
 <div ng-repeat="ssub in ssubs track by $index">
 	<a ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center"><span><img ng-src="{{ssub.images}}" alt="" style="height: 25%; width: 25%;">{{ssub.title}}</span></a> 
 </div>
+<div class="row">
+	<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class="col-sm-6 col-md-4 portfolio-item">
+			<div class="image-box">
+				<p id="overflowTitle">{{product.title}}</p>
+				<div class="overlay-container">
+					<img ng-src="{{product.image}}" alt="">
+					<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+					<i class="glyphicon glyphicon-zoom-in"></i>
+					<span>{{product.price + ' ₴'}}</span>
+					</a>
+					<span id="stylePrice">{{product.price + ' ₴'}}</span>
+				</div>					
+			</div>
+	</div>
+</div>
 <!--infinite-scroll='loadMore()' infinite-scroll-distance='2' Place on div for infinity scrol-->
 <hr>
 <div class="row">
