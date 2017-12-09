@@ -150,7 +150,7 @@ angular.module('exel.main', ['ngRoute'])
     }
    
     $scope.loadMore = function() {
-
+        $scope.lostproducts.length = 0;
         var params = {
         s_id: $stateParams.subcatId,
         limit: 10,
@@ -196,7 +196,7 @@ angular.module('exel.main', ['ngRoute'])
     $scope.subcategoryId = $stateParams.subcatId;
     $scope.ssubcatId = $stateParams.ssubcatId;
     $scope.ssubcategory = {};
-    $scope.ssubcategory.s_id = $scope.subcatId;
+    $scope.ssubcategory.s_id = $scope.subcatId; 
 
     if ($scope.ssubcatId) {
         catService.getSsubcat($scope.ssubcatId).then(function(data){
@@ -242,7 +242,7 @@ angular.module('exel.main', ['ngRoute'])
     }
    
     $scope.loadMore = function() {
-
+        $scope.lostproducts.length = 0;
         var params = {
         s_id: $stateParams.subcatId,
         limit: 10,
@@ -335,5 +335,7 @@ angular.module('exel.main', ['ngRoute'])
           div.animate({width: '34%'}, "slow");
       });
     });
+
+   
 
 }]);

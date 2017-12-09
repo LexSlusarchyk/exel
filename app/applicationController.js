@@ -22,6 +22,7 @@
     $scope.lostproducts = [];
 
     $scope.onSelectOptionChanged = function() {
+        $location.path('/main') 
         $scope.lostproducts.length = 0;
         $scope.searchProduct();
     }
