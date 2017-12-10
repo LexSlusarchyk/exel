@@ -54,6 +54,11 @@ angular.module('exel')
             }
         }
 
+
+    $scope.order = {
+            cart: JSON.stringify($scope.carts)
+        };
+     console.log($scope.order);
     $scope.createOrder = function(order) {
         console.log($scope.order);
         
