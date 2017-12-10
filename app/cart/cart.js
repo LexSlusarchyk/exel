@@ -12,7 +12,7 @@ angular.module('exel')
 }])
 
 
-.controller('CartController', ['$scope', '$location', '$state', '$stateParams', 'productsService', 'modalsService', 'catService', function($scope, $location, $state, $stateParams, productsService, modalsService, catService) {
+.controller('CartController', ['$scope', '$location', '$state', '$stateParams', 'productsService', 'modalsService', 'catService', 'ordersService', function($scope, $location, $state, $stateParams, productsService, modalsService, catService, ordersService) {
     console.log("xx")
 
    
@@ -60,6 +60,10 @@ angular.module('exel')
         ordersService.createOrder($scope.order).then(function(data){
             $scope.isOrderSubmitted = true;
         })
+    }
+
+    $scope.closeCart = function() {
+        $location.path('/main')
     }
 
 
