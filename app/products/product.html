@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-md-6 article">
 			<h2 class="no-top-margin">{{product.title}}</h2>
-			<p>{{product.price + ' ₴'}}</p>
+			<p>{{product.price*currency.cof + ' ₴'}}</p>
 			<p>{{product.spec}}</p>
 			<img ng-src="{{product.image}}">
 			<div data-ng-bind-html="product.text"></div>

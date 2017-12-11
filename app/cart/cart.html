@@ -23,12 +23,12 @@
 								<img ng-src = "{{cart.image}}" style="width: 25%"/>
 							</td>
 
-							<td>₴{{cart.price}}</td>
+							<td>₴{{cart.price*currency.cof}}</td>
 							<td><button type = "button" ng-click = "remove_cart(cart)" class = "btn btn-danger"><span class = "glyphicon glyphicon-remove"></span></button></td>
 						</tr>
 						<tr>
 							<td align = "right">Сума замовлення</td>
-							<td>₴{{total}}</td>
+							<td>₴{{total*currency.cof}}</td>
 						</tr>
 					</tbody>
 				</table>

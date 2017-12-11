@@ -10,12 +10,6 @@ angular.module('exel.main', ['ngRoute'])
             controller: 'MainPageController'
         })
 
-        .state('main.category', {
-            url:'/category/:catId',
-            templateUrl: 'products/category.html',
-            controller: 'CategoryController'
-        })
-
         .state('main.subcategory', {
             url:'/subcategory/:subcatId',
             templateUrl: 'products/category.html',
@@ -26,12 +20,6 @@ angular.module('exel.main', ['ngRoute'])
             url:'/ssubcategory/:ssubcatId',
             templateUrl: 'products/category.html',
             controller: 'SsubCategoryController'
-        })
-
-        .state('main.product', {
-            url:'/product/:id',
-            templateUrl: 'product/product.html',
-            controller: 'ProductController'
         })
 }])
 
@@ -56,50 +44,9 @@ angular.module('exel.main', ['ngRoute'])
     }
 })
 
-.controller('ProductController', ['$scope', '$location', '$state', '$stateParams', 'productsService', 'modalsService', function($scope, $location, $state, $stateParams, productsService, modalsService) {
-    console.log("xx")
-    productsService.getProduct($stateParams.productId).then(function(data){
-        $scope.product = data;
-    })
 
-    productsService.getProducts().then(function(data){
-        $scope.products = data.reverse();
-    })
-
-    $scope.callModal = function () {
-        modalsService.openModal();
-    }
-
-}])
-
-.controller('CategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService) {
-    console.log('çontroller runs');
-    $scope.categoryId = $stateParams.catId;
-    $scope.subcatId = $stateParams.subcatId;
-    $scope.subcategory = {};
-    $scope.subcategory.c_id = $scope.categoryId;
-
-    if ($scope.subcatId) {
-        catService.getSubcat($scope.subcatId).then(function(data){
-            $scope.subcategory = data;
-        })
-    }
-
-    catService.getCats().then(function(data){
-        $scope.categories = data;
-        
-    });
-
-    $scope.category = {};
-
-    /*
-    productsService.getListByCategoryId($stateParams.catId).then(function(data){
-        $scope.products = data;
-    })
-    */
-}])
-
-.controller('SubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService, filtersService) {
+.controller('SubCategoryController', ['$scope', '$http', '$location', '$stateParams', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', 'currencyService', 
+    function($scope, $http, $location, $stateParams, $modalStack, catService, productsService, confirmService, filtersService, currencyService) {
     console.log('çontroller runs');
     $scope.categoryId = $stateParams.catId;
     $scope.subcatId = $stateParams.subcatId;
@@ -154,8 +101,7 @@ angular.module('exel.main', ['ngRoute'])
         var params = {
         s_id: $stateParams.subcatId,
         limit: 10,
-        offset: $scope.products.length
-        
+        offset: $scope.products.length      
         }
 
         if ($scope.maker) {
@@ -163,35 +109,34 @@ angular.module('exel.main', ['ngRoute'])
         }
 
         productsService.getListBySubCategoryId(params).then(function(response) {
-                console.log(response);
+            console.log(response);
             if (response) {
-
                 for (var i =0; i < response.length; i++) {
-
                 $scope.products.push(response[i]);
-
                 }
             }
         })
     }
     $scope.loadMore();
 
+    currencyService.getCurrency(1).then(function(data){
+            $scope.currency = data;
+            console.log($scope.currency);
+    })
+
 
     $scope.maker = null;
 
     $scope.cleanFilter = function() {
-
         $scope.products.length = 0;
         $scope.maker = null;
         $scope.loadMore();
-
     }
-
-
 
 }])
 
-.controller('SsubCategoryController', ['$scope', '$http', '$location', '$timeout', '$modal', '$stateParams', 'cropperService', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', function($scope, $http, $location, $timeout, $modal, $stateParams, cropperService, $modalStack, catService, productsService, confirmService, filtersService) {
+.controller('SsubCategoryController', ['$scope', '$http', '$location', '$stateParams', '$modalStack', 'catService', 'productsService', 'confirmService', 'filtersService', 'currencyService', 
+    function($scope, $http, $location, $stateParams, $modalStack, catService, productsService, confirmService, filtersService, currencyService) {
     console.log('çontroller runs');
     $scope.subcategoryId = $stateParams.subcatId;
     $scope.ssubcatId = $stateParams.ssubcatId;
@@ -205,15 +150,13 @@ angular.module('exel.main', ['ngRoute'])
     }
 
     catService.getCats().then(function(data){
-        $scope.categories = data;
-        
+        $scope.categories = data;        
     });
 
     $scope.category = {};
 
     $scope.makers = [];
     $scope.loadMakers = function() {
-
         var params = {
         s_id: $stateParams.subcatId,
         limit: 20,
@@ -221,13 +164,10 @@ angular.module('exel.main', ['ngRoute'])
         }
 
         filtersService.getListBySubCategoryId(params).then(function(response) {
-                console.log(response);
+            console.log(response);
             if (response) {
-
                 for (var i =0; i < response.length; i++) {
-
                 $scope.makers.push(response[i]);
-
                 }
             }
         })
@@ -246,8 +186,7 @@ angular.module('exel.main', ['ngRoute'])
         var params = {
         s_id: $stateParams.subcatId,
         limit: 10,
-        offset: $scope.products.length
-        
+        offset: $scope.products.length       
         }
 
         if ($scope.maker) {
@@ -255,64 +194,59 @@ angular.module('exel.main', ['ngRoute'])
         }
 
         productsService.getListBySsubCategoryId(params).then(function(response) {
-                console.log(response);
+             console.log(response);
             if (response) {
-
                 for (var i =0; i < response.length; i++) {
-
                 $scope.products.push(response[i]);
-
                 }
             }
         })
     }
     $scope.loadMore();
 
+    currencyService.getCurrency(1).then(function(data){
+            $scope.currency = data;
+            console.log($scope.currency);
+    })
+
     $scope.maker = null;
 
     $scope.cleanFilter = function() {
-
         $scope.products.length = 0;
         $scope.maker = null;
         $scope.loadMore();
-
     }
-
-
-
 
 }])
 
-
-
-.controller('MainPageController', ['$scope', '$http', '$animate', 'productsService', 'catService', '$stateParams', 
-    function($scope, $http, $animate, productsService, catService, $stateParams) {
+.controller('MainPageController', ['$scope', '$http', '$animate', 'productsService', 'catService', '$stateParams', 'currencyService',
+ function($scope, $http, $animate, productsService, catService, $stateParams, currencyService) {
 
     $scope.newProducts = [];
     $scope.loadMore = function() {
-
         var params = {
         limit: 10,
         offset: $scope.newProducts.length        
         }
 
         productsService.getProducts(params).then(function(response) {
-                console.log(response);
+            console.log(response);
             if (response) {
-
                 for (var i =0; i < response.length; i++) {
-
                 $scope.newProducts.push(response[i]);
-
                 }
             }
         })
     }
     $scope.loadMore();
 
+    currencyService.getCurrency(1).then(function(data){
+            $scope.currency = data;
+            console.log($scope.currency);
+    })
+
     catService.getCats().then(function(data){
             $scope.categories = data;
-            
         });
 
         $scope.category = {};
@@ -335,7 +269,5 @@ angular.module('exel.main', ['ngRoute'])
           div.animate({width: '34%'}, "slow");
       });
     });
-
-   
 
 }]);

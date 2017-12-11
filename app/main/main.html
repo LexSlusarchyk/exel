@@ -39,9 +39,9 @@
 										<img ng-src="{{newProduct.image}}" alt="">
 										<a class="overlay" ui-sref="products({productId:newProduct.id})" data-target="#{{$index}}">
   										<i class="glyphicon glyphicon-zoom-in"></i>
-  										<span>{{newProduct.price + ' ₴'}}</span>
+  										<span>{{newProduct.price*currency.cof + ' ₴'}}</span>
 										</a>
-										<span id="stylePrice">{{newProduct.price + ' ₴'}}</span>
+										<span id="stylePrice">{{newProduct.price*currency.cof + ' ₴'}}</span>
 								    </div>
 								</div>
   							</div>
