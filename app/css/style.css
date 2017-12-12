@@ -7,13 +7,14 @@ overflow-y: scroll;
 html,
 body {
 	height: 100%;
+	width: 100%;
 }
 
 body {
-	font-family: 'Play', sans-serif;
+	font-family: 'Roboto Condensed', sans-serif;
 	/*font-family: 'Open Sans', sans-serif;
 	font-family: 'Roboto', sans-serif;*/
-	font-size: 15px;
+	font-size: 1.5em;
 	line-height: 1.50;
 	color: #324A5E;
 	/*color: #333333;*/
@@ -43,6 +44,7 @@ body {
 /* Header */
 .header .navbar {
 	margin-bottom: 0;
+	margin-bottom: 0;
 	font-weight: 300;
 }
 .main-navigation .navbar-default {
@@ -50,7 +52,7 @@ body {
 	border: none;
 }
 .main-navigation .navbar-default .navbar-nav > li > a {
-	color: #324A5E;
+	color: #ffffff;
 	/*color: #777;*/
 	display: inline-block;
 	padding: 10px 10px;
@@ -59,26 +61,36 @@ body {
 }
 .main-navigation .navbar-default .navbar-nav > li.active > a {
 	background-color: transparent;
-	color: #ffffff;
+	color: #54C0EB;
 }
 .main-navigation .navbar-default .navbar-nav > li > a:hover,
 .main-navigation .navbar-default .navbar-nav > li.active > a:hover {
-	color: #ffffff;
+	color: #54C0EB;
 }
 
-#navButton {
-	background-color: #54C0EB;
-	border: 2px solid #324A5E;
-}
+@media (min-width: 320px) and (max-width: 991px) {
+		#formSearch {
+			margin-left: 8px;
+		}
 
-#navButton:active {
-	background-color: #84DBFF;
+		#searchButton {
+		float: right;
+	}
+	.navbar-right {
+		float: right;
+		margin: auto;
+	}
+
+	.navbar-right li {
+		display: inline-block;
+		margin: 0;
+	}
 }
 
 @media (min-width:768px) {
 	.main-navigation .navbar-default .navbar-nav > li > a {
-		padding-top: 30px;
-		padding-bottom: 30px;
+		/*padding-top: 30px;
+		padding-bottom: 30px;*/
 		-webkit-transition: all 0.3s ease-in-out;
 		-moz-transition: all 0.3s ease-in-out;
 		-o-transition: all 0.3s ease-in-out;
@@ -94,8 +106,12 @@ body {
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.navbar-nav {
-		float: left !important;
+
+}
+
+@media only screen and (max-width: 1080px) {
+  #productBar {
+		display: none;
 	}
 }
 
@@ -112,6 +128,7 @@ a, a:visited, a:focus, a:active, a:hover{
 .main-banner .container-fluid {
 padding: 0;
 }
+
 .main-heading {
 	font-weight: 300;
 	background-color: rgba(0,0,0, 0.7);
@@ -130,15 +147,32 @@ padding: 0;
 }
 
 /* Other pages*/
+
+
 .page-heading {
-	background: url(../images/banner.jpg) 100% 40% no-repeat;
-	background-size: 100% auto;
-	color: white;
+	background: url(../images/banner.jpg) 100% 27% no-repeat;
+	height: 250px;
 }
-.page-headers {
+
+.contacts-heading {
+	background: url(../images/contacts.jpg) 100% 27% no-repeat;
+	height: 320px;
+}
+
+.cart-heading {
+	background: url(../images/shopping-cart.jpg) 100% 15% no-repeat;
+	height: 230px;
+}
+
+.page-heading, .contacts-heading, .cart-heading {
+	background-size: 100% auto;
+	position: relative;
+	top: -20px;
+}
+/*.page-headers {
 	padding: 12px 0 12px 10%;
 	background: rgba(0,0,0,0.6);
-}
+}*/
 .page-headers h1 {
 	-webkit-animation: fadeIn 1s;
 	-moz-animation: fadeIn 0.5s;
@@ -149,6 +183,7 @@ padding: 0;
 	-moz-animation: slide 0.5s ease-out;
 	animation: slide 0.5s ease-out;
 }
+
 @-webkit-keyframes fadeIn {
 from {
 opacity: 0;
@@ -228,14 +263,15 @@ h4 span {
 	}
 }
 
- /* footer styles */
+ /*********************************************
+								  FOOTER
+	*********************************************/
 #footer {
 	margin-top: 40px;
-	border-top: 7px solid #84DBFF;
-	padding: 10px;
+	padding: 10px 0 0 0;
 	font-size: 20px;
 	font-weight: 300;
-	background-color: #324A5E;
+	background-color: #282D31;
 	color: white;
 }
 .subfooter {
@@ -249,7 +285,7 @@ footer li {
 }
 
 p {
-	font-family: 'Play', sans-serif;
+	font-family: 'Roboto Condensed', sans-serif;
 	padding-bottom: 3px;
 	margin: 0 5px;
 }
@@ -270,6 +306,10 @@ footer .mini-about {
 	color: #55acee;
 }
 
+.social ul {
+	padding-left: 0;
+}
+
 .social a {
 	font-size: 18px;
 	color: #ffffff;
@@ -279,7 +319,72 @@ footer .mini-about {
 	font-size: 40px;
 	margin: 0 10px;
 }
+
 .social a:hover {
 	text-decoration: none;
 	color: #84DBFF;
+}
+
+#disclaimer {
+	padding-top: 10px;
+	font-size: 0.7em;
+	background-color: #1D1F20;
+	margin: 0;
+}
+
+#developers {
+	font-size: 0.8em;
+}
+
+/**********************************************************
+****************  DELIVERY *******************************
+*******************************************************/
+.delivery-options {
+	max-width: 80%;
+	margin: auto;
+}
+
+.delivery-options h3, .delivery-options p {
+	color: #324A5E;
+	text-align: left;
+}
+
+.delivery-options h3 {
+	font-weight: bold;
+}
+
+.delivery-options ul {
+	list-style: none;
+}
+
+.delivery-options i {
+	padding-right: 5px;
+	color: #54C0EB;
+}
+
+.delivery-options p, .delivery-options li {
+	font-size: 1.5em;
+}
+
+/**********************************************************
+****************  CONTACTS *******************************
+*******************************************************/
+
+.contact-phones ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.contact-phones img, .address img {
+	width: 40px;
+	height: auto;
+	margin: 15px auto;
+}
+
+.address a {
+	text-decoration: none;
+}
+
+.address a:visited {
+	color: inherit;
 }

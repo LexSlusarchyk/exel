@@ -111,7 +111,7 @@ angular.module('exel.main', ['ngRoute'])
         $scope.lostproducts.length = 0;
         var params = {
         s_id: $stateParams.subcatId,
-        limit: 10,
+        limit: 12,
         offset: $scope.products.length      
         }
 
@@ -203,7 +203,7 @@ angular.module('exel.main', ['ngRoute'])
         $scope.lostproducts.length = 0;
         var params = {
         ss_id: $stateParams.ssubcatId,
-        limit: 10,
+        limit: 12,
         offset: $scope.products.length       
         }
 
@@ -242,7 +242,7 @@ angular.module('exel.main', ['ngRoute'])
     $scope.newProducts = []; 
     $scope.loadMore = function() {
         var params = {
-        limit: 10,
+        limit: 12,
         offset: $scope.newProducts.length        
         }
 
@@ -264,27 +264,27 @@ angular.module('exel.main', ['ngRoute'])
 
     catService.getCats().then(function(data){
             $scope.categories = data;
-        });
+    });
 
-        $scope.category = {};
-/*
-    var $j = jQuery.noConflict();
-        $j(document).ready(function(){
-          $j('.dropSubMenu').mouseenter (function(e){
-            $j(this).next('ul').toggle();
+    $scope.category = {};
+
+   
+    $(document).ready(function(){
+        $('.dropSubMenu').mouseenter (function(e){
+            $(this).next('ul').toggle();
             e.stopPropagation();
-          });
+        });
     });
 
-    $j(document).ready(function(){
-      $j("#clickSearch").focusin(function(){
-          var div = $j("#formSearch");
-          div.animate({width: '100%'}, "slow");
+    $(document).ready(function(){
+      $("#clickSearch").focusin(function(){
+          var div = $("#formSearch");
+          div.animate({width: '80%'}, "slow");
       });
-      $j("#clickSearch").focusout(function(){
-          var div = $j("#formSearch");
-          div.animate({width: '34%'}, "slow");
+      $("#clickSearch").focusout(function(){
+          var div = $("#formSearch");
+          div.animate({width: '40%'}, "slow");
       });
     });
-*/
+
 }]);

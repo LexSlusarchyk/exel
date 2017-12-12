@@ -12,12 +12,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Play:400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
   <!-- BOWER !!!-->
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
@@ -29,6 +24,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css">
   <link href="bower_components/ng-cropper/dist/ngCropper.all.min.css" rel="stylesheet">
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/contacts.css">
   <link rel="stylesheet" href="css/portfolio.css">
@@ -51,14 +47,14 @@
   <div class="header-topBar">
     <div class="container">
       <p class="topBar"><i class="fa fa-truck" aria-hidden="true"></i> Безкоштовна доставка по Львову</p>
-    </div><hr/>
+    </div>
   </div>
   <div id="headerBar" class="container">
     <div class="row">
       <div class="col-md-4">
         <div class="header-left clearfix">
           <div class="logo">
-            <a ui-sref="main"><img id="logo" src="images/img/logo.png" height="80px"></a>
+            <a ui-sref="main"><img id="logo" src="images/img/logo.png" height="50px"></a>
             <a ui-sref="main" id="name">inko</span></a>
           </div>
         </div>
@@ -69,16 +65,14 @@
             <nav class="navbar navbar-default" role="navigation">
               <div class="container-fluid">
                 <div class="navbar-header">
-                  <button id="navButton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                  <i class="fa fa-chevron-circle-down" aria-hidden="true" style="font-size:20px;color:#324A5E;padding:2px 3px 0px 3px;"></i>
-                  </button>
+                  
                 </div>
-                <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">       
+                <div>       
                   <ul ng-cloak class="nav navbar-nav navbar-right">
-                    <li ng-class="{ active: isActive('')}"><a ui-sref="main" style="font-size:30px;">{{main}}</a></li>
-                    <li ng-class="{ active: isActive('about')}"><a ui-sref="about" style="font-size:30px;">{{about}}</a></li>
-                    <li ng-class="{ active: isActive('contacts')}"><a ui-sref="contacts" style="font-size:30px;">{{contacts}}</a></li>
-                    <li ><a href="#/cart" style="font-size:30px;">Корзина</a></li>
+                    <li ng-class="{ active: isActive('')}"><a ui-sref="main" style="font-size:1.5em; padding: 15px;">{{main}}</a></li>
+                    <li ng-class="{ active: isActive('about')}"><a ui-sref="about" style="font-size:1.5em; padding: 15px;">{{about}}</a></li>
+                    <li ng-class="{ active: isActive('contacts')}"><a ui-sref="contacts" style="font-size:1.5em; padding: 15px;">{{contacts}}</a></li>
+                    <li ><a href="#/cart" style="font-size:1.5em; padding: 15px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -91,37 +85,53 @@
 </header>
                       
   <nav class="navbar navbar-default">
-    <div class="row">
+    <div id="navMenu" class="container-fluid">
 
-      <div class="col-md-8">
+      <div class="col-md-9">
         <ul class="nav navbar-nav" ng-repeat="cat in categories track by $index" class="cat">
           <li id="catMenu" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" class="text-center">{{cat.title}}<span class="caret"></span></a>
             <ul id="subCatMenu" class="dropdown-menu">
               <li class="dropdown" ng-repeat="subcat in cat.subcats track by $index">
-                <a class="dropSubMenu" tabindex="-1" ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}}<span class="caret"></span></span></a>
-                <ul class="dropdown-menu" id="dropMenu">
-                  <li id="subSubcatMenu" class="dropdown" ng-repeat="subsubcat in subcat.subcats track by $index">
-                    <a tabindex="-1" ui-sref="main.ssubcategory({ ssubcatId: subsubcat.ss_id })" class="text-center"><span><img ng-src="{{subsubcat.images}}" alt="" style="height: 50%; width: 50%;"> {{subsubcat.title}}</span></a>
-                  </li>
+                <a class="dropSubMenu" tabindex="-1" ui-sref="main.subcategory({ subcatId: subcat.s_id })" class="text-center"><span>{{subcat.title}} <span class="glyphicon glyphicon-triangle-right" style="font-size:0.6em;"></span></span></a>
+                <ul class="dropdown-menu dropMenu">
+                  <div class="col-md-3" id="subSubcatMenu" class="dropdown" ng-repeat="subsubcat in subcat.subcats track by $index">
+                    <a tabindex="-1" ui-sref="main.ssubcategory({ ssubcatId: subsubcat.ss_id })"><span>{{subsubcat.title}}</span></a>
+                  </div>
                 </ul>
               </li>
             </ul>
           </li>
         </ul>
       </div>
+  
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
 
-      
-      
-      <div class="col-md-4">
-        <div id="seachInput" class="row">
-          <span id="clickSearch"><input ng-model="title" id="formSearch" placeholder="Пошук"></span>
-          <a href="" class="btn btn-primary" ng-click="onSelectOptionChanged()">Пошук</a>
-          <a href="" class="btn btn-primary" ng-click="cleanFilter()">Очистити</a>
+            <div id="seachInput" class="row">
+              <form id="clickSearch"><input ng-model="title" id="formSearch" data-toggle="tooltip" data-placement="bottom" title="Введіть три символи!" placeholder="Пошук" ng-pattern="/^[A-z0-9]{3,}$/" ng-keydown="$event.keyCode === 13 && onSelectOptionChanged()">
+                <a id="searchButton" href="" class="btn btn-primary" ng-click="onSelectOptionChanged()"><span class="glyphicon glyphicon-search"></span></a>
+              </form>
+              <script>
+              $(document).ready(function(){
+                  $('[data-toggle="tooltip"]').tooltip();
+              });
+              </script>
+
+            </div>
+          </div>
+          <!--<div class="col-md-3"
+            <div id="searchButton" class="row">
+              <a href="" class="btn btn-primary btn-sm" ng-click="onSelectOptionChanged()">Шукати</a>
+              <a href="" class="btn btn-danger btn-sm" ng-click="cleanFilter()">Очистити</a>
+            </div>
+          </div>-->
         </div>
       </div>
       
     </div>
+
   </nav>
 
   <!--[if lt IE 7]>
@@ -138,9 +148,8 @@
                 <li><p><i class="fa fa-phone" aria-hidden="true"></i> +38 (067) 137-42-75</p></li>
                 <li><p><i class="fa fa-phone" aria-hidden="true"></i> +38 (063) 258-63-79</p></li>
                 <li><p><i class="fa fa-phone" aria-hidden="true"></i> +38 (099) 778-45-49</p></li>
-                <li><p><i class="fa fa-envelope" aria-hidden="true"></i> marian7711@ukr.net</p></li>
+                <li><p><i class="fa fa-envelope" aria-hidden="true"></i> inko.electronics@gmail.com</p></li>
               </ul>
-                
             </div>
             <div class="col-md-4 col-xs-12 mini-about lead text-center">
               <p>Графік роботи:<br/>Пн–Пт з 08-00 до 22-00</p>
@@ -148,16 +157,23 @@
             </div>
             <div class="col-md-4 col-xs-12 social text-center">
               <ul>
-              <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href=""><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.facebook.com/inko.electronics"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="https://plus.google.com/u/1/114381514357631240996"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/inko.electronics"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               </ul>
+
+              <br>
+
+              <p id = "developers">Created and Designed by D&amp;FSoft</p>
             </div>
           </div>
         </div>
-      </div><hr/>
+      </div>
+
       <!-- .subfooter end -->
-      <p style="margin-top: 10px;" class="text-center">Усі права захищено «inko.in.ua» Copyright © 2017.</p>
+      <div id ="disclaimer">
+      <p class="text-center">All rights reserved «inko.in.ua» Copyright © 2017.</p>
+    </div>
     </footer>
 
   <!-- In production use:

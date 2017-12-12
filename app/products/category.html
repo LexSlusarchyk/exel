@@ -1,57 +1,58 @@
-<!--<p>{{products}}</p>-->
-<div>
-<input type="number" class="form-control" placeholder="Максимальна вартість товару" ng-model="priceterm" />
-    <br/>
+<div class="container-fluid">
+  <div id="gridSsub" ng-cloak class="ng-cloak portfolio-container">
+    <div ng-repeat="ssub in ssubs track by $index" class="text-center">
+    	<a ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center" id="nameSubSubCat"><span><img ng-src="{{ssub.images}}" alt="" style="height: 70%; width: 70%;"><br/>{{ssub.title}}</span></a>
+    </div>
+  </div>
 </div>
 
-<div ng-repeat="ssub in ssubs track by $index">
-	<a ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center"><span><img ng-src="{{ssub.images}}" alt="" style="height: 25%; width: 25%;">{{ssub.title}}</span></a> 
-</div>
-<!--infinite-scroll='loadMore()' infinite-scroll-distance='2' Place on div for infinity scrol-->
-<hr>
+<hr/>
+
 <div class="row">
+
 	<div class="col-md-3">
-		<div>
-			<h3>Сортувати по ціні:</h3>
-		    <form>
-			    <div class="radio">
-			      <label><input ng-model="priceorderby" type="radio" value="ASC">від дешевих до дорогих</label>
-			    </div>
-			    <div class="radio">
-			      <label><input ng-model="priceorderby" type="radio" value="DESC">від дорогих до дешевих</label>
-			    </div>
-		    </form>
-		</div>
-		<h2>Фільтри</h2>
-		<select ng-model="maker">
-			<option selected disabled value="">Виберіть виробника</option>
-			<option ng-repeat="maker in makers track by $index" value="{{maker.name}}">{{maker.name}}</option>
-		</select>
-		<br><br>
-		<a href="" class="btn btn-primary" ng-click="onSelectOptionChanged()">Фільтрувати товари</a>
-		<br><br>
-		<a href="" class="btn btn-primary" ng-click="cleanFilter()">Скинути фільтри</a>
-	</div>
- 
+    <div class="container-fluid">
+  		<div>
+  			<h2>Сортувати по ціні:</h2>
+  		    <form>
+  			    <div class="radio">
+  			      <label><input ng-model="priceorderby" type="radio" value="ASC">від дешевих до дорогих</label>
+  			    </div>
+  			    <div class="radio">
+  			      <label><input ng-model="priceorderby" type="radio" value="DESC">від дорогих до дешевих</label>
+  			    </div>
+  		    </form>
+  		</div>
+  		<h2>Фільтри</h2>
+  		<select ng-model="maker">
+  			<option selected disabled value="">Виберіть виробника</option>
+  			<option ng-repeat="maker in makers track by $index" value="{{maker.name}}">{{maker.name}}</option>
+  		</select>
+  		<br><br>
+  		<a href="" class="btn btn-primary" ng-click="onSelectOptionChanged()">Фільтрувати товари</a>
+  		<br><br>
+  		<a href="" class="btn btn-danger" ng-click="cleanFilter()">Скинути фільтри</a>
+  	</div>
+  </div>
+
 	<div class="col-md-9">
-		<div ng-cloak class="ng-cloak portfolio-container row grid-space-20" >
-
-			<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class="col-sm-6 col-md-4 portfolio-item">
-				<div class="image-box">
-					<p id="overflowTitle">{{product.title}}</p>
-					<div class="overlay-container">
-						<img ng-src="{{product.image}}" alt="">
-						<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
-						<i class="glyphicon glyphicon-zoom-in"></i>
-						<span>{{product.price*currency.cof + ' ₴'}}</span>
-						</a>
-						<span id="stylePrice">{{product.price*currency.cof + ' ₴'}}</span>
-					</div>					
-				</div>
-				</div>
-			</div> 
-			<a href="" class="btn btn-primary" ng-click="loadMore()">Загрузити ще товарів</a>
-		</div>
-
+    <div class="container-fluid">
+      <div id="gridPortfolioMain" ng-cloak class="ng-cloak portfolio-container">
+      	<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class=" portfolio-item {{product.title}}">
+      		<div class="image-box">
+      			<p id="overflowTitle">{{product.title}}</p>
+      			<div class="overlay-container">
+      				<img ng-src="{{product.image}}" alt="">
+      				<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
+      				<p id="overlaySpecMain">{{product.spec}}</p>
+      				</a>
+      				<span id="stylePrice">{{product.price*currency.cof + ' ₴'}}</span>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+    </div><br/>
+		<div class="text-center"><a href="" class="btn btn-primary" ng-click="loadMore()">Показати ще товарів</a></div>
 	</div>
+
 </div>

@@ -415,7 +415,7 @@ function sendFile(file) {
     $scope.loadMore = function() {
 
         var params = {
-        limit: 20,
+        limit: 18,
         offset: $scope.products.length        
         }
 
