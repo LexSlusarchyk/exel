@@ -864,7 +864,7 @@ function sendFile(file) {
                 $location.path('dashboard/team');
             })
         }
-    }
+    } 
 
     $scope.triggerInput = function() {
         $('#photo-input').click();

@@ -267,7 +267,7 @@ angular.module('exel.main', ['ngRoute'])
         });
 
         $scope.category = {};
-
+/*
     var $j = jQuery.noConflict();
         $j(document).ready(function(){
           $j('.dropSubMenu').mouseenter (function(e){
@@ -286,5 +286,5 @@ angular.module('exel.main', ['ngRoute'])
           div.animate({width: '34%'}, "slow");
       });
     });
-
+*/
 }]);
