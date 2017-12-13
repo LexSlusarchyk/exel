@@ -601,15 +601,8 @@ function sendFile(file) {
         })
     }
 
-    
 
     $scope.orders = [];
-
-    
-
-
-
-
 
     $scope.loadMore = function() {
 

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 angular.module('exel')
 
@@ -10,9 +10,13 @@ angular.module('exel')
  
     productsService.getProduct(productId).then(function(data){
         $scope.product = data;
+        $scope.carts=[];
+        $scope.carts.push({id: $scope.product.id, title: $scope.product.title, price: $scope.product.price, image: $scope.product.image});
         $scope.order = {
-            product_id: $scope.product.id
-        };
+                    cart: JSON.stringify($scope.carts)
+                };
+        console.log($scope.order);
+
     })
    
 
@@ -28,5 +32,5 @@ angular.module('exel')
         $modalStack.dismissAll();
 
     }
-
+ 
 }]) 
