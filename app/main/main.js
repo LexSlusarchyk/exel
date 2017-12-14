@@ -129,7 +129,12 @@ angular.module('exel.main', ['ngRoute'])
                 for (var i =0; i < response.length; i++) {
                 $scope.products.push(response[i]);
                 }
+                if (response.length < 12){
+                    console.log('hidebutton loadMore')
+                    $scope.hidebutton = true;
+                }
             }
+            console.log(response.length);
         })
     }
     $scope.loadMore();
@@ -220,6 +225,10 @@ angular.module('exel.main', ['ngRoute'])
             if (response) {
                 for (var i =0; i < response.length; i++) {
                 $scope.products.push(response[i]);
+                }
+                if (response.length < 12){
+                    console.log('hidebutton loadMore')
+                    $scope.hidebutton = true;
                 }
             }
         })
