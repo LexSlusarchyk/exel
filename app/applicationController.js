@@ -64,13 +64,18 @@
 
 
 //Для стилю корзини
-    $scope.cartstyle = true;   
-    if (localStorage.getItem('shoppingCarts').length > 2) {
-       $scope.cartstyle = true;
-    } else {
-        $scope.cartstyle = false;
-    }
-    console.log($scope.cartstyle);
+ //   $scope.cartstyle = null;
+
+  //  $scope.cartStyle = function() {   
+ //       if (localStorage.getItem('shoppingCarts')) {
+ //          $scope.cartstyle = false;
+ //       } else {
+ //           $scope.cartstyle = true;
+  //      }
+//        console.log($scope.cartstyle);
+ //   }
+
+ //   $scope.cartStyle();
 
   }]);
 })(); 

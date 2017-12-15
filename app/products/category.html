@@ -28,6 +28,11 @@
   			<option selected disabled value="">Виберіть виробника</option>
   			<option ng-repeat="maker in makers track by $index" value="{{maker.name}}">{{maker.name}}</option>
   		</select>
+      <br><br>
+      <select ng-model="display">
+        <option selected disabled value="">Виберіть розмір екрану</option>
+        <option ng-repeat="display in displays track by $index" value="{{display.display}}">{{display.display}}</option>
+      </select>
   		<br><br>
   		<a href="" class="btn btn-primary" ng-click="onSelectOptionChanged()">Фільтрувати товари</a>
   		<br><br>

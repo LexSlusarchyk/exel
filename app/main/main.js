@@ -65,7 +65,7 @@ angular.module('exel.main', ['ngRoute'])
         $scope.ssubs = data;
         console.log($scope.ssubs);
     })
-
+    //Filter maker
     $scope.makers = [];
     $scope.loadMakers = function() {
 
@@ -91,9 +91,36 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.maker = null;
 
+    //filter display
+    $scope.displays = [];
+    $scope.loadDisplays = function() {
+
+        var params = {
+        s_id: $stateParams.subcatId,
+        limit: 20,
+        offset: $scope.displays.length       
+        }
+
+        filtersService.getDisplaysBySubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.displays.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadDisplays();
+
+    $scope.display = null;
+
     $scope.cleanFilter = function() {
         $scope.products.length = 0;
         $scope.maker = null;
+        $scope.display = null;
         $scope.priceorderby = null;
         $scope.loadMore();
     }
@@ -101,7 +128,7 @@ angular.module('exel.main', ['ngRoute'])
     $scope.priceorderby = null; //For products order  by price ASC or DESC
 
     $scope.products = [];
-
+///////////////////////////////////////
     $scope.onSelectOptionChanged = function() {
         $scope.products.length = 0;
         $scope.loadMore();
@@ -121,6 +148,10 @@ angular.module('exel.main', ['ngRoute'])
 
         if ($scope.maker) {
             params.maker = $scope.maker
+        }
+
+        if ($scope.display) {
+            params.display = $scope.display
         }
 
         productsService.getListBySubCategoryId(params).then(function(response) {
@@ -166,7 +197,7 @@ angular.module('exel.main', ['ngRoute'])
     });
 
     $scope.category = {};
-
+    //filter maker
     $scope.makers = [];
     $scope.loadMakers = function() {
         var params = {
@@ -175,7 +206,7 @@ angular.module('exel.main', ['ngRoute'])
         offset: $scope.makers.length       
         }
 
-        filtersService.getListBySubCategoryId(params).then(function(response) {
+        filtersService.getListBySsubCategoryId(params).then(function(response) {
             console.log(response);
             if (response) {
                 for (var i =0; i < response.length; i++) {
@@ -188,9 +219,36 @@ angular.module('exel.main', ['ngRoute'])
 
     $scope.maker = null;
 
+    //filter display
+    $scope.displays = [];
+    $scope.loadDisplays = function() {
+
+        var params = {
+        ss_id: $stateParams.ssubcatId,
+        limit: 20,
+        offset: $scope.displays.length       
+        }
+
+        filtersService.getDisplaysBySsubCategoryId(params).then(function(response) {
+                console.log(response);
+            if (response) {
+
+                for (var i =0; i < response.length; i++) {
+
+                $scope.displays.push(response[i]);
+
+                }
+            }
+        })
+    }
+    $scope.loadDisplays();
+
+    $scope.display = null;
+
     $scope.cleanFilter = function() {
         $scope.products.length = 0;
         $scope.maker = null;
+        $scope.display = null;
         $scope.priceorderby = null;
         $scope.loadMore();
     }
@@ -218,6 +276,10 @@ angular.module('exel.main', ['ngRoute'])
 
         if ($scope.maker) {
             params.maker = $scope.maker
+        }
+
+        if ($scope.display) {
+            params.display = $scope.display
         }
 
         productsService.getListBySsubCategoryId(params).then(function(response) {

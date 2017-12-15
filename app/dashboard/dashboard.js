@@ -708,6 +708,9 @@ function sendFile(file) {
         if (product.maker) {
             data.maker = product.maker;
         }
+        if (product.display) {
+            data.display = product.display;
+        }
         if (product.image) {
             data.image = product.image;
         } 
