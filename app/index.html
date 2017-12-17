@@ -72,7 +72,7 @@
                     <li ng-class="{ active: isActive('')}"><a ui-sref="main" style="font-size:1.5em; padding: 15px;">{{main}}</a></li>
                     <li ng-class="{ active: isActive('about')}"><a ui-sref="about" style="font-size:1.5em; padding: 15px;">{{about}}</a></li>
                     <li ng-class="{ active: isActive('contacts')}"><a ui-sref="contacts" style="font-size:1.5em; padding: 15px;">{{contacts}}</a></li>
-                    <li><a href="#/cart" style="font-size:1.5em; padding: 15px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
+                    <li><a href="#/cart" ng-class="cartclass" style="font-size:1.5em; padding: 15px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
                   </ul>
                 </div>
               </div>

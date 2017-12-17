@@ -1,6 +1,6 @@
 (function(){
   angular.module('exel')
-  .controller("ApplicationController", ["$scope", "$location", "CONFIG", 'catService', 'productsService', function($scope, $location, CONFIG, catService, productsService){
+  .controller("ApplicationController", ["$scope", "$location", "CONFIG", 'catService', 'productsService', '$rootScope', function($scope, $location, CONFIG, catService, productsService, $rootScope){
 
   	$scope.main = CONFIG.MAIN;
     $scope.products = CONFIG.PRODUCTS;
@@ -64,18 +64,12 @@
 
 
 //Для стилю корзини
- //   $scope.cartstyle = null;
+    $rootScope.cartclass = null; 
+ 
 
-  //  $scope.cartStyle = function() {   
- //       if (localStorage.getItem('shoppingCarts')) {
- //          $scope.cartstyle = false;
- //       } else {
- //           $scope.cartstyle = true;
-  //      }
-//        console.log($scope.cartstyle);
- //   }
 
- //   $scope.cartStyle();
+
+
 
   }]);
 })(); 
