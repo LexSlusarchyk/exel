@@ -23,7 +23,6 @@
 				<div ui-view></div>
 				<hr>
 
-
 				<h3>Новинки</h3><br/>
 				<div class="container-fluid">
 					<div id="gridPortfolio" ng-cloak class="ng-cloak portfolio-container">
@@ -31,7 +30,7 @@
 							<div class="image-box">
 								<p id="overflowTitle">{{newProduct.title}}</p>
 								<div class="overlay-container">
-									<img ng-src="{{newProduct.image}}" alt="">
+									<img ng-src="{{newProduct.image}}" fallback-src="{{'images/logo.png'}}">
 									<a class="overlay" ui-sref="products({productId:newProduct.id})" data-target="#{{$index}}">
 									<p id="overlaySpec">{{newProduct.spec}}</p>
 									</a>

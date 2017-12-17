@@ -1,6 +1,6 @@
 'use strict';  
 
-angular.module('exel.main', ['ngRoute'])
+angular.module('exel.main', ['ngRoute', 'dcbImgFallback'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
