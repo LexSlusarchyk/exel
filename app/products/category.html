@@ -1,7 +1,11 @@
 <div class="container-fluid">
+  <br>
   <div id="gridSsub" ng-cloak class="ng-cloak portfolio-container">
-    <div ng-repeat="ssub in ssubs track by $index" class="text-center">
-    	<a ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center" id="nameSubSubCat"><span><img ng-src="{{ssub.images}}" alt="" style="height: 70%; width: 70%;"><br/>{{ssub.title}}</span></a>
+    <div ng-repeat="ssub in ssubs track by $index" class="text-center" id="sub-sub-container">
+    	<a class="sub-sub" ui-sref="main.ssubcategory({ ssubcatId: ssub.ss_id })" class="text-center" id="nameSubSubCat">
+        <span><img ng-src="{{ssub.images}}" fallback-src="{{'images/fallback.png'}}"><br/>
+        {{ssub.title}}</span>
+      </a>
     </div>
   </div>
 </div>
@@ -37,6 +41,7 @@
   		<a href="" class="btn btn-primary" ng-click="onSelectOptionChanged()">Фільтрувати товари</a>
   		<br><br>
   		<a href="" class="btn btn-danger" ng-click="cleanFilter()">Скинути фільтри</a>
+      <br><br>
   	</div>
   </div>
 
@@ -46,12 +51,12 @@
       	<div  ng-repeat="product in products|priceLessThan:priceterm | filter:$products.query track by $index" class=" portfolio-item {{product.title}}">
       		<div class="image-box">
       			<p id="overflowTitle">{{product.title}}</p>
+            <span id="stylePrice">{{product.price*currency.cof + ' ₴'}}</span>
       			<div class="overlay-container">
-      				<img ng-src="{{product.image}}" alt="">
+      				<img ng-src="{{product.image}}" fallback-src="{{'images/fallback.png'}}">
       				<a class="overlay" ui-sref="products({productId:product.id})" data-target="#{{$index}}">
       				<p id="overlaySpecMain">{{product.spec}}</p>
       				</a>
-      				<span id="stylePrice">{{product.price*currency.cof + ' ₴'}}</span>
       			</div>
       		</div>
       	</div>

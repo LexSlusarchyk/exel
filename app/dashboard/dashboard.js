@@ -232,7 +232,7 @@ function sendFile(file) {
 
     $scope.options = {
         maximize: true,
-        aspectRatio: $scope.aspectRatio,
+//        aspectRatio: $scope.aspectRatio,
         crop: function(dataNew) {
             data = dataNew;
         }

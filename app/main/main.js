@@ -339,14 +339,18 @@ angular.module('exel.main', ['ngRoute', 'dcbImgFallback'])
 
     $scope.category = {};
 
-   
+   // for dropMenu
     $(document).ready(function(){
-        $('.dropSubMenu').mouseenter (function(e){
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-        });
+      $(".dropSubMenu").hover(function(e){
+        $(this).next("ul").toggle();
+        e.stopPropagation();
+      });
+      $(".dropMenu").hover(function(e){
+        $(this).toggle();
+        e.stopPropagation();
+      });
     });
-
+    // for serch
     $(document).ready(function(){
       $("#clickSearch").focusin(function(){
           var div = $("#formSearch");
@@ -354,7 +358,7 @@ angular.module('exel.main', ['ngRoute', 'dcbImgFallback'])
       });
       $("#clickSearch").focusout(function(){
           var div = $("#formSearch");
-          div.animate({width: '40%'}, "slow");
+          div.animate({width: "40%"}, "slow");
       });
     });
 
