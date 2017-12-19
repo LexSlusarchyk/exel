@@ -30,7 +30,7 @@
     $scope.searchProduct = function() {
 
         var params = {
-        limit: 10,
+        limit: 15,
         offset: $scope.lostproducts.length
         }
 
@@ -42,17 +42,17 @@
             productsService.searchProduct(params).then(function(response) {
                     console.log(response);
                 if (response) {
-
                     for (var i =0; i < response.length; i++) {
-
                     $scope.lostproducts.push(response[i]);
-
                     }
-                }
+                    //to show button searchMoreProduct
+                    if(response.length > 1){  
+                    $scope.showbutton = true;
+                    } else{$scope.showbutton = false;}
+                } 
             })
         }
     }
-
 
     $scope.title = null;
 
