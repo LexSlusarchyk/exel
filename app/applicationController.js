@@ -51,6 +51,8 @@
                     } else{$scope.showbutton = false;}
                 } 
             })
+        } else { 
+            $scope.title = null;
         }
     }
 

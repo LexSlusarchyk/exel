@@ -100,7 +100,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-11">
             <div id="searchInput" class="row">
-              <form id="clickSearch"><input ng-model="title" id="formSearch" data-toggle="tooltip" data-placement="bottom" title="Введіть три символи!" placeholder="Пошук" ng-pattern="/^[A-z0-9]{3,}$/" ng-keydown="$event.keyCode === 13 && onSelectOptionChanged()">
+              <form id="clickSearch"><input ng-model="title" id="formSearch" data-toggle="tooltip" data-placement="bottom" title="Введіть три символи!" placeholder="Пошук" ng-keydown="$event.keyCode === 13 && onSelectOptionChanged()">
+
                 <a id="searchButton" href="" class="btn btn-primary" ng-click="onSelectOptionChanged()"><span class="glyphicon glyphicon-search"></span></a>
               </form>
               <script>
