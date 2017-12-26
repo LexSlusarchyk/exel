@@ -755,6 +755,12 @@ h4 span {
 	margin-bottom: 10%;
 }
 
+#productId {
+  color: #5883a7;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
 #productPrice {
   font-size: 1.4em;
   color: #ffffff;
@@ -1136,6 +1142,10 @@ footer .mini-about {
 
 #image-in-orders {
   width: 25%;
+}
+
+#searchItemId {
+	margin-top: 9px;
 }
 
 /**************************************************

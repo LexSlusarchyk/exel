@@ -1,17 +1,38 @@
 <div class="row">
 
-	<div class="container col-md-2">
-		<a href="" class="btn btn-success" ui-sref="dashboard.addproduct"><i class="fa fa-plus"></i> Додати товар</a>
-	</div>
-
-	<div class="container col-md-10">
+	<div class="container col-md-12">
 		<div class="row">
+			<div class="col-md-2">
+				<a id="searchItemId" href="" class="btn btn-success" ui-sref="dashboard.addproduct"><i class="fa fa-plus"></i> Додати товар</a>
+			</div>
+			<div class="col-md-8"></div>
+			<div class="col-md-2">
+				<form>
+				  <div class="input-group">
+				    <input id="searchItemId" ng-model="itemid" class="form-control" placeholder="Пошук за кодом" required>
+				    <div class="input-group-btn">
+				      <button class="btn btn-info" type="submit" href="" ui-sref="products({productId: itemid})">
+				        <i class="glyphicon glyphicon-search"></i>
+				      </button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+		</div>
+		<hr>
+	</div>
+	
+
+	<div class="container col-md-12">
+		<div class="row">
+			<div class="col-md-1">
+			</div>
 
 			<div class="col-md-5">
 				<input ng-model="title" class="form-control" placeholder="Пошук" required>
 			</div>
 
-			<div class="input-group col-md-7">
+			<div class="input-group col-md-6">
 				<select ng-options="cat.c_id as cat.title for cat in categories" ng-model="product.c_id" ng-change="getSubcatsList()">
 				<option selected disabled value="">Вкажіть категорію</option>
 				</select>

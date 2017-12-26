@@ -23,6 +23,7 @@
 								<td>
 									<img id ="cart-item-img" ng-src = "{{cart.image}}" fallback-src="{{'images/fallback.png'}}"/>
 									<span id = "cart-item-name" class"cartText">{{cart.title}}</span>
+									<span id = "cart-item-name" class"cartText"> (Код товару: {{cart.id}})</span>
 								</td>
 
 								<td class="cartText">{{cart.price*currency.cof}}₴</td>

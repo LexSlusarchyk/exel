@@ -498,6 +498,10 @@ function sendFile(file) {
     }
 
 
+    //for seachByProductId
+    $scope.itemid = null;
+
+
 }])
 
 
